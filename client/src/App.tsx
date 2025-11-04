@@ -4,39 +4,40 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
+import CRMLayout from "./components/CRMLayout";
+import DashboardCRM from "./pages/DashboardCRM";
 import Setup from "./pages/Setup";
-import Dashboard from "./pages/Dashboard";
-import Test from "./pages/Test";
-import Docs from "./pages/Docs";
 import API from "./pages/API";
+import Docs from "./pages/Docs";
 
 function Router() {
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path="/setup" component={Setup} />
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/test" component={Test} />
-      <Route path={"/docs"} component={Docs} />
-      <Route path={"/api"} component={API} />     <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <CRMLayout>
+      <Switch>
+        <Route path={"/"} component={DashboardCRM} />
+        <Route path={"/setup"} component={Setup} />
+        <Route path={"/pedidos"} component={API} />
+        <Route path={"/produtos"} component={API} />
+        <Route path={"/anuncios"} component={API} />
+        <Route path={"/clientes"} component={API} />
+        <Route path={"/entregas"} component={API} />
+        <Route path={"/financeiro"} component={API} />
+        <Route path={"/notas"} component={API} />
+        <Route path={"/relatorios"} component={API} />
+        <Route path={"/docs"} component={Docs} />
+        <Route path={"/404"} component={NotFound} />
+        {/* Final fallback route */}
+        <Route component={NotFound} />
+      </Switch>
+    </CRMLayout>
   );
 }
-
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
 function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider
-        defaultTheme="light"
-        switchable
+        defaultTheme="dark"
       >
         <TooltipProvider>
           <Toaster />

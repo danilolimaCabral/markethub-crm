@@ -45,3 +45,11 @@
 - [x] Respostas automáticas baseadas em consultas à API
 - [x] Gráficos no chat para visualizar dados numéricos
 - [x] Funcionalidade de drill-down nos gráficos para ver dados detalhados
+
+### Redesign para CRM Profissional
+- [x] Remover visual "Integre o Manus"
+- [x] Criar layout estilo CRM com sidebar lateral
+- [x] Dashboard com métricas e KPIs
+- [x] Navegação lateral com ícones e categorias
+- [x] Visual mais profissional e corporativo
+- [x] Tema escuro como padrão
