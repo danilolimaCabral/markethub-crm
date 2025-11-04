@@ -40,3 +40,6 @@
 - [x] Interface para consultar API do Lexos Hub (pedidos, produtos, estoque, clientes)
 - [x] Visualização de dados em tabelas
 - [x] Filtros e busca nos dados
+- [x] Aba de chat interativo para consultar dados do Lexos Hub
+- [x] Interface de conversa com histórico de mensagens
+- [x] Respostas automáticas baseadas em consultas à API

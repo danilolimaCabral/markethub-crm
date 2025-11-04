@@ -16,6 +16,9 @@ export default function API() {
   const { theme, toggleTheme } = useTheme();
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("pedidos");
+  const [messages, setMessages] = useState<Array<{role: 'user' | 'assistant', content: string}>>([]);
+  const [inputMessage, setInputMessage] = useState("");
+  const [chatLoading, setChatLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("todos");
 
@@ -136,7 +139,7 @@ export default function API() {
 
           {/* Tabs com dados */}
           <Tabs value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="grid w-full grid-cols-3">
+            <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger value="pedidos" className="gap-2">
                 <ShoppingCart className="w-4 h-4" />
                 Pedidos
@@ -148,6 +151,10 @@ export default function API() {
               <TabsTrigger value="anuncios" className="gap-2">
                 <Store className="w-4 h-4" />
                 Anúncios
+              </TabsTrigger>
+              <TabsTrigger value="chat" className="gap-2">
+                <Users className="w-4 h-4" />
+                Chat
               </TabsTrigger>
             </TabsList>
 
@@ -280,9 +287,174 @@ export default function API() {
                 </CardContent>
               </Card>
             </TabsContent>
+
+            {/* Tab Chat */}
+            <TabsContent value="chat">
+              <Card className="h-[600px] flex flex-col">
+                <CardHeader>
+                  <CardTitle>Chat com Lexos Hub</CardTitle>
+                  <CardDescription>Converse e obtenha informações em tempo real</CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1 flex flex-col">
+                  {/* Área de mensagens */}
+                  <div className="flex-1 overflow-y-auto space-y-4 mb-4 p-4 bg-muted/30 rounded-lg">
+                    {messages.length === 0 ? (
+                      <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground">
+                        <Users className="w-12 h-12 mb-4 opacity-50" />
+                        <p className="text-lg font-medium">Bem-vindo ao Chat!</p>
+                        <p className="text-sm mt-2 max-w-md">
+                          Pergunte sobre pedidos, produtos, estoque, anúncios ou qualquer informação do Lexos Hub.
+                        </p>
+                        <div className="mt-6 space-y-2 text-left">
+                          <p className="text-sm font-medium">Exemplos:</p>
+                          <div className="space-y-1 text-sm">
+                            <p>• "Quantos pedidos pendentes tenho?"</p>
+                            <p>• "Quais produtos estão com estoque baixo?"</p>
+                            <p>• "Mostre os anúncios ativos"</p>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      messages.map((msg, index) => (
+                        <div
+                          key={index}
+                          className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                        >
+                          <div
+                            className={`max-w-[80%] rounded-lg px-4 py-3 ${
+                              msg.role === 'user'
+                                ? 'bg-primary text-primary-foreground'
+                                : 'bg-muted border'
+                            }`}
+                          >
+                            <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                          </div>
+                        </div>
+                      ))
+                    )}
+                    {chatLoading && (
+                      <div className="flex justify-start">
+                        <div className="bg-muted border rounded-lg px-4 py-3">
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Input de mensagem */}
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="Digite sua pergunta..."
+                      value={inputMessage}
+                      onChange={(e) => setInputMessage(e.target.value)}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter' && !chatLoading && inputMessage.trim()) {
+                          handleSendMessage();
+                        }
+                      }}
+                      disabled={chatLoading}
+                    />
+                    <Button
+                      onClick={handleSendMessage}
+                      disabled={chatLoading || !inputMessage.trim()}
+                    >
+                      {chatLoading ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        "Enviar"
+                      )}
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
           </Tabs>
         </div>
       </main>
     </div>
   );
+
+  async function handleSendMessage() {
+    if (!inputMessage.trim()) return;
+
+    const userMessage = inputMessage.trim();
+    setInputMessage("");
+    
+    // Adiciona mensagem do usuário
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setChatLoading(true);
+
+    // Simula processamento e resposta
+    setTimeout(() => {
+      const response = generateResponse(userMessage);
+      setMessages(prev => [...prev, { role: 'assistant', content: response }]);
+      setChatLoading(false);
+    }, 1500);
+  }
+
+  function generateResponse(message: string): string {
+    const lowerMessage = message.toLowerCase();
+
+    // Pedidos
+    if (lowerMessage.includes('pedido') && lowerMessage.includes('pendente')) {
+      return `📦 Você tem **3 pedidos pendentes**:\n\n` +
+        `1. PED-001 - João Silva - R$ 450,00 (Mercado Livre)\n` +
+        `2. PED-002 - Maria Santos - R$ 320,00 (Amazon)\n` +
+        `3. PED-003 - Pedro Costa - R$ 180,00 (Shopee)\n\n` +
+        `Total: R$ 950,00`;
+    }
+
+    if (lowerMessage.includes('pedido')) {
+      return `📦 Informações sobre pedidos:\n\n` +
+        `• Total de pedidos: 3\n` +
+        `• Pendentes: 1\n` +
+        `• Enviados: 1\n` +
+        `• Entregues: 1\n` +
+        `• Valor total: R$ 950,00`;
+    }
+
+    // Estoque
+    if (lowerMessage.includes('estoque') && (lowerMessage.includes('baixo') || lowerMessage.includes('pouco'))) {
+      return `⚠️ **Produtos com estoque baixo:**\n\n` +
+        `• Produto B (SKU-002): 3 unidades\n` +
+        `• Produto C (SKU-003): 0 unidades (sem estoque!)\n\n` +
+        `Recomendo reabastecer esses produtos.`;
+    }
+
+    if (lowerMessage.includes('estoque') || lowerMessage.includes('produto')) {
+      return `📦 Resumo de estoque:\n\n` +
+        `• Produto A: 50 unidades - R$ 149,90\n` +
+        `• Produto B: 3 unidades ⚠️ - R$ 89,90\n` +
+        `• Produto C: 0 unidades ❌ - R$ 199,90\n\n` +
+        `Total de produtos: 3\n` +
+        `Produtos ativos: 2`;
+    }
+
+    // Anúncios
+    if (lowerMessage.includes('anuncio') || lowerMessage.includes('anúncio')) {
+      return `📢 Status dos anúncios:\n\n` +
+        `• ANU-001 (Produto A): Ativo no Mercado Livre - 1.234 visualizações\n` +
+        `• ANU-002 (Produto B): Ativo na Amazon - 987 visualizações\n` +
+        `• ANU-003 (Produto C): Pausado na Shopee - 0 visualizações\n\n` +
+        `Total de anúncios: 3 (2 ativos, 1 pausado)`;
+    }
+
+    // Vendas
+    if (lowerMessage.includes('venda') || lowerMessage.includes('faturamento')) {
+      return `💰 Resumo de vendas:\n\n` +
+        `• Faturamento total: R$ 950,00\n` +
+        `• Ticket médio: R$ 316,67\n` +
+        `• Marketplace com mais vendas: Mercado Livre\n` +
+        `• Período: Últimos 7 dias`;
+    }
+
+    // Resposta padrão
+    return `Entendi sua pergunta sobre "${message}".\n\n` +
+      `Posso ajudar com informações sobre:\n` +
+      `• Pedidos (pendentes, enviados, entregues)\n` +
+      `• Produtos e estoque\n` +
+      `• Anúncios nos marketplaces\n` +
+      `• Vendas e faturamento\n\n` +
+      `Tente perguntar de forma mais específica!`;
+  }
 }
