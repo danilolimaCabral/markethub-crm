@@ -338,6 +338,7 @@ export default function API() {
                                 title={msg.chart.title}
                                 dataKey={msg.chart.dataKey}
                                 nameKey={msg.chart.nameKey}
+                                onDrillDown={(item) => handleDrillDown(item, msg.chart!)}
                               />
                             )}
                           </div>
@@ -402,6 +403,63 @@ export default function API() {
       setMessages(prev => [...prev, { role: 'assistant', content: response }]);
       setChatLoading(false);
     }, 1500);
+  }
+
+  function handleDrillDown(item: any, chart: any) {
+    // Dados detalhados por marketplace
+    const drillDownDetails: Record<string, any> = {
+      'Mercado Livre': {
+        data: [
+          { name: 'Eletrônicos', value: 200 },
+          { name: 'Casa', value: 150 },
+          { name: 'Moda', value: 100 }
+        ],
+        title: 'Mercado Livre - Detalhes por Categoria'
+      },
+      'Amazon': {
+        data: [
+          { name: 'Eletrônicos', value: 180 },
+          { name: 'Livros', value: 90 },
+          { name: 'Casa', value: 50 }
+        ],
+        title: 'Amazon - Detalhes por Categoria'
+      },
+      'Shopee': {
+        data: [
+          { name: 'Moda', value: 100 },
+          { name: 'Beleza', value: 50 },
+          { name: 'Acessórios', value: 30 }
+        ],
+        title: 'Shopee - Detalhes por Categoria'
+      },
+      'Produto A': {
+        data: [
+          { name: 'Mercado Livre', value: 25 },
+          { name: 'Amazon', value: 15 },
+          { name: 'Shopee', value: 10 }
+        ],
+        title: 'Produto A - Distribuição por Marketplace'
+      },
+      'Produto B': {
+        data: [
+          { name: 'Mercado Livre', value: 1 },
+          { name: 'Amazon', value: 1 },
+          { name: 'Shopee', value: 1 }
+        ],
+        title: 'Produto B - Distribuição por Marketplace'
+      },
+      'Produto C': {
+        data: [
+          { name: 'Mercado Livre', value: 0 },
+          { name: 'Amazon', value: 0 },
+          { name: 'Shopee', value: 0 }
+        ],
+        title: 'Produto C - Sem Estoque em Nenhum Marketplace'
+      }
+    };
+
+    const itemName = item.name || item[chart.nameKey || 'name'];
+    return drillDownDetails[itemName] || null;
   }
 
   function generateResponse(message: string): string {

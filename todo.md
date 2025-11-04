@@ -44,3 +44,4 @@
 - [x] Interface de conversa com histórico de mensagens
 - [x] Respostas automáticas baseadas em consultas à API
 - [x] Gráficos no chat para visualizar dados numéricos
+- [x] Funcionalidade de drill-down nos gráficos para ver dados detalhados
