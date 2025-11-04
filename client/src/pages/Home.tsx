@@ -171,10 +171,10 @@ export default function Home() {
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => setLocation("/test")}
+                onClick={() => setLocation("/api")}
               >
                 <TestTube className="w-4 h-4 mr-2" />
-                Testar API
+                Consultar API
               </Button>
             </div>
           </CardContent>

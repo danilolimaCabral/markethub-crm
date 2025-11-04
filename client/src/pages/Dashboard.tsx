@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTheme } from "@/contexts/ThemeContext";
-import { ArrowLeft, Moon, Sun, RefreshCw, CheckCircle2, AlertCircle, Clock, Copy, Check } from "lucide-react";
+import { ArrowLeft, Moon, Sun, RefreshCw, CheckCircle2, AlertCircle, Clock, Copy, Check, Eye, EyeOff } from "lucide-react";
 import { useLocation } from "wouter";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -10,6 +10,11 @@ export default function Dashboard() {
   const [, setLocation] = useLocation();
   const { theme, toggleTheme } = useTheme();
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [showAccessToken, setShowAccessToken] = useState(false);
+  const [showRefreshToken, setShowRefreshToken] = useState(false);
+
+  const accessTokenFull = "eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMCIsInppcCI6IkRlZmxhdGUiLCJzZXIiOiIxLjAifQ...";
+  const refreshTokenFull = "def50200abc123xyz789...";
 
   const copyToClipboard = (text: string, fieldName: string) => {
     navigator.clipboard.writeText(text);
@@ -88,19 +93,35 @@ export default function Dashboard() {
                 <div className="flex justify-between items-center gap-2">
                   <span className="text-muted-foreground">Access Token:</span>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono">eyJraWQi...***</span>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-7 w-7"
-                      onClick={() => copyToClipboard("eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMCIsInppcCI6IkRlZmxhdGUiLCJzZXIiOiIxLjAifQ...", "Access Token")}
-                    >
-                      {copiedField === "Access Token" ? (
-                        <Check className="w-4 h-4 text-green-500" />
-                      ) : (
-                        <Copy className="w-4 h-4" />
-                      )}
-                    </Button>
+                    <span className="font-mono text-sm break-all">
+                      {showAccessToken ? accessTokenFull : "eyJraWQi...***"}
+                    </span>
+                    <div className="flex gap-1 flex-shrink-0">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-7 w-7"
+                        onClick={() => setShowAccessToken(!showAccessToken)}
+                      >
+                        {showAccessToken ? (
+                          <EyeOff className="w-4 h-4" />
+                        ) : (
+                          <Eye className="w-4 h-4" />
+                        )}
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-7 w-7"
+                        onClick={() => copyToClipboard(accessTokenFull, "Access Token")}
+                      >
+                        {copiedField === "Access Token" ? (
+                          <Check className="w-4 h-4 text-green-500" />
+                        ) : (
+                          <Copy className="w-4 h-4" />
+                        )}
+                      </Button>
+                    </div>
                   </div>
                 </div>
                 <div className="flex justify-between">
@@ -114,19 +135,35 @@ export default function Dashboard() {
                 <div className="flex justify-between items-center gap-2">
                   <span className="text-muted-foreground">Refresh Token:</span>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono">def502...***</span>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-7 w-7"
-                      onClick={() => copyToClipboard("def50200abc123xyz789...", "Refresh Token")}
-                    >
-                      {copiedField === "Refresh Token" ? (
-                        <Check className="w-4 h-4 text-green-500" />
-                      ) : (
-                        <Copy className="w-4 h-4" />
-                      )}
-                    </Button>
+                    <span className="font-mono text-sm break-all">
+                      {showRefreshToken ? refreshTokenFull : "def502...***"}
+                    </span>
+                    <div className="flex gap-1 flex-shrink-0">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-7 w-7"
+                        onClick={() => setShowRefreshToken(!showRefreshToken)}
+                      >
+                        {showRefreshToken ? (
+                          <EyeOff className="w-4 h-4" />
+                        ) : (
+                          <Eye className="w-4 h-4" />
+                        )}
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-7 w-7"
+                        onClick={() => copyToClipboard(refreshTokenFull, "Refresh Token")}
+                      >
+                        {copiedField === "Refresh Token" ? (
+                          <Check className="w-4 h-4 text-green-500" />
+                        ) : (
+                          <Copy className="w-4 h-4" />
+                        )}
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </CardContent>

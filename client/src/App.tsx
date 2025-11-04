@@ -9,6 +9,7 @@ import Setup from "./pages/Setup";
 import Dashboard from "./pages/Dashboard";
 import Test from "./pages/Test";
 import Docs from "./pages/Docs";
+import API from "./pages/API";
 
 function Router() {
   return (
@@ -17,8 +18,8 @@ function Router() {
       <Route path="/setup" component={Setup} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/test" component={Test} />
-      <Route path="/docs" component={Docs} />
-      <Route path={"/404"} component={NotFound} />
+      <Route path={"/docs"} component={Docs} />
+      <Route path={"/api"} component={API} />     <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>

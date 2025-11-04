@@ -36,3 +36,7 @@
 
 ### Melhorias Solicitadas
 - [x] Botão de copiar tokens no Dashboard
+- [x] Recurso de mostrar/ocultar tokens com ícone de olho
+- [x] Interface para consultar API do Lexos Hub (pedidos, produtos, estoque, clientes)
+- [x] Visualização de dados em tabelas
+- [x] Filtros e busca nos dados
