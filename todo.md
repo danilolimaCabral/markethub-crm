@@ -32,3 +32,7 @@
 - [x] Tema claro/escuro
 - [ ] Animações e transições suaves
 - [ ] Feedback visual de ações
+
+
+### Melhorias Solicitadas
+- [x] Botão de copiar tokens no Dashboard

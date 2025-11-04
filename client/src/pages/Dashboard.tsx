@@ -1,12 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTheme } from "@/contexts/ThemeContext";
-import { ArrowLeft, Moon, Sun, RefreshCw, CheckCircle2, AlertCircle, Clock } from "lucide-react";
+import { ArrowLeft, Moon, Sun, RefreshCw, CheckCircle2, AlertCircle, Clock, Copy, Check } from "lucide-react";
 import { useLocation } from "wouter";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function Dashboard() {
   const [, setLocation] = useLocation();
   const { theme, toggleTheme } = useTheme();
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  const copyToClipboard = (text: string, fieldName: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(fieldName);
+    toast.success(`${fieldName} copiado!`);
+    setTimeout(() => setCopiedField(null), 2000);
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-background via-background to-accent/10">
@@ -75,9 +85,23 @@ export default function Dashboard() {
                 <CardTitle>Informações do Token</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-sm">
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center gap-2">
                   <span className="text-muted-foreground">Access Token:</span>
-                  <span className="font-mono">eyJraWQi...***</span>
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono">eyJraWQi...***</span>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-7"
+                      onClick={() => copyToClipboard("eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMCIsInppcCI6IkRlZmxhdGUiLCJzZXIiOiIxLjAifQ...", "Access Token")}
+                    >
+                      {copiedField === "Access Token" ? (
+                        <Check className="w-4 h-4 text-green-500" />
+                      ) : (
+                        <Copy className="w-4 h-4" />
+                      )}
+                    </Button>
+                  </div>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Gerado em:</span>
@@ -87,9 +111,23 @@ export default function Dashboard() {
                   <span className="text-muted-foreground">Expira em:</span>
                   <span>04/11/2025 15:00</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center gap-2">
                   <span className="text-muted-foreground">Refresh Token:</span>
-                  <span className="font-mono">def502...***</span>
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono">def502...***</span>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-7 w-7"
+                      onClick={() => copyToClipboard("def50200abc123xyz789...", "Refresh Token")}
+                    >
+                      {copiedField === "Refresh Token" ? (
+                        <Check className="w-4 h-4 text-green-500" />
+                      ) : (
+                        <Copy className="w-4 h-4" />
+                      )}
+                    </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>
