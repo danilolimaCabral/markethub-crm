@@ -43,3 +43,4 @@
 - [x] Aba de chat interativo para consultar dados do Lexos Hub
 - [x] Interface de conversa com histórico de mensagens
 - [x] Respostas automáticas baseadas em consultas à API
+- [x] Gráficos no chat para visualizar dados numéricos

@@ -6,7 +6,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTheme } from "@/contexts/ThemeContext";
-import { ArrowLeft, Moon, Sun, Search, RefreshCw, Package, ShoppingCart, Store, Users, Loader2 } from "lucide-react";
+import { ArrowLeft, Moon, Sun, Search, RefreshCw, Package, ShoppingCart, Store, Users, Loader2, BarChart3 } from "lucide-react";
+import ChartMessage from "@/components/ChartMessage";
 import { useLocation } from "wouter";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -16,7 +17,7 @@ export default function API() {
   const { theme, toggleTheme } = useTheme();
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("pedidos");
-  const [messages, setMessages] = useState<Array<{role: 'user' | 'assistant', content: string}>>([]);
+  const [messages, setMessages] = useState<Array<{role: 'user' | 'assistant', content: string, chart?: {type: 'bar' | 'pie' | 'line', data: any[], title?: string, dataKey?: string, nameKey?: string}}>>([]);
   const [inputMessage, setInputMessage] = useState("");
   const [chatLoading, setChatLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -311,6 +312,8 @@ export default function API() {
                             <p>• "Quantos pedidos pendentes tenho?"</p>
                             <p>• "Quais produtos estão com estoque baixo?"</p>
                             <p>• "Mostre os anúncios ativos"</p>
+                            <p>• "Mostre gráfico de vendas por marketplace"</p>
+                            <p>• "Gráfico de estoque dos produtos"</p>
                           </div>
                         </div>
                       </div>
@@ -328,6 +331,15 @@ export default function API() {
                             }`}
                           >
                             <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                            {msg.chart && (
+                              <ChartMessage
+                                type={msg.chart.type}
+                                data={msg.chart.data}
+                                title={msg.chart.title}
+                                dataKey={msg.chart.dataKey}
+                                nameKey={msg.chart.nameKey}
+                              />
+                            )}
                           </div>
                         </div>
                       ))
@@ -394,6 +406,81 @@ export default function API() {
 
   function generateResponse(message: string): string {
     const lowerMessage = message.toLowerCase();
+
+    // Gráficos
+    if (lowerMessage.includes('gráfico') || lowerMessage.includes('grafico')) {
+      if (lowerMessage.includes('venda') || lowerMessage.includes('marketplace')) {
+        const chartData = [
+          { name: 'Mercado Livre', value: 450 },
+          { name: 'Amazon', value: 320 },
+          { name: 'Shopee', value: 180 }
+        ];
+        setMessages(prev => [
+          ...prev.slice(0, -1),
+          prev[prev.length - 1],
+          { 
+            role: 'assistant', 
+            content: '📊 Gráfico de vendas por marketplace:',
+            chart: {
+              type: 'bar',
+              data: chartData,
+              title: 'Vendas por Marketplace (R$)',
+              dataKey: 'value',
+              nameKey: 'name'
+            }
+          }
+        ]);
+        return '';
+      }
+      
+      if (lowerMessage.includes('estoque') || lowerMessage.includes('produto')) {
+        const chartData = [
+          { name: 'Produto A', value: 50 },
+          { name: 'Produto B', value: 3 },
+          { name: 'Produto C', value: 0 }
+        ];
+        setMessages(prev => [
+          ...prev.slice(0, -1),
+          prev[prev.length - 1],
+          { 
+            role: 'assistant', 
+            content: '📊 Gráfico de estoque por produto:',
+            chart: {
+              type: 'bar',
+              data: chartData,
+              title: 'Estoque Atual (unidades)',
+              dataKey: 'value',
+              nameKey: 'name'
+            }
+          }
+        ]);
+        return '';
+      }
+      
+      if (lowerMessage.includes('distribuição') || lowerMessage.includes('pizza')) {
+        const chartData = [
+          { name: 'Mercado Livre', value: 450 },
+          { name: 'Amazon', value: 320 },
+          { name: 'Shopee', value: 180 }
+        ];
+        setMessages(prev => [
+          ...prev.slice(0, -1),
+          prev[prev.length - 1],
+          { 
+            role: 'assistant', 
+            content: '📊 Distribuição de vendas:',
+            chart: {
+              type: 'pie',
+              data: chartData,
+              title: 'Distribuição por Marketplace',
+              dataKey: 'value',
+              nameKey: 'name'
+            }
+          }
+        ]);
+        return '';
+      }
+    }
 
     // Pedidos
     if (lowerMessage.includes('pedido') && lowerMessage.includes('pendente')) {
