@@ -170,3 +170,13 @@
 - [ ] Atualizar Dashboard com dados reais
 - [ ] Atualizar página de Pedidos com dados reais
 - [ ] Atualizar página de Produtos com dados reais
+
+## Automação de Login OAuth2
+
+- [x] Simplificar página de Login para apenas um botão
+- [x] Configurar redirect_uri para callback do CRM
+- [x] Atualizar página Callback para capturar código automaticamente da URL
+- [x] Implementar troca automática de código por access_token
+- [x] Adicionar loading state durante processamento
+- [x] Redirecionar automaticamente para dashboard após autenticação
+- [x] Tratar erros de autenticação com mensagens claras
