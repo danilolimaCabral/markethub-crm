@@ -1,17 +1,66 @@
+import { useState } from 'react';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { TrendingUp, TrendingDown, DollarSign, ShoppingCart, Package, Users } from 'lucide-react';
+import { TrendingUp, TrendingDown, DollarSign, ShoppingCart, Package, Calendar } from 'lucide-react';
+
+type Periodo = 'semana' | 'mes' | 'ano';
 
 export default function Metricas() {
-  // Dados de exemplo para métricas
-  const vendasMensais = [
-    { mes: 'Jan', vendas: 45000, pedidos: 120, ticket: 375 },
-    { mes: 'Fev', vendas: 52000, pedidos: 135, ticket: 385 },
-    { mes: 'Mar', vendas: 48000, pedidos: 128, ticket: 375 },
-    { mes: 'Abr', vendas: 61000, pedidos: 155, ticket: 393 },
-    { mes: 'Mai', vendas: 55000, pedidos: 142, ticket: 387 },
-    { mes: 'Jun', vendas: 67000, pedidos: 168, ticket: 398 },
-  ];
+  const [periodoSelecionado, setPeriodoSelecionado] = useState<Periodo>('mes');
+
+  // Dados por período
+  const dadosPorPeriodo = {
+    semana: {
+      vendas: [
+        { periodo: 'Seg', vendas: 6500, pedidos: 18, ticket: 361 },
+        { periodo: 'Ter', vendas: 7200, pedidos: 20, ticket: 360 },
+        { periodo: 'Qua', vendas: 8100, pedidos: 22, ticket: 368 },
+        { periodo: 'Qui', vendas: 9500, pedidos: 26, ticket: 365 },
+        { periodo: 'Sex', vendas: 11200, pedidos: 30, ticket: 373 },
+        { periodo: 'Sáb', vendas: 13500, pedidos: 35, ticket: 386 },
+        { periodo: 'Dom', vendas: 11000, pedidos: 28, ticket: 393 },
+      ],
+      kpis: {
+        faturamento: 'R$ 67.000',
+        pedidos: '179',
+        produtos: '895',
+        ticket: 'R$ 374'
+      }
+    },
+    mes: {
+      vendas: [
+        { periodo: 'Jan', vendas: 45000, pedidos: 120, ticket: 375 },
+        { periodo: 'Fev', vendas: 52000, pedidos: 135, ticket: 385 },
+        { periodo: 'Mar', vendas: 48000, pedidos: 128, ticket: 375 },
+        { periodo: 'Abr', vendas: 61000, pedidos: 155, ticket: 393 },
+        { periodo: 'Mai', vendas: 55000, pedidos: 142, ticket: 387 },
+        { periodo: 'Jun', vendas: 67000, pedidos: 168, ticket: 398 },
+      ],
+      kpis: {
+        faturamento: 'R$ 328.000',
+        pedidos: '848',
+        produtos: '4.475',
+        ticket: 'R$ 387'
+      }
+    },
+    ano: {
+      vendas: [
+        { periodo: '2019', vendas: 1200000, pedidos: 3200, ticket: 375 },
+        { periodo: '2020', vendas: 1450000, pedidos: 3800, ticket: 381 },
+        { periodo: '2021', vendas: 1680000, pedidos: 4350, ticket: 386 },
+        { periodo: '2022', vendas: 1920000, pedidos: 4950, ticket: 388 },
+        { periodo: '2023', vendas: 2250000, pedidos: 5780, ticket: 389 },
+        { periodo: '2024', vendas: 2680000, pedidos: 6850, ticket: 391 },
+      ],
+      kpis: {
+        faturamento: 'R$ 2.680.000',
+        pedidos: '6.850',
+        produtos: '38.250',
+        ticket: 'R$ 391'
+      }
+    }
+  };
 
   const produtosMaisVendidos = [
     { nome: 'Produto A', vendas: 1250, valor: 45890 },
@@ -28,10 +77,12 @@ export default function Metricas() {
     { name: 'Site Próprio', value: 13, color: '#4F46E5' },
   ];
 
+  const dadosAtuais = dadosPorPeriodo[periodoSelecionado];
+
   const kpis = [
     {
       title: 'Faturamento Total',
-      value: 'R$ 328.000',
+      value: dadosAtuais.kpis.faturamento,
       change: '+15%',
       positive: true,
       icon: DollarSign,
@@ -40,7 +91,7 @@ export default function Metricas() {
     },
     {
       title: 'Total de Pedidos',
-      value: '848',
+      value: dadosAtuais.kpis.pedidos,
       change: '+12%',
       positive: true,
       icon: ShoppingCart,
@@ -49,7 +100,7 @@ export default function Metricas() {
     },
     {
       title: 'Produtos Vendidos',
-      value: '4.475',
+      value: dadosAtuais.kpis.produtos,
       change: '+8%',
       positive: true,
       icon: Package,
@@ -58,7 +109,7 @@ export default function Metricas() {
     },
     {
       title: 'Ticket Médio',
-      value: 'R$ 387',
+      value: dadosAtuais.kpis.ticket,
       change: '+3%',
       positive: true,
       icon: TrendingUp,
@@ -69,10 +120,41 @@ export default function Metricas() {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-foreground">Métricas</h1>
-        <p className="text-muted-foreground">Análise detalhada de performance e indicadores</p>
+      {/* Header com Filtro */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-foreground">Métricas</h1>
+          <p className="text-muted-foreground">Análise detalhada de performance e indicadores</p>
+        </div>
+        
+        {/* Filtro de Período */}
+        <div className="flex items-center gap-2 bg-muted p-1 rounded-lg">
+          <Calendar className="w-4 h-4 text-muted-foreground ml-2" />
+          <Button
+            variant={periodoSelecionado === 'semana' ? 'default' : 'ghost'}
+            size="sm"
+            onClick={() => setPeriodoSelecionado('semana')}
+            className="h-8"
+          >
+            Semana
+          </Button>
+          <Button
+            variant={periodoSelecionado === 'mes' ? 'default' : 'ghost'}
+            size="sm"
+            onClick={() => setPeriodoSelecionado('mes')}
+            className="h-8"
+          >
+            Mês
+          </Button>
+          <Button
+            variant={periodoSelecionado === 'ano' ? 'default' : 'ghost'}
+            size="sm"
+            onClick={() => setPeriodoSelecionado('ano')}
+            className="h-8"
+          >
+            Ano
+          </Button>
+        </div>
       </div>
 
       {/* KPIs */}
@@ -105,13 +187,15 @@ export default function Metricas() {
 
       {/* Gráficos */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Vendas Mensais */}
+        {/* Vendas por Período */}
         <Card className="p-6">
-          <h3 className="text-lg font-semibold text-foreground mb-4">Vendas Mensais</h3>
+          <h3 className="text-lg font-semibold text-foreground mb-4">
+            Vendas por {periodoSelecionado === 'semana' ? 'Dia' : periodoSelecionado === 'mes' ? 'Mês' : 'Ano'}
+          </h3>
           <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={vendasMensais}>
+            <LineChart data={dadosAtuais.vendas}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-              <XAxis dataKey="mes" stroke="hsl(var(--muted-foreground))" />
+              <XAxis dataKey="periodo" stroke="hsl(var(--muted-foreground))" />
               <YAxis stroke="hsl(var(--muted-foreground))" />
               <Tooltip 
                 contentStyle={{ 
@@ -182,12 +266,12 @@ export default function Metricas() {
 
       {/* Tabela de Análise Detalhada */}
       <Card className="p-6">
-        <h3 className="text-lg font-semibold text-foreground mb-4">Análise Mensal Detalhada</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-4">Análise Detalhada</h3>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-b border-border">
-                <th className="text-left py-3 px-4 text-sm font-semibold text-foreground">Mês</th>
+                <th className="text-left py-3 px-4 text-sm font-semibold text-foreground">Período</th>
                 <th className="text-right py-3 px-4 text-sm font-semibold text-foreground">Vendas (R$)</th>
                 <th className="text-right py-3 px-4 text-sm font-semibold text-foreground">Pedidos</th>
                 <th className="text-right py-3 px-4 text-sm font-semibold text-foreground">Ticket Médio</th>
@@ -195,15 +279,15 @@ export default function Metricas() {
               </tr>
             </thead>
             <tbody>
-              {vendasMensais.map((item, index) => {
+              {dadosAtuais.vendas.map((item, index) => {
                 const variacaoAnterior = index > 0 
-                  ? ((item.vendas - vendasMensais[index - 1].vendas) / vendasMensais[index - 1].vendas * 100).toFixed(1)
+                  ? ((item.vendas - dadosAtuais.vendas[index - 1].vendas) / dadosAtuais.vendas[index - 1].vendas * 100).toFixed(1)
                   : 0;
                 const isPositive = Number(variacaoAnterior) >= 0;
                 
                 return (
                   <tr key={index} className="border-b border-border hover:bg-muted/50">
-                    <td className="py-3 px-4 text-sm text-foreground">{item.mes}</td>
+                    <td className="py-3 px-4 text-sm text-foreground">{item.periodo}</td>
                     <td className="py-3 px-4 text-sm text-right text-foreground">
                       R$ {item.vendas.toLocaleString('pt-BR')}
                     </td>

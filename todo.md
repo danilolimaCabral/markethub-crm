@@ -151,3 +151,6 @@
 - [x] Adicionar seletor de moeda no widget
 - [x] Buscar dados históricos da API
 - [x] Criar página Métricas (erro 404)
+- [x] Adicionar filtro de período (semana, mês, ano) na página Métricas
+- [x] Atualizar KPIs conforme período selecionado
+- [x] Atualizar gráficos conforme período selecionado
