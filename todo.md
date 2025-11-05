@@ -137,3 +137,7 @@
 - [ ] Preparar estrutura para integração API real
 - [x] Renomear sistema para "IA BRUNO CRM"
 - [x] Criar logo moderna com tema de IA e análise
+- [x] Criar funcionalidade de pesquisa global (Ctrl+K)
+- [x] Buscar em clientes, pedidos, produtos, anúncios
+- [x] Modal de pesquisa com resultados em tempo real
+- [x] Atalho de teclado Ctrl+K

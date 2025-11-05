@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 import { Link, useLocation } from 'wouter';
+import { useState, useEffect } from 'react';
+import GlobalSearch from './GlobalSearch';
 import { 
   LayoutDashboard, 
   ShoppingCart, 
@@ -32,9 +34,21 @@ interface NavSection {
   title: string;
   items: NavItem[];
 }
-
-export default function CRMLayout({ children }: { children: ReactNode }) {
+export default function CRMLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  // Atalho Ctrl+K para abrir pesquisa
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const handleLogout = () => {
     logout();
@@ -173,9 +187,12 @@ export default function CRMLayout({ children }: { children: ReactNode }) {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-auto">
         {children}
-      </main>
+      </div>
+
+      {/* Global Search */}
+      <GlobalSearch open={searchOpen} onOpenChange={setSearchOpen} />
     </div>
   );
 }
