@@ -86,9 +86,11 @@ export default function CRMLayout({ children }: { children: ReactNode }) {
         {/* Logo/Header */}
         <div className="p-4 border-b border-border">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">L</span>
-            </div>
+            <img 
+              src="/logo-ia-bruno-crm.png" 
+              alt="IA BRUNO CRM" 
+              className="w-10 h-10 object-contain"
+            />
             <div>
               <h1 className="font-bold text-lg text-foreground">IA BRUNO CRM</h1>
               <p className="text-xs text-muted-foreground">Sistema Inteligente de Gestão</p>
