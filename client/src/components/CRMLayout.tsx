@@ -20,7 +20,7 @@ import {
   Calculator,
   Headphones
 } from 'lucide-react';
-import { logout } from '@/lib/auth';
+import { signOut } from '@/lib/local-auth';
 
 interface NavItem {
   path: string;
@@ -51,7 +51,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
   }, []);
 
   const handleLogout = () => {
-    logout();
+    signOut();
     window.location.href = "/login";
   };
 

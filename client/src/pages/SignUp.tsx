@@ -5,15 +5,17 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Shield, LogIn, AlertCircle, Mail, Lock } from 'lucide-react';
-import { signIn } from '@/lib/local-auth';
+import { Shield, UserPlus, AlertCircle, CheckCircle, Mail, Lock, User } from 'lucide-react';
+import { signUp } from '@/lib/local-auth';
 import { toast } from 'sonner';
 
-export default function Login() {
+export default function SignUp() {
   const [, setLocation] = useLocation();
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
     password: '',
+    confirmPassword: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -29,18 +31,30 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+
+    // Validações
+    if (formData.password !== formData.confirmPassword) {
+      setError('As senhas não coincidem');
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError('A senha deve ter pelo menos 6 caracteres');
+      return;
+    }
+
     setLoading(true);
 
     try {
-      const result = await signIn(formData.email, formData.password);
+      const result = await signUp(formData.email, formData.password, formData.name);
 
       if (result.success) {
-        toast.success('Login realizado com sucesso!');
+        toast.success('Conta criada com sucesso!');
         setTimeout(() => {
           setLocation('/');
         }, 500);
       } else {
-        setError(result.error || 'Erro ao fazer login');
+        setError(result.error || 'Erro ao criar conta');
       }
     } catch (err) {
       setError('Erro inesperado. Tente novamente.');
@@ -49,36 +63,39 @@ export default function Login() {
     }
   };
 
-  const handleLexosLogin = () => {
-    // Redirecionar para página de autenticação do Lexos Hub
-    const authUrl = 'https://lexosapi.b2clogin.com/LexosApi.onmicrosoft.com/oauth2/v2.0/authorize?' + new URLSearchParams({
-      p: 'B2C_1_SUSI',
-      client_id: '6b6c14ef-a27a-4467-8bb3-e0d7dc4b206f',
-      nonce: 'defaultNonce',
-      redirect_uri: window.location.origin + '/callback',
-      scope: 'openid',
-      response_type: 'code',
-      prompt: 'login'
-    }).toString();
-    
-    window.location.href = authUrl;
-  };
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
       <Card className="w-full max-w-md shadow-2xl">
         <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-20 h-20 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
-            <Shield className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+          <div className="mx-auto w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+            <Shield className="w-8 h-8 text-blue-600 dark:text-blue-400" />
           </div>
-          <CardTitle className="text-3xl font-bold">IA BRUNO CRM</CardTitle>
+          <CardTitle className="text-3xl font-bold">Criar Conta</CardTitle>
           <CardDescription className="text-base">
-            Sistema Inteligente de Gestão de E-commerce
+            Cadastre-se no IA BRUNO CRM
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-6">
+        <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Nome Completo</Label>
+              <div className="relative">
+                <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <Input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Seu nome"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="pl-10"
+                  required
+                  disabled={loading}
+                />
+              </div>
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <div className="relative">
@@ -105,8 +122,27 @@ export default function Login() {
                   id="password"
                   name="password"
                   type="password"
-                  placeholder="Sua senha"
+                  placeholder="Mínimo 6 caracteres"
                   value={formData.password}
+                  onChange={handleChange}
+                  className="pl-10"
+                  required
+                  disabled={loading}
+                  minLength={6}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="confirmPassword">Confirmar Senha</Label>
+              <div className="relative">
+                <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <Input
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  type="password"
+                  placeholder="Digite a senha novamente"
+                  value={formData.confirmPassword}
                   onChange={handleChange}
                   className="pl-10"
                   required
@@ -128,55 +164,32 @@ export default function Login() {
               disabled={loading}
             >
               {loading ? (
-                <>Entrando...</>
+                <>Criando conta...</>
               ) : (
                 <>
-                  <LogIn className="w-4 h-4" />
-                  Entrar
+                  <UserPlus className="w-4 h-4" />
+                  Criar Conta
                 </>
               )}
             </Button>
           </form>
 
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
-                Ou continue com
-              </span>
-            </div>
-          </div>
-
-          <Button
-            onClick={handleLexosLogin}
-            variant="outline"
-            className="w-full h-11 gap-2"
-          >
-            <Shield className="w-4 h-4" />
-            Entrar com Lexos Hub
-          </Button>
-
-          <div className="text-center text-sm">
+          <div className="mt-6 text-center text-sm">
             <p className="text-muted-foreground">
-              Não tem uma conta?{' '}
+              Já tem uma conta?{' '}
               <Button
                 variant="link"
                 className="p-0 h-auto font-semibold"
-                onClick={() => setLocation('/signup')}
+                onClick={() => setLocation('/login')}
               >
-                Criar Conta
+                Fazer Login
               </Button>
             </p>
           </div>
 
-          <div className="border-t border-border pt-4">
+          <div className="mt-6 border-t pt-4">
             <p className="text-xs text-muted-foreground text-center">
-              🔒 Autenticação segura via OAuth2
-            </p>
-            <p className="text-xs text-muted-foreground text-center mt-1">
-              Suas credenciais nunca são compartilhadas
+              🔒 Seus dados são armazenados de forma segura
             </p>
           </div>
         </CardContent>

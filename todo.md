@@ -180,3 +180,30 @@
 - [x] Adicionar loading state durante processamento
 - [x] Redirecionar automaticamente para dashboard após autenticação
 - [x] Tratar erros de autenticação com mensagens claras
+
+## Sistema de Auto-Refresh de Dados
+
+- [ ] Criar hook useAutoRefresh para polling a cada 5 minutos
+- [ ] Adicionar indicador de última atualização no Dashboard
+- [ ] Implementar botão de atualização manual
+- [ ] Adicionar feedback visual durante atualização
+- [ ] Aplicar auto-refresh em todas as páginas principais (Dashboard, Pedidos, Produtos)
+
+## Sistema de Autenticação Local (Usuário/Senha)
+
+- [x] Criar página de Cadastro (Sign Up)
+- [x] Criar página de Login com usuário/senha
+- [x] Implementar sistema de hash de senha
+- [x] Criar armazenamento local de usuários
+- [ ] Implementar validação de formulários
+- [ ] Adicionar gerenciamento de sessão
+- [ ] Manter opção de login com Lexos Hub
+
+## Integração Transparente com API Lexos
+
+- [x] Remover obrigatoriedade de login OAuth2 do Lexos
+- [x] Criar página de Configurações para admin inserir credenciais da API
+- [x] Armazenar access_token da API de forma centralizada
+- [ ] Modificar hooks para usar token configurado ao invés de OAuth2
+- [ ] Usuário acessa CRM apenas com login local
+- [ ] Dados da API aparecem automaticamente se configurada
