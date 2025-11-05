@@ -10,23 +10,24 @@ import Setup from "./pages/Setup";
 import API from "./pages/API";
 import Docs from "./pages/Docs";
 import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import Callback from "./pages/Callback";
 import Settings from './pages/Settings';
 import Metricas from './pages/Metricas';
 import ChatIA from './pages/ChatIA';
 import PosVendas from './pages/PosVendas';
-import { isLoggedIn } from "./lib/local-auth";
+import { isAuthenticated } from "./lib/auth";
+import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
 function Router() {
-  // Check if user is authenticated locally
-  const authenticated = isLoggedIn();
+  // DEMO MODE: Bypass authentication for demonstration
+  const authenticated = true; // isAuthenticated();
 
   // Public routes (no authentication required)
   if (!authenticated) {
     return (
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} />
+        <Route path="/callback" component={Callback} />
         <Route component={Login} />
       </Switch>
     );
@@ -37,8 +38,9 @@ function Router() {
     <CRMLayout>
       <Switch>
         <Route path={"/"} component={DashboardCRM} />
-        <Route path="/chat" component={ChatIA} />
-        <Route path="/pos-vendas" component={PosVendas} />
+          <Route path="/chat" component={ChatIA} />
+          <Route path="/pos-vendas" component={PosVendas} />
+        <Route path="/callback" component={Callback} />
         <Route path={"/setup"} component={Setup} />
         <Route path={"/pedidos"} component={API} />
         <Route path={"/produtos"} component={API} />
@@ -60,6 +62,9 @@ function Router() {
 }
 
 function App() {
+  // Inicia monitoramento de renovação automática de token
+  useTokenRefresh();
+
   return (
     <ErrorBoundary>
       <ThemeProvider

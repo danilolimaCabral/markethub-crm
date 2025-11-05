@@ -1,182 +1,44 @@
-import { useState } from 'react';
-import { useLocation } from 'wouter';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Shield, LogIn, AlertCircle, Mail, Lock } from 'lucide-react';
-import { signIn } from '@/lib/local-auth';
-import { toast } from 'sonner';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { initiateLogin } from '@/lib/auth';
+import { LogIn, Shield } from 'lucide-react';
 
 export default function Login() {
-  const [, setLocation] = useLocation();
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-    setError('');
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-
-    try {
-      const result = await signIn(formData.email, formData.password);
-
-      if (result.success) {
-        toast.success('Login realizado com sucesso!');
-        setTimeout(() => {
-          setLocation('/');
-        }, 500);
-      } else {
-        setError(result.error || 'Erro ao fazer login');
-      }
-    } catch (err) {
-      setError('Erro inesperado. Tente novamente.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleLexosLogin = () => {
-    // Redirecionar para página de autenticação do Lexos Hub
-    const authUrl = 'https://lexosapi.b2clogin.com/LexosApi.onmicrosoft.com/oauth2/v2.0/authorize?' + new URLSearchParams({
-      p: 'B2C_1_SUSI',
-      client_id: '6b6c14ef-a27a-4467-8bb3-e0d7dc4b206f',
-      nonce: 'defaultNonce',
-      redirect_uri: window.location.origin + '/callback',
-      scope: 'openid',
-      response_type: 'code',
-      prompt: 'login'
-    }).toString();
-    
-    window.location.href = authUrl;
+  const handleLogin = () => {
+    initiateLogin();
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
-      <Card className="w-full max-w-md shadow-2xl">
-        <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-20 h-20 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
-            <Shield className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
+          <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+            <Shield className="w-8 h-8 text-primary" />
           </div>
-          <CardTitle className="text-3xl font-bold">IA BRUNO CRM</CardTitle>
-          <CardDescription className="text-base">
-            Sistema Inteligente de Gestão de E-commerce
+          <CardTitle className="text-2xl">IA BRUNO CRM</CardTitle>
+          <CardDescription>
+            Sistema Inteligente de Gestão - Faça login para acessar o painel
           </CardDescription>
         </CardHeader>
-
-        <CardContent className="space-y-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="seu@email.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="pl-10"
-                  required
-                  disabled={loading}
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="password">Senha</Label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Sua senha"
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="pl-10"
-                  required
-                  disabled={loading}
-                />
-              </div>
-            </div>
-
-            {error && (
-              <Alert variant="destructive">
-                <AlertCircle className="h-4 w-4" />
-                <AlertDescription>{error}</AlertDescription>
-              </Alert>
-            )}
-
-            <Button
-              type="submit"
-              className="w-full h-11 gap-2"
-              disabled={loading}
-            >
-              {loading ? (
-                <>Entrando...</>
-              ) : (
-                <>
-                  <LogIn className="w-4 h-4" />
-                  Entrar
-                </>
-              )}
-            </Button>
-          </form>
-
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
-                Ou continue com
-              </span>
-            </div>
-          </div>
-
+        <CardContent className="space-y-4">
           <Button
-            onClick={handleLexosLogin}
-            variant="outline"
-            className="w-full h-11 gap-2"
+            onClick={handleLogin}
+            className="w-full"
+            size="lg"
           >
-            <Shield className="w-4 h-4" />
-            Entrar com Lexos Hub
+            <LogIn className="w-5 h-5 mr-2" />
+            Entrar no Sistema
           </Button>
 
-          <div className="text-center text-sm">
-            <p className="text-muted-foreground">
-              Não tem uma conta?{' '}
-              <Button
-                variant="link"
-                className="p-0 h-auto font-semibold"
-                onClick={() => setLocation('/signup')}
-              >
-                Criar Conta
-              </Button>
-            </p>
+          <div className="text-center text-sm text-muted-foreground">
+            <p>Ao fazer login, você será redirecionado para</p>
+            <p className="font-medium">accounts.lexos.com.br</p>
           </div>
 
           <div className="border-t border-border pt-4">
             <p className="text-xs text-muted-foreground text-center">
-              🔒 Autenticação segura via OAuth2
-            </p>
-            <p className="text-xs text-muted-foreground text-center mt-1">
-              Suas credenciais nunca são compartilhadas
+              Este sistema usa autenticação OAuth2 segura com PKCE.
+              Suas credenciais nunca são compartilhadas com este aplicativo.
             </p>
           </div>
         </CardContent>
