@@ -79,3 +79,6 @@
 - [x] Seção de idioma
 - [x] Seção de perfil do usuário
 - [x] Seção de API e integrações
+
+### Ajustes de Demonstração
+- [x] Adicionar modo de demonstração sem autenticação

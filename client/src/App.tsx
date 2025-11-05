@@ -15,7 +15,8 @@ import Settings from "./pages/Settings";
 import { isAuthenticated } from "./lib/auth";
 
 function Router() {
-  const authenticated = isAuthenticated();
+  // DEMO MODE: Bypass authentication for demonstration
+  const authenticated = true; // isAuthenticated();
 
   // Public routes (no authentication required)
   if (!authenticated) {
