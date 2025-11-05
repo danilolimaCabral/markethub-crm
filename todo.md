@@ -71,3 +71,11 @@
 - [x] Adicionar página de Login
 - [x] Adicionar botão de Logout
 - [x] Proteger rotas com autenticação
+
+### Página de Configurações
+- [x] Criar página de configurações
+- [x] Seção de preferências de tema
+- [x] Seção de notificações
+- [x] Seção de idioma
+- [x] Seção de perfil do usuário
+- [x] Seção de API e integrações

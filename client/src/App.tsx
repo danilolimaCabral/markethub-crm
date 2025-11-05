@@ -11,6 +11,7 @@ import API from "./pages/API";
 import Docs from "./pages/Docs";
 import Login from "./pages/Login";
 import Callback from "./pages/Callback";
+import Settings from "./pages/Settings";
 import { isAuthenticated } from "./lib/auth";
 
 function Router() {
@@ -42,6 +43,7 @@ function Router() {
         <Route path={"/financeiro"} component={API} />
         <Route path={"/notas"} component={API} />
         <Route path={"/relatorios"} component={API} />
+        <Route path={"/configuracoes"} component={Settings} />
         <Route path={"/docs"} component={Docs} />
         <Route path={"/404"} component={NotFound} />
         {/* Final fallback route */}
@@ -56,6 +58,7 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider
         defaultTheme="dark"
+        switchable
       >
         <TooltipProvider>
           <Toaster />
