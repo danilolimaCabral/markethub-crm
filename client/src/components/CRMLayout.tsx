@@ -18,7 +18,9 @@ import {
   TrendingUp,
   PieChart,
   Calculator,
-  Headphones
+  Headphones,
+  Menu,
+  X
 } from 'lucide-react';
 import { logout } from '@/lib/auth';
 
@@ -37,6 +39,7 @@ interface NavSection {
 export default function CRMLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [searchOpen, setSearchOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Atalho Ctrl+K para abrir pesquisa
   useEffect(() => {
@@ -97,8 +100,29 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex h-screen bg-background">
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        className="md:hidden fixed top-4 left-4 z-50 p-2 bg-primary text-primary-foreground rounded-lg shadow-lg"
+      >
+        {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      </button>
+
+      {/* Overlay - Mobile only */}
+      {sidebarOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/50 z-30"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar - Responsive */}
-      <aside className="w-64 md:w-64 bg-card border-r border-border flex flex-col overflow-hidden">
+      <aside className={`
+        fixed md:static inset-y-0 left-0 z-40
+        w-64 bg-card border-r border-border flex flex-col overflow-hidden
+        transition-transform duration-300 ease-in-out
+        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+      `}>
         {/* Logo/Header */}
         <div className="p-3 md:p-4 border-b border-border">
           <div className="flex items-center gap-3">
@@ -132,6 +156,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
                   return (
                     <Link key={item.path} href={item.path}>
                       <div
+                        onClick={() => setSidebarOpen(false)}
                         className={`
                           flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer
                           transition-all duration-200
@@ -189,9 +214,9 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-auto">
+      <main className="flex-1 overflow-y-auto md:ml-0">
         {children}
-      </div>
+      </main>
 
       {/* Global Search */}
       <GlobalSearch open={searchOpen} onOpenChange={setSearchOpen} />

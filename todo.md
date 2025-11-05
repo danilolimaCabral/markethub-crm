@@ -224,3 +224,11 @@
 - [x] Adicionar indicadores de saúde financeira
 - [x] Implementar gráficos de tendências e projeções
 - [x] Criar alertas de contas vencidas e próximas do vencimento
+
+## Menu Mobile Responsivo
+
+- [x] Implementar menu hambúrguer para mobile
+- [x] Adicionar botão de toggle do sidebar
+- [x] Criar overlay escuro quando menu aberto
+- [x] Ocultar sidebar por padrão no mobile
+- [x] Conteúdo principal em tela cheia no mobile
