@@ -15,7 +15,8 @@ import {
   MessageSquare,
   TrendingUp,
   PieChart,
-  Calculator
+  Calculator,
+  Headphones
 } from 'lucide-react';
 import { logout } from '@/lib/auth';
 
@@ -57,6 +58,7 @@ export default function CRMLayout({ children }: { children: ReactNode }) {
         { path: "/anuncios", icon: <Megaphone size={20} />, label: "Anúncios", color: "text-red-500" },
         { path: "/clientes", icon: <Users size={20} />, label: "Clientes", color: "text-cyan-500" },
         { path: "/entregas", icon: <Truck size={20} />, label: "Entregas", color: "text-indigo-500" },
+        { path: "/pos-vendas", icon: <Headphones size={20} />, label: "Pós-Vendas", color: "text-teal-500" },
       ]
     },
     {
@@ -88,8 +90,8 @@ export default function CRMLayout({ children }: { children: ReactNode }) {
               <span className="text-white font-bold text-xl">L</span>
             </div>
             <div>
-              <h1 className="font-bold text-lg text-foreground">Lexos Hub</h1>
-              <p className="text-xs text-muted-foreground">Painel de Configuração</p>
+              <h1 className="font-bold text-lg text-foreground">IA BRUNO CRM</h1>
+              <p className="text-xs text-muted-foreground">Sistema Inteligente de Gestão</p>
             </div>
           </div>
         </div>

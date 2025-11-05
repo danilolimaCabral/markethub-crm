@@ -129,3 +129,10 @@
 - [x] Testar navegação entre páginas
 - [x] Validar formulários
 - [x] Testar responsividade
+
+### Funcionalidades Pendentes (do Relatório de Testes)
+- [x] Integrar widget de cotação de moedas no Dashboard
+- [x] Adicionar módulo Pós-Vendas ao menu e rotas
+- [ ] Redesenhar página de Login profissional
+- [ ] Preparar estrutura para integração API real
+- [x] Renomear sistema para "IA BRUNO CRM"

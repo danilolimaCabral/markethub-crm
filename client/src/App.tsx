@@ -12,7 +12,8 @@ import Docs from "./pages/Docs";
 import Login from "./pages/Login";
 import Callback from "./pages/Callback";
 import Settings from "./pages/Settings";
-import ChatIA from "./pages/ChatIA";
+import ChatIA from './pages/ChatIA';
+import PosVendas from './pages/PosVendas';
 import { isAuthenticated } from "./lib/auth";
 import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
@@ -36,7 +37,8 @@ function Router() {
     <CRMLayout>
       <Switch>
         <Route path={"/"} component={DashboardCRM} />
-        <Route path={"/chat"} component={ChatIA} />
+          <Route path="/chat" component={ChatIA} />
+          <Route path="/pos-vendas" component={PosVendas} />
         <Route path="/callback" component={Callback} />
         <Route path={"/setup"} component={Setup} />
         <Route path={"/pedidos"} component={API} />

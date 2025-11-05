@@ -15,9 +15,9 @@ export default function Login() {
           <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
             <Shield className="w-8 h-8 text-primary" />
           </div>
-          <CardTitle className="text-2xl">Lexos Hub - CRM</CardTitle>
+          <CardTitle className="text-2xl">IA BRUNO CRM</CardTitle>
           <CardDescription>
-            Faça login com sua conta Lexos Hub para acessar o painel de gerenciamento
+            Sistema Inteligente de Gestão - Faça login para acessar o painel
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -27,7 +27,7 @@ export default function Login() {
             size="lg"
           >
             <LogIn className="w-5 h-5 mr-2" />
-            Entrar com Lexos Hub
+            Entrar no Sistema
           </Button>
 
           <div className="text-center text-sm text-muted-foreground">

@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowUp, ArrowDown, ShoppingCart, Package, DollarSign, TrendingUp } from "lucide-react";
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import CurrencyWidget from '@/components/CurrencyWidget';
 
 const stats = [
   {
@@ -72,6 +73,9 @@ export default function DashboardCRM() {
         <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
         <p className="text-muted-foreground">Visão geral do seu e-commerce</p>
       </div>
+
+      {/* Currency Widget */}
+      <CurrencyWidget />
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
