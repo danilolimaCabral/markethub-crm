@@ -9,12 +9,30 @@ import DashboardCRM from "./pages/DashboardCRM";
 import Setup from "./pages/Setup";
 import API from "./pages/API";
 import Docs from "./pages/Docs";
+import Login from "./pages/Login";
+import Callback from "./pages/Callback";
+import { isAuthenticated } from "./lib/auth";
 
 function Router() {
+  const authenticated = isAuthenticated();
+
+  // Public routes (no authentication required)
+  if (!authenticated) {
+    return (
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/callback" component={Callback} />
+        <Route component={Login} />
+      </Switch>
+    );
+  }
+
+  // Protected routes (authentication required)
   return (
     <CRMLayout>
       <Switch>
         <Route path={"/"} component={DashboardCRM} />
+        <Route path="/callback" component={Callback} />
         <Route path={"/setup"} component={Setup} />
         <Route path={"/pedidos"} component={API} />
         <Route path={"/produtos"} component={API} />

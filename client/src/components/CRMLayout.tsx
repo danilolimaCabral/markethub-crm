@@ -12,8 +12,10 @@ import {
   Truck,
   DollarSign,
   Menu,
-  X
+  X,
+  LogOut
 } from 'lucide-react';
+import { logout } from '@/lib/auth';
 import { Button } from './ui/button';
 import { APP_TITLE } from '@/const';
 
@@ -102,7 +104,7 @@ export default function CRMLayout({ children }: CRMLayoutProps) {
         </nav>
 
         {/* User Profile */}
-        <div className="p-3 border-t border-border">
+        <div className="p-3 border-t border-border space-y-2">
           <div className={`flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-accent cursor-pointer ${!sidebarOpen && 'justify-center'}`}>
             <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-semibold">
               U
@@ -114,6 +116,14 @@ export default function CRMLayout({ children }: CRMLayoutProps) {
               </div>
             )}
           </div>
+          <Button
+            variant="ghost"
+            className="w-full justify-start text-destructive hover:text-destructive hover:bg-destructive/10"
+            onClick={logout}
+          >
+            <LogOut className="w-5 h-5 mr-2" />
+            {sidebarOpen && "Sair"}
+          </Button>
         </div>
       </aside>
 

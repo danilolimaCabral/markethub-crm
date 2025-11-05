@@ -56,3 +56,18 @@
 
 ### Bugs
 - [x] Corrigir erro de nested anchor tags no CRMLayout
+
+### Integração OAuth2 e API Real
+- [x] Implementar geração de PKCE (code_verifier e code_challenge)
+- [x] Criar serviço de autenticação OAuth2
+- [x] Implementar fluxo de login com redirecionamento
+- [x] Criar página de callback OAuth2
+- [x] Implementar gerenciamento de tokens (access_token, refresh_token)
+- [x] Criar serviço de renovação automática de tokens
+- [ ] Atualizar cliente API para usar tokens reais
+- [ ] Substituir dados mockados por chamadas reais à API
+- [x] Implementar tratamento de erros de autenticação
+- [x] Adicionar persistência de tokens no localStorage
+- [x] Adicionar página de Login
+- [x] Adicionar botão de Logout
+- [x] Proteger rotas com autenticação
