@@ -77,8 +77,8 @@ export default function CRMLayout({ children }: CRMLayoutProps) {
             
             return (
               <Link key={item.path} href={item.path}>
-                <a
-                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
+                <div
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors cursor-pointer ${
                     isActive
                       ? 'bg-primary text-primary-foreground'
                       : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
@@ -95,7 +95,7 @@ export default function CRMLayout({ children }: CRMLayoutProps) {
                       )}
                     </>
                   )}
-                </a>
+                </div>
               </Link>
             );
           })}

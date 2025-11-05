@@ -53,3 +53,6 @@
 - [x] Navegação lateral com ícones e categorias
 - [x] Visual mais profissional e corporativo
 - [x] Tema escuro como padrão
+
+### Bugs
+- [x] Corrigir erro de nested anchor tags no CRMLayout
