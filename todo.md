@@ -104,3 +104,28 @@
 - [x] Adicionar histórico de conversas
 - [x] Criar prompts especializados para e-commerce
 - [ ] Integrar API real do OpenAI (requer chave API)
+
+### Cotação de Moedas
+- [ ] Integrar API de cotação (AwesomeAPI)
+- [ ] Exibir Dólar, Euro, Bitcoin
+- [ ] Ícone de dinheiro com cotação do dia
+- [ ] Atualização automática a cada minuto
+
+### Módulo Pós-Vendas
+- [ ] Criar página de Pós-Vendas
+- [ ] Sistema de tickets/chamados
+- [ ] Gestão de atendimento
+- [ ] Histórico de interações
+- [ ] Status de tickets (aberto, em andamento, resolvido)
+
+### Página de Login
+- [ ] Redesign da página de login
+- [ ] Visual moderno e profissional
+- [ ] Animações e gradientes
+- [ ] Responsivo
+
+### Testes e Validação
+- [x] Verificar funcionamento de todos os botões
+- [x] Testar navegação entre páginas
+- [x] Validar formulários
+- [x] Testar responsividade
