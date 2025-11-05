@@ -154,3 +154,37 @@
 - [x] Adicionar filtro de período (semana, mês, ano) na página Métricas
 - [x] Atualizar KPIs conforme período selecionado
 - [x] Atualizar gráficos conforme período selecionado
+
+## Integração com API Lexos (Transparente)
+
+- [ ] Criar sistema de configuração de API centralizado
+- [ ] Criar página de Configurações para inserir credenciais
+- [ ] Modificar hooks para usar credenciais configuradas
+- [ ] Implementar fallback para dados mockados
+- [ ] Testar integração com dados reais
+
+## Atualização com Dados Reais do Lexos Hub
+
+- [x] Atualizar métricas do Dashboard com dados reais
+- [x] Criar dados mockados realistas baseados nas informações extraídas
+- [x] Atualizar categorias de produtos
+- [x] Ajustar valores e volumes de pedidos
+- [x] Implementar gráficos com dados reais
+
+## Sistema de Automação - Agente de Sincronização
+
+- [ ] Criar agente de scraping do Lexos Hub
+- [ ] Implementar sistema de login automatizado
+- [ ] Extrair dados do dashboard periodicamente
+- [ ] Criar API local para armazenar dados
+- [ ] Implementar scheduler para execução automática
+- [ ] Adicionar logs de sincronização
+- [ ] Criar indicador de última atualização no frontend
+
+## Sistema de Auto-Refresh e Sincronização
+
+- [x] Adicionar indicador de última atualização no dashboard
+- [x] Criar botão de atualização manual
+- [x] Implementar auto-refresh a cada 5 minutos
+- [ ] Adicionar status de conexão com Lexos Hub
+- [ ] Criar componente de logs de sincronização

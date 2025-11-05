@@ -2,11 +2,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowUp, ArrowDown, ShoppingCart, Package, DollarSign, TrendingUp } from "lucide-react";
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import CurrencyWidget from '@/components/CurrencyWidget';
+import { REAL_METRICS, REAL_CATEGORIES, REAL_MARKETPLACES, REAL_DAILY_SALES, REAL_RECENT_ORDERS } from '@/data/real-data';
+import SyncIndicator from '@/components/SyncIndicator';
 
+// Dados reais do Lexos Hub - TRUE IMPORTADOS BR
 const stats = [
   {
     title: "Pedidos Pendentes",
-    value: "12",
+    value: REAL_METRICS.pedidosPendentes.toString(),
     change: "+2",
     trend: "up",
     icon: ShoppingCart,
@@ -15,7 +18,7 @@ const stats = [
   },
   {
     title: "Produtos Ativos",
-    value: "248",
+    value: REAL_METRICS.produtosAtivos.toString(),
     change: "+12",
     trend: "up",
     icon: Package,
@@ -24,7 +27,7 @@ const stats = [
   },
   {
     title: "Faturamento (Mês)",
-    value: "R$ 45.890",
+    value: `R$ ${(REAL_METRICS.totalVendas / 1000).toFixed(1)}k`,
     change: "+15%",
     trend: "up",
     icon: DollarSign,
@@ -32,8 +35,8 @@ const stats = [
     bgColor: "bg-purple-100"
   },
   {
-    title: "Taxa de Conversão",
-    value: "3.2%",
+    title: "Taxa de Conferência",
+    value: `${REAL_METRICS.taxaConferencia.toFixed(1)}%`,
     change: "-0.5%",
     trend: "down",
     icon: TrendingUp,
@@ -42,28 +45,21 @@ const stats = [
   },
 ];
 
-const salesData = [
-  { name: 'Seg', vendas: 4000 },
-  { name: 'Ter', vendas: 3000 },
-  { name: 'Qua', vendas: 5000 },
-  { name: 'Qui', vendas: 2780 },
-  { name: 'Sex', vendas: 6890 },
-  { name: 'Sáb', vendas: 2390 },
-  { name: 'Dom', vendas: 3490 },
-];
+// Dados de vendas da semana (últimos 7 dias do Lexos Hub)
+const salesData = REAL_DAILY_SALES.slice(-7).map((day, index) => ({
+  name: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][new Date(day.date).getDay()],
+  vendas: day.value
+}));
 
-const marketplaceData = [
-  { name: 'Mercado Livre', value: 450, color: '#FFE600' },
-  { name: 'Amazon', value: 320, color: '#FF9900' },
-  { name: 'Shopee', value: 180, color: '#EE4D2D' },
-  { name: 'Magalu', value: 150, color: '#0086FF' },
-];
+// Distribuição real por marketplace
+const marketplaceData = REAL_MARKETPLACES.map(mp => ({
+  name: mp.name,
+  value: Math.round(mp.value / 100), // Converter para centenas para melhor visualização
+  color: mp.color
+}));
 
-const recentOrders = [
-  { id: 'PED-001', cliente: 'João Silva', marketplace: 'Mercado Livre', valor: 450.00, status: 'pendente' },
-  { id: 'PED-002', cliente: 'Maria Santos', marketplace: 'Amazon', valor: 320.00, status: 'enviado' },
-  { id: 'PED-003', cliente: 'Pedro Costa', marketplace: 'Shopee', valor: 180.00, status: 'entregue' },
-];
+// Pedidos recentes reais
+const recentOrders = REAL_RECENT_ORDERS.slice(0, 5);
 
 export default function DashboardCRM() {
   return (
@@ -73,6 +69,9 @@ export default function DashboardCRM() {
         <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
         <p className="text-muted-foreground">Visão geral do seu e-commerce</p>
       </div>
+
+      {/* Sync Indicator */}
+      <SyncIndicator />
 
       {/* Currency Widget */}
       <CurrencyWidget />

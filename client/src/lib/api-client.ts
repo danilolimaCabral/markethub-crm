@@ -1,12 +1,9 @@
-import { getAccessToken } from './auth';
+import { getValidAccessToken, getIntegrationKey, isAPIConfigured } from './api-config';
 
 /**
  * Lexos Hub API Configuration
  */
-const LEXOS_API_CONFIG = {
-  baseUrl: 'https://api.lexos.com.br',
-  integrationKey: 'ZThiY2FjZjItN2I0OC0vMTI4LTk0OVVLZtC5MjRkZWZmZmVk', // Chave de Integração obtida do Lexos Hub
-};
+const LEXOS_API_BASE_URL = 'https://api.lexos.com.br';
 
 export interface LexosAPIError {
   message: string;
@@ -21,20 +18,26 @@ export async function callLexosAPI<T = any>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
-  // Get valid access token
-  const accessToken = await getAccessToken();
+  // Check if API is configured
+  if (!isAPIConfigured()) {
+    throw new Error('API not configured. Please configure API credentials in Settings.');
+  }
+
+  // Get valid access token and integration key
+  const accessToken = getValidAccessToken();
+  const integrationKey = getIntegrationKey();
   
-  if (!accessToken) {
-    throw new Error('No access token available. Please login first.');
+  if (!accessToken || !integrationKey) {
+    throw new Error('Invalid API configuration.');
   }
 
   // Build full URL
-  const url = `${LEXOS_API_CONFIG.baseUrl}${endpoint}`;
+  const url = `${LEXOS_API_BASE_URL}${endpoint}`;
 
   // Merge headers
   const headers = {
     'Authorization': `Bearer ${accessToken}`,
-    'Chave': LEXOS_API_CONFIG.integrationKey,
+    'Chave': integrationKey,
     'Content-Type': 'application/json',
     ...options.headers,
   };
