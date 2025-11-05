@@ -82,3 +82,11 @@
 
 ### Ajustes de Demonstração
 - [x] Adicionar modo de demonstração sem autenticação
+
+### Testes de API
+- [ ] Documentar endpoints disponíveis
+- [ ] Criar script de teste com API real
+- [ ] Integrar API real no CRM
+- [x] Implementar renovação automática de token JWT
+- [x] Criar interceptor para detectar token expirado
+- [x] Adicionar retry automático após renovação

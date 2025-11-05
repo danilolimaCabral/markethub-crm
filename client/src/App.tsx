@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Callback from "./pages/Callback";
 import Settings from "./pages/Settings";
 import { isAuthenticated } from "./lib/auth";
+import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
 function Router() {
   // DEMO MODE: Bypass authentication for demonstration
@@ -55,6 +56,9 @@ function Router() {
 }
 
 function App() {
+  // Inicia monitoramento de renovação automática de token
+  useTokenRefresh();
+
   return (
     <ErrorBoundary>
       <ThemeProvider
