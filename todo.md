@@ -141,3 +141,9 @@
 - [x] Buscar em clientes, pedidos, produtos, anúncios
 - [x] Modal de pesquisa com resultados em tempo real
 - [x] Atalho de teclado Ctrl+K
+- [ ] Implementar visualização rápida (hover) nos resultados de pesquisa
+- [ ] Popover com detalhes completos do item
+- [ ] Informações adicionais ao passar o mouse
+
+### Bugs Reportados
+- [x] Corrigir erro RangeError no widget de cotação de moedas (maximumFractionDigits)

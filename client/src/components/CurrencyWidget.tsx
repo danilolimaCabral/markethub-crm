@@ -93,7 +93,10 @@ export default function CurrencyWidget() {
             </div>
             <div className="text-right">
               <p className="font-bold text-sm text-foreground">
-                R$ {currency.buy.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: currency.code === 'BTC' ? 0 : 2 })}
+                R$ {currency.code === 'BTC' 
+                  ? currency.buy.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                  : currency.buy.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                }
               </p>
               <div className={`flex items-center gap-1 text-xs ${currency.variation >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                 {currency.variation >= 0 ? (
