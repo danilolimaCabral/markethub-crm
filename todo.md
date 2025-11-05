@@ -90,3 +90,17 @@
 - [x] Implementar renovação automática de token JWT
 - [x] Criar interceptor para detectar token expirado
 - [x] Adicionar retry automático após renovação
+
+### Upgrade Sidebar Estilo Pulse
+- [x] Reorganizar sidebar com categorias agrupadas
+- [x] Adicionar ícones coloridos para cada seção
+- [x] Criar seções: Central, Operacional, Financeiro, Análise
+- [x] Melhorar visual com espaçamento e divisores
+
+### Integração ChatGPT Pro
+- [x] Criar página de Chat IA
+- [x] Interface de conversa profissional
+- [x] Simulação de respostas inteligentes
+- [x] Adicionar histórico de conversas
+- [x] Criar prompts especializados para e-commerce
+- [ ] Integrar API real do OpenAI (requer chave API)

@@ -1,134 +1,175 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { Link, useLocation } from 'wouter';
 import { 
   LayoutDashboard, 
   ShoppingCart, 
   Package, 
-  Megaphone, 
-  BarChart3, 
-  Settings, 
+  Megaphone,
   Users,
-  FileText,
   Truck,
   DollarSign,
-  Menu,
-  X,
-  LogOut
+  FileText,
+  BarChart3,
+  Settings,
+  LogOut,
+  MessageSquare,
+  TrendingUp,
+  PieChart,
+  Calculator
 } from 'lucide-react';
 import { logout } from '@/lib/auth';
-import { Button } from './ui/button';
-import { APP_TITLE } from '@/const';
-
-interface CRMLayoutProps {
-  children: ReactNode;
-}
 
 interface NavItem {
-  icon: React.ElementType;
-  label: string;
   path: string;
+  icon: React.ReactNode;
+  label: string;
   badge?: number;
+  color: string;
 }
 
-const navItems: NavItem[] = [
-  { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
-  { icon: ShoppingCart, label: 'Pedidos', path: '/pedidos', badge: 12 },
-  { icon: Package, label: 'Produtos', path: '/produtos' },
-  { icon: Megaphone, label: 'Anúncios', path: '/anuncios' },
-  { icon: Users, label: 'Clientes', path: '/clientes' },
-  { icon: Truck, label: 'Entregas', path: '/entregas' },
-  { icon: DollarSign, label: 'Financeiro', path: '/financeiro' },
-  { icon: FileText, label: 'Notas Fiscais', path: '/notas' },
-  { icon: BarChart3, label: 'Relatórios', path: '/relatorios' },
-  { icon: Settings, label: 'Configurações', path: '/setup' },
-];
+interface NavSection {
+  title: string;
+  items: NavItem[];
+}
 
-export default function CRMLayout({ children }: CRMLayoutProps) {
+export default function CRMLayout({ children }: { children: ReactNode }) {
   const [location] = useLocation();
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  const handleLogout = () => {
+    logout();
+    window.location.href = "/login";
+  };
+
+  // Navegação organizada por seções estilo Pulse
+  const navSections: NavSection[] = [
+    {
+      title: "Central",
+      items: [
+        { path: "/", icon: <LayoutDashboard size={20} />, label: "Dashboard", color: "text-blue-500" },
+        { path: "/chat", icon: <MessageSquare size={20} />, label: "Assistente IA", color: "text-purple-500" },
+      ]
+    },
+    {
+      title: "Operacional",
+      items: [
+        { path: "/pedidos", icon: <ShoppingCart size={20} />, label: "Pedidos", badge: 12, color: "text-orange-500" },
+        { path: "/produtos", icon: <Package size={20} />, label: "Produtos", color: "text-green-500" },
+        { path: "/anuncios", icon: <Megaphone size={20} />, label: "Anúncios", color: "text-red-500" },
+        { path: "/clientes", icon: <Users size={20} />, label: "Clientes", color: "text-cyan-500" },
+        { path: "/entregas", icon: <Truck size={20} />, label: "Entregas", color: "text-indigo-500" },
+      ]
+    },
+    {
+      title: "Financeiro",
+      items: [
+        { path: "/financeiro", icon: <DollarSign size={20} />, label: "Financeiro", color: "text-green-600" },
+        { path: "/notas", icon: <FileText size={20} />, label: "Notas Fiscais", color: "text-slate-500" },
+        { path: "/precos", icon: <Calculator size={20} />, label: "Tabela de Preços", color: "text-yellow-600" },
+      ]
+    },
+    {
+      title: "Análise",
+      items: [
+        { path: "/relatorios", icon: <BarChart3 size={20} />, label: "Relatórios", color: "text-violet-500" },
+        { path: "/vendas", icon: <TrendingUp size={20} />, label: "Análise de Vendas", color: "text-emerald-500" },
+        { path: "/metricas", icon: <PieChart size={20} />, label: "Métricas", color: "text-pink-500" },
+      ]
+    }
+  ];
 
   return (
     <div className="flex h-screen bg-background">
       {/* Sidebar */}
-      <aside className={`${sidebarOpen ? 'w-64' : 'w-20'} bg-card border-r border-border transition-all duration-300 flex flex-col`}>
-        {/* Header */}
-        <div className="p-4 border-b border-border flex items-center justify-between">
-          {sidebarOpen && (
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold">
-                L
-              </div>
-              <span className="font-semibold text-foreground">{APP_TITLE}</span>
+      <aside className="w-64 bg-card border-r border-border flex flex-col">
+        {/* Logo/Header */}
+        <div className="p-4 border-b border-border">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-xl">L</span>
             </div>
-          )}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="ml-auto"
-          >
-            {sidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-          </Button>
+            <div>
+              <h1 className="font-bold text-lg text-foreground">Lexos Hub</h1>
+              <p className="text-xs text-muted-foreground">Painel de Configuração</p>
+            </div>
+          </div>
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = location === item.path;
-            
-            return (
-              <Link key={item.path} href={item.path}>
-                <div
-                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors cursor-pointer ${
-                    isActive
-                      ? 'bg-primary text-primary-foreground'
-                      : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
-                  }`}
-                >
-                  <Icon className="w-5 h-5 flex-shrink-0" />
-                  {sidebarOpen && (
-                    <>
-                      <span className="flex-1 text-sm font-medium">{item.label}</span>
-                      {item.badge && (
-                        <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-destructive text-destructive-foreground">
-                          {item.badge}
+        <nav className="flex-1 overflow-y-auto p-3 space-y-6">
+          {navSections.map((section, sectionIndex) => (
+            <div key={sectionIndex}>
+              {/* Section Title */}
+              <div className="px-3 mb-2">
+                <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                  {section.title}
+                </h2>
+              </div>
+              
+              {/* Section Items */}
+              <div className="space-y-1">
+                {section.items.map((item) => {
+                  const isActive = location === item.path;
+                  return (
+                    <Link key={item.path} href={item.path}>
+                      <div
+                        className={`
+                          flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer
+                          transition-all duration-200
+                          ${isActive 
+                            ? 'bg-primary text-primary-foreground shadow-sm' 
+                            : 'text-foreground hover:bg-accent hover:text-accent-foreground'
+                          }
+                        `}
+                      >
+                        <span className={isActive ? 'text-primary-foreground' : item.color}>
+                          {item.icon}
                         </span>
-                      )}
-                    </>
-                  )}
-                </div>
-              </Link>
-            );
-          })}
+                        <span className="flex-1 font-medium text-sm">{item.label}</span>
+                        {item.badge && (
+                          <span className="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                            {item.badge}
+                          </span>
+                        )}
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </nav>
 
-        {/* User Profile */}
-        <div className="p-3 border-t border-border space-y-2">
-          <div className={`flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-accent cursor-pointer ${!sidebarOpen && 'justify-center'}`}>
-            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-semibold">
-              U
+        {/* User Section */}
+        <div className="p-3 border-t border-border">
+          <Link href="/configuracoes">
+            <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer hover:bg-accent transition-colors mb-2">
+              <Settings size={20} className="text-muted-foreground" />
+              <span className="flex-1 font-medium text-sm text-foreground">Configurações</span>
             </div>
-            {sidebarOpen && (
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-foreground truncate">Usuário</p>
-                <p className="text-xs text-muted-foreground truncate">user@lexos.com</p>
-              </div>
-            )}
+          </Link>
+          
+          <div className="flex items-center gap-3 px-3 py-2.5 mb-3">
+            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+              <span className="text-white font-bold text-sm">U</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-foreground truncate">Usuário</p>
+              <p className="text-xs text-muted-foreground truncate">user@lexos.com</p>
+            </div>
           </div>
-          <Button
-            variant="ghost"
-            className="w-full justify-start text-destructive hover:text-destructive hover:bg-destructive/10"
-            onClick={logout}
+
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
           >
-            <LogOut className="w-5 h-5 mr-2" />
-            {sidebarOpen && "Sair"}
-          </Button>
+            <LogOut size={20} />
+            <span className="font-medium text-sm">Sair</span>
+          </button>
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 overflow-y-auto">
         {children}
       </main>
     </div>
