@@ -1,47 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowUp, ArrowDown, ShoppingCart, Package, DollarSign, TrendingUp } from "lucide-react";
+import { ArrowUp, ArrowDown, ShoppingCart, Package, DollarSign, TrendingUp, Loader2 } from "lucide-react";
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import CurrencyWidget from '@/components/CurrencyWidget';
+import { useDashboardMetrics } from '@/hooks/useDashboardMetrics';
+import { usePedidos } from '@/hooks/usePedidos';
 
-const stats = [
-  {
-    title: "Pedidos Pendentes",
-    value: "12",
-    change: "+2",
-    trend: "up",
-    icon: ShoppingCart,
-    color: "text-blue-600",
-    bgColor: "bg-blue-100"
-  },
-  {
-    title: "Produtos Ativos",
-    value: "248",
-    change: "+12",
-    trend: "up",
-    icon: Package,
-    color: "text-green-600",
-    bgColor: "bg-green-100"
-  },
-  {
-    title: "Faturamento (Mês)",
-    value: "R$ 45.890",
-    change: "+15%",
-    trend: "up",
-    icon: DollarSign,
-    color: "text-purple-600",
-    bgColor: "bg-purple-100"
-  },
-  {
-    title: "Taxa de Conversão",
-    value: "3.2%",
-    change: "-0.5%",
-    trend: "down",
-    icon: TrendingUp,
-    color: "text-orange-600",
-    bgColor: "bg-orange-100"
-  },
-];
-
+// Dados mockados para gráficos (serão substituídos por dados reais posteriormente)
 const salesData = [
   { name: 'Seg', vendas: 4000 },
   { name: 'Ter', vendas: 3000 },
@@ -59,13 +23,85 @@ const marketplaceData = [
   { name: 'Magalu', value: 150, color: '#0086FF' },
 ];
 
-const recentOrders = [
-  { id: 'PED-001', cliente: 'João Silva', marketplace: 'Mercado Livre', valor: 450.00, status: 'pendente' },
-  { id: 'PED-002', cliente: 'Maria Santos', marketplace: 'Amazon', valor: 320.00, status: 'enviado' },
-  { id: 'PED-003', cliente: 'Pedro Costa', marketplace: 'Shopee', valor: 180.00, status: 'entregue' },
-];
-
 export default function DashboardCRM() {
+  const { metrics, loading: metricsLoading, error: metricsError } = useDashboardMetrics();
+  const { pedidos, loading: pedidosLoading } = usePedidos();
+
+  // Pegar últimos 3 pedidos
+  const recentOrders = pedidos.slice(0, 3).map(p => ({
+    id: p.id,
+    cliente: p.cliente,
+    marketplace: p.marketplace || 'N/A',
+    valor: p.valor,
+    status: p.status,
+  }));
+
+  // Calcular estatísticas com dados reais
+  const stats = [
+    {
+      title: "Pedidos Pendentes",
+      value: metrics?.pedidosPendentes?.toString() || "0",
+      change: "+2",
+      trend: "up",
+      icon: ShoppingCart,
+      color: "text-blue-600",
+      bgColor: "bg-blue-100"
+    },
+    {
+      title: "Produtos Ativos",
+      value: metrics?.produtosAtivos?.toString() || "0",
+      change: "+12",
+      trend: "up",
+      icon: Package,
+      color: "text-green-600",
+      bgColor: "bg-green-100"
+    },
+    {
+      title: "Faturamento (Mês)",
+      value: `R$ ${metrics?.totalFaturamento?.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) || '0,00'}`,
+      change: "+15%",
+      trend: "up",
+      icon: DollarSign,
+      color: "text-purple-600",
+      bgColor: "bg-purple-100"
+    },
+    {
+      title: "Ticket Médio",
+      value: `R$ ${metrics?.ticketMedio?.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) || '0,00'}`,
+      change: "-0.5%",
+      trend: "down",
+      icon: TrendingUp,
+      color: "text-orange-600",
+      bgColor: "bg-orange-100"
+    },
+  ];
+
+  if (metricsLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (metricsError) {
+    return (
+      <div className="p-6">
+        <Card className="border-destructive">
+          <CardHeader>
+            <CardTitle className="text-destructive">Erro ao carregar dados</CardTitle>
+            <CardDescription>{metricsError}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">
+              Verifique se você está autenticado e se a API está respondendo corretamente.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
@@ -77,7 +113,7 @@ export default function DashboardCRM() {
       {/* Currency Widget */}
       <CurrencyWidget />
 
-      {/* Stats Grid */}
+      {/* Stats Grid - DADOS REAIS DA API */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => {
           const Icon = stat.icon;
@@ -161,41 +197,51 @@ export default function DashboardCRM() {
         </Card>
       </div>
 
-      {/* Recent Orders */}
+      {/* Recent Orders - DADOS REAIS DA API */}
       <Card>
         <CardHeader>
           <CardTitle>Pedidos Recentes</CardTitle>
-          <CardDescription>Últimos pedidos recebidos</CardDescription>
+          <CardDescription>Últimos pedidos recebidos da API</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            {recentOrders.map((order) => (
-              <div key={order.id} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-accent/50 transition-colors">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <ShoppingCart className="w-5 h-5 text-primary" />
+          {pedidosLoading ? (
+            <div className="flex items-center justify-center py-8">
+              <Loader2 className="w-6 h-6 animate-spin text-primary" />
+            </div>
+          ) : recentOrders.length === 0 ? (
+            <p className="text-center text-muted-foreground py-8">
+              Nenhum pedido encontrado
+            </p>
+          ) : (
+            <div className="space-y-4">
+              {recentOrders.map((order) => (
+                <div key={order.id} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-accent/50 transition-colors">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                      <ShoppingCart className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-foreground">{order.id}</p>
+                      <p className="text-sm text-muted-foreground">{order.cliente}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-medium text-foreground">{order.id}</p>
-                    <p className="text-sm text-muted-foreground">{order.cliente}</p>
+                  <div className="flex items-center gap-6">
+                    <div className="text-right">
+                      <p className="text-sm text-muted-foreground">{order.marketplace}</p>
+                      <p className="font-semibold text-foreground">R$ {order.valor.toFixed(2)}</p>
+                    </div>
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      order.status === 'pendente' ? 'bg-yellow-100 text-yellow-800' :
+                      order.status === 'enviado' ? 'bg-blue-100 text-blue-800' :
+                      'bg-green-100 text-green-800'
+                    }`}>
+                      {order.status}
+                    </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-6">
-                  <div className="text-right">
-                    <p className="text-sm text-muted-foreground">{order.marketplace}</p>
-                    <p className="font-semibold text-foreground">R$ {order.valor.toFixed(2)}</p>
-                  </div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    order.status === 'pendente' ? 'bg-yellow-100 text-yellow-800' :
-                    order.status === 'enviado' ? 'bg-blue-100 text-blue-800' :
-                    'bg-green-100 text-green-800'
-                  }`}>
-                    {order.status}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>

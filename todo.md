@@ -154,3 +154,19 @@
 - [x] Adicionar filtro de período (semana, mês, ano) na página Métricas
 - [x] Atualizar KPIs conforme período selecionado
 - [x] Atualizar gráficos conforme período selecionado
+
+## Correções Necessárias
+
+- [ ] Corrigir problema de login com usuário e senha
+- [ ] Verificar fluxo OAuth2 e endpoints de autenticação
+- [ ] Testar login com credenciais reais do Lexos Hub
+
+## Implementação Login Manual com Código OAuth2
+
+- [x] Criar página de login com instruções para obter código
+- [x] Adicionar campo para colar código de autorização
+- [x] Implementar função para trocar código por access_token
+- [ ] Testar busca de dados reais da API (Pedidos, Produtos, Anúncios)
+- [ ] Atualizar Dashboard com dados reais
+- [ ] Atualizar página de Pedidos com dados reais
+- [ ] Atualizar página de Produtos com dados reais

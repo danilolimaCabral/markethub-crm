@@ -19,8 +19,8 @@ import { isAuthenticated } from "./lib/auth";
 import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
 function Router() {
-  // DEMO MODE: Bypass authentication for demonstration
-  const authenticated = true; // isAuthenticated();
+  // Check if user is authenticated
+  const authenticated = isAuthenticated();
 
   // Public routes (no authentication required)
   if (!authenticated) {
