@@ -4,11 +4,12 @@ import { generateCodeVerifier, generateCodeChallenge, generateState, storePKCEPa
  * OAuth2 Configuration for Lexos Hub
  */
 const OAUTH_CONFIG = {
-  authorizationEndpoint: 'https://accounts.lexos.com.br/connect/authorize',
-  tokenEndpoint: 'https://accounts.lexos.com.br/connect/token',
-  clientId: 'angularHubApp', // Default client ID (pode ser substituído)
+  authorizationEndpoint: 'https://api.lexos.com.br/Autenticacao/',
+  tokenEndpoint: 'https://api.lexos.com.br/Autenticacao/Token',
+  refreshEndpoint: 'https://api.lexos.com.br/Autenticacao/RefreshToken',
+  clientId: '6b6c14ef-a27a-4467-8bb3-e0d7dc4b206f', // Lexos API Client ID
   redirectUri: window.location.origin + '/callback',
-  scope: 'openid lexosHubApi offline_access',
+  scope: 'openid',
 };
 
 export interface TokenResponse {
@@ -137,7 +138,7 @@ export async function refreshAccessToken(refreshToken: string): Promise<AuthToke
     client_id: OAUTH_CONFIG.clientId,
   });
 
-  const response = await fetch(OAUTH_CONFIG.tokenEndpoint, {
+  const response = await fetch(OAUTH_CONFIG.refreshEndpoint, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
