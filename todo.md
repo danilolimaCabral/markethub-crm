@@ -207,3 +207,20 @@
 - [ ] Adicionar formulários de lançamento
 - [ ] Implementar filtros por data e status
 - [ ] Criar relatórios financeiros
+
+## Melhorias de UX e Responsividade
+
+- [ ] Aumentar limite de exibição para 50 itens nas tabelas
+- [ ] Melhorar responsividade das tabelas para celular
+- [ ] Criar layout de cards para mobile
+- [ ] Otimizar visualização em telas pequenas
+
+## Dashboard Financeiro Inteligente
+
+- [x] Criar widget de contas pendentes com alertas
+- [x] Adicionar previsão de pagamentos (7, 15, 30 dias)
+- [x] Implementar análise de fluxo de caixa projetado
+- [x] Criar sistema de sugestões de investimento
+- [x] Adicionar indicadores de saúde financeira
+- [x] Implementar gráficos de tendências e projeções
+- [x] Criar alertas de contas vencidas e próximas do vencimento

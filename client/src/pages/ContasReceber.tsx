@@ -5,17 +5,35 @@ import { Input } from "@/components/ui/input";
 import { Search, Filter, Download, Plus, Eye, Calendar, DollarSign, AlertCircle, CheckCircle, Clock } from "lucide-react";
 import SyncIndicator from "@/components/SyncIndicator";
 
-// Dados mockados de Contas a Receber
-const contasReceber = [
-  { id: 1, descricao: 'Venda Mercado Livre #ML001', valor: 1250.00, vencimento: '2025-11-08', status: 'pendente', categoria: 'Vendas Online', cliente: 'João Silva' },
-  { id: 2, descricao: 'Venda Mercado Livre #ML002', valor: 890.00, vencimento: '2025-11-10', status: 'pendente', categoria: 'Vendas Online', cliente: 'Maria Santos' },
-  { id: 3, descricao: 'Venda Mercado Livre #ML003', valor: 2100.00, vencimento: '2025-10-30', status: 'recebido', categoria: 'Vendas Online', cliente: 'Pedro Costa' },
-  { id: 4, descricao: 'Venda Mercado Livre #ML004', valor: 450.00, vencimento: '2025-11-12', status: 'pendente', categoria: 'Vendas Online', cliente: 'Ana Oliveira' },
-  { id: 5, descricao: 'Venda Mercado Livre #ML005', valor: 3200.00, vencimento: '2025-11-15', status: 'pendente', categoria: 'Vendas Online', cliente: 'Carlos Mendes' },
-  { id: 6, descricao: 'Venda Mercado Livre #ML006', valor: 780.00, vencimento: '2025-10-25', status: 'recebido', categoria: 'Vendas Online', cliente: 'Juliana Lima' },
-  { id: 7, descricao: 'Venda Mercado Livre #ML007', valor: 1500.00, vencimento: '2025-11-05', status: 'atrasado', categoria: 'Vendas Online', cliente: 'Roberto Alves' },
-  { id: 8, descricao: 'Venda Mercado Livre #ML008', valor: 950.00, vencimento: '2025-11-18', status: 'pendente', categoria: 'Vendas Online', cliente: 'Fernanda Souza' },
-];
+// Gerar 50 itens de Contas a Receber
+const generateContasReceber = () => {
+  const clientes = [
+    'João Silva', 'Maria Santos', 'Pedro Costa', 'Ana Oliveira', 'Carlos Mendes',
+    'Juliana Lima', 'Roberto Alves', 'Fernanda Souza', 'Lucas Pereira', 'Camila Rocha',
+    'Ricardo Santos', 'Patricia Lima', 'Marcos Oliveira', 'Beatriz Costa', 'Felipe Almeida'
+  ];
+  
+  const contas = [];
+  for (let i = 1; i <= 50; i++) {
+    const diaVencimento = Math.floor(Math.random() * 28) + 1;
+    const mesVencimento = i <= 40 ? 11 : 10;
+    const status = i <= 3 ? 'atrasado' : i <= 30 ? 'pendente' : 'recebido';
+    
+    contas.push({
+      id: i,
+      descricao: `Venda Mercado Livre #ML${String(i).padStart(4, '0')}`,
+      valor: Math.floor(Math.random() * 3000) + 150,
+      vencimento: `2025-${String(mesVencimento).padStart(2, '0')}-${String(diaVencimento).padStart(2, '0')}`,
+      status,
+      categoria: 'Vendas Online',
+      cliente: clientes[i % clientes.length]
+    });
+  }
+  
+  return contas.sort((a, b) => new Date(a.vencimento).getTime() - new Date(b.vencimento).getTime());
+};
+
+const contasReceber = generateContasReceber();
 
 const getStatusBadge = (status: string) => {
   const variants: Record<string, { variant: "default" | "secondary" | "destructive" | "outline", icon: React.ReactNode, label: string, color: string }> = {
@@ -140,8 +158,8 @@ export default function ContasReceber() {
             </div>
           </div>
 
-          {/* Table */}
-          <div className="border rounded-lg overflow-hidden">
+          {/* Desktop Table - Hidden on mobile */}
+          <div className="hidden md:block border rounded-lg overflow-hidden">
             <table className="w-full">
               <thead className="bg-muted/50">
                 <tr>
@@ -179,6 +197,35 @@ export default function ContasReceber() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Mobile Cards - Visible only on mobile */}
+          <div className="md:hidden space-y-3">
+            {contasReceber.map((conta) => (
+              <Card key={conta.id}>
+                <CardContent className="p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <div className="flex-1">
+                      <p className="font-medium text-sm">{conta.descricao}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{conta.cliente}</p>
+                    </div>
+                    {getStatusBadge(conta.status)}
+                  </div>
+                  <div className="flex justify-between items-center mt-3 pt-3 border-t">
+                    <div>
+                      <p className="text-xs text-muted-foreground">Valor</p>
+                      <p className="text-sm font-bold text-green-600">
+                        R$ {conta.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs text-muted-foreground">Vencimento</p>
+                      <p className="text-sm">{new Date(conta.vencimento).toLocaleDateString('pt-BR')}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
 
           {/* Summary */}

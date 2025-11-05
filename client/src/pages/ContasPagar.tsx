@@ -5,17 +5,40 @@ import { Input } from "@/components/ui/input";
 import { Search, Filter, Download, Plus, Eye, Calendar, DollarSign, AlertCircle, CheckCircle, Clock } from "lucide-react";
 import SyncIndicator from "@/components/SyncIndicator";
 
-// Dados mockados de Contas a Pagar
-const contasPagar = [
-  { id: 1, descricao: 'Fornecedor - Mercadorias', valor: 15000.00, vencimento: '2025-11-10', status: 'pendente', categoria: 'Fornecedores', formaPagamento: 'Boleto' },
-  { id: 2, descricao: 'Aluguel - Loja', valor: 3500.00, vencimento: '2025-11-05', status: 'vencido', categoria: 'Despesas Fixas', formaPagamento: 'Transferência' },
-  { id: 3, descricao: 'Energia Elétrica', valor: 850.00, vencimento: '2025-11-15', status: 'pendente', categoria: 'Despesas Fixas', formaPagamento: 'Débito Automático' },
-  { id: 4, descricao: 'Internet e Telefone', valor: 450.00, vencimento: '2025-11-20', status: 'pendente', categoria: 'Despesas Fixas', formaPagamento: 'Boleto' },
-  { id: 5, descricao: 'Fornecedor - Embalagens', valor: 2800.00, vencimento: '2025-10-28', status: 'pago', categoria: 'Fornecedores', formaPagamento: 'Transferência' },
-  { id: 6, descricao: 'Frete - Mercadorias', valor: 1200.00, vencimento: '2025-11-12', status: 'pendente', categoria: 'Logística', formaPagamento: 'PIX' },
-  { id: 7, descricao: 'Contador - Honorários', valor: 1500.00, vencimento: '2025-11-25', status: 'pendente', categoria: 'Serviços', formaPagamento: 'Transferência' },
-  { id: 8, descricao: 'Marketing - Anúncios ML', valor: 5000.00, vencimento: '2025-11-08', status: 'pendente', categoria: 'Marketing', formaPagamento: 'Cartão de Crédito' },
-];
+// Gerar 50 itens de Contas a Pagar
+const generateContasPagar = () => {
+  const descricoes = [
+    'Fornecedor - Mercadorias', 'Aluguel - Loja', 'Energia Elétrica', 'Internet e Telefone',
+    'Fornecedor - Embalagens', 'Frete - Mercadorias', 'Contador - Honorários', 'Marketing - Anúncios ML',
+    'Água e Esgoto', 'Manutenção - Equipamentos', 'Salários - Funcionários', 'INSS - Impostos',
+    'Seguro - Loja', 'Material de Escritório', 'Limpeza e Conservação', 'Telefonia Móvel'
+  ];
+  
+  const categorias = ['Fornecedores', 'Despesas Fixas', 'Logística', 'Serviços', 'Marketing', 'Impostos', 'Pessoal'];
+  const formasPagamento = ['Boleto', 'Transferência', 'PIX', 'Débito Automático', 'Cartão de Crédito'];
+  const statuses = ['pendente', 'vencido', 'pago'];
+  
+  const contas = [];
+  for (let i = 1; i <= 50; i++) {
+    const diaVencimento = Math.floor(Math.random() * 28) + 1;
+    const mesVencimento = i <= 35 ? 11 : 10; // Maioria em novembro, alguns em outubro
+    const status = i <= 5 ? 'vencido' : i <= 35 ? 'pendente' : 'pago';
+    
+    contas.push({
+      id: i,
+      descricao: `${descricoes[i % descricoes.length]} #${String(i).padStart(3, '0')}`,
+      valor: Math.floor(Math.random() * 15000) + 200,
+      vencimento: `2025-${String(mesVencimento).padStart(2, '0')}-${String(diaVencimento).padStart(2, '0')}`,
+      status,
+      categoria: categorias[Math.floor(Math.random() * categorias.length)],
+      formaPagamento: formasPagamento[Math.floor(Math.random() * formasPagamento.length)]
+    });
+  }
+  
+  return contas.sort((a, b) => new Date(a.vencimento).getTime() - new Date(b.vencimento).getTime());
+};
+
+const contasPagar = generateContasPagar();
 
 const getStatusBadge = (status: string) => {
   const variants: Record<string, { variant: "default" | "secondary" | "destructive" | "outline", icon: React.ReactNode, label: string, color: string }> = {
@@ -140,8 +163,8 @@ export default function ContasPagar() {
             </div>
           </div>
 
-          {/* Table */}
-          <div className="border rounded-lg overflow-hidden">
+          {/* Desktop Table - Hidden on mobile */}
+          <div className="hidden md:block border rounded-lg overflow-hidden">
             <table className="w-full">
               <thead className="bg-muted/50">
                 <tr>
@@ -179,6 +202,39 @@ export default function ContasPagar() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Mobile Cards - Visible only on mobile */}
+          <div className="md:hidden space-y-3">
+            {contasPagar.map((conta) => (
+              <Card key={conta.id}>
+                <CardContent className="p-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <div className="flex-1">
+                      <p className="font-medium text-sm">{conta.descricao}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{conta.categoria}</p>
+                    </div>
+                    {getStatusBadge(conta.status)}
+                  </div>
+                  <div className="flex justify-between items-center mt-3 pt-3 border-t">
+                    <div>
+                      <p className="text-xs text-muted-foreground">Valor</p>
+                      <p className="text-sm font-bold text-red-600">
+                        R$ {conta.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs text-muted-foreground">Vencimento</p>
+                      <p className="text-sm">{new Date(conta.vencimento).toLocaleDateString('pt-BR')}</p>
+                    </div>
+                  </div>
+                  <div className="mt-2 pt-2 border-t">
+                    <p className="text-xs text-muted-foreground">Forma de Pagamento</p>
+                    <p className="text-sm">{conta.formaPagamento}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
 
           {/* Summary */}

@@ -97,25 +97,25 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex h-screen bg-background">
-      {/* Sidebar */}
-      <aside className="w-64 bg-card border-r border-border flex flex-col">
+      {/* Sidebar - Responsive */}
+      <aside className="w-64 md:w-64 bg-card border-r border-border flex flex-col overflow-hidden">
         {/* Logo/Header */}
-        <div className="p-4 border-b border-border">
+        <div className="p-3 md:p-4 border-b border-border">
           <div className="flex items-center gap-3">
             <img 
               src="/logo-ia-bruno-crm.png" 
               alt="IA BRUNO CRM" 
-              className="w-10 h-10 object-contain"
+              className="w-8 h-8 md:w-10 md:h-10 object-contain"
             />
-            <div>
-              <h1 className="font-bold text-lg text-foreground">IA BRUNO CRM</h1>
-              <p className="text-xs text-muted-foreground">Sistema Inteligente de Gestão</p>
+            <div className="min-w-0">
+              <h1 className="font-bold text-base md:text-lg text-foreground truncate">IA BRUNO CRM</h1>
+              <p className="text-xs text-muted-foreground hidden md:block">Sistema Inteligente de Gestão</p>
             </div>
           </div>
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 overflow-y-auto p-3 space-y-6">
+        <nav className="flex-1 overflow-y-auto p-2 md:p-3 space-y-4 md:space-y-6">
           {navSections.map((section, sectionIndex) => (
             <div key={sectionIndex}>
               {/* Section Title */}

@@ -4,6 +4,7 @@ import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, Cart
 import CurrencyWidget from '@/components/CurrencyWidget';
 import { REAL_METRICS, REAL_CATEGORIES, REAL_MARKETPLACES, REAL_DAILY_SALES, REAL_RECENT_ORDERS } from '@/data/real-data';
 import SyncIndicator from '@/components/SyncIndicator';
+import DashboardFinanceiro from '@/components/DashboardFinanceiro';
 
 // Dados reais do Lexos Hub - TRUE IMPORTADOS BR
 const stats = [
@@ -72,6 +73,17 @@ export default function DashboardCRM() {
 
       {/* Sync Indicator */}
       <SyncIndicator />
+
+      {/* Dashboard Financeiro Inteligente */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-2xl">Visão Financeira Inteligente</CardTitle>
+          <CardDescription>Análise completa de contas a pagar, receber e sugestões de investimento</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <DashboardFinanceiro />
+        </CardContent>
+      </Card>
 
       {/* Currency Widget */}
       <CurrencyWidget />
