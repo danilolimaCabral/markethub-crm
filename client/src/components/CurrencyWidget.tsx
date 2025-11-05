@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { DollarSign, TrendingUp, TrendingDown } from 'lucide-react';
 import { Card } from './ui/card';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 interface Currency {
   code: string;
@@ -10,10 +11,37 @@ interface Currency {
   variation: number;
 }
 
+interface HistoricalData {
+  time: string;
+  value: number;
+}
+
 export default function CurrencyWidget() {
   const [currencies, setCurrencies] = useState<Currency[]>([]);
   const [loading, setLoading] = useState(true);
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
+  const [selectedCurrency, setSelectedCurrency] = useState<string>('USD');
+  const [historicalData, setHistoricalData] = useState<HistoricalData[]>([]);
+
+  const fetchHistoricalData = async (currencyCode: string) => {
+    try {
+      // API para dados históricos (últimos 30 pontos = ~24h com intervalo de 48min)
+      const response = await fetch(`https://economia.awesomeapi.com.br/json/daily/${currencyCode}-BRL/30`);
+      const data = await response.json();
+      
+      const historical: HistoricalData[] = data.reverse().map((item: any) => ({
+        time: new Date(parseInt(item.timestamp) * 1000).toLocaleTimeString('pt-BR', { 
+          hour: '2-digit', 
+          minute: '2-digit' 
+        }),
+        value: parseFloat(item.bid)
+      }));
+      
+      setHistoricalData(historical);
+    } catch (error) {
+      console.error('Erro ao buscar dados históricos:', error);
+    }
+  };
 
   const fetchCurrencies = async () => {
     try {
@@ -56,10 +84,14 @@ export default function CurrencyWidget() {
 
   useEffect(() => {
     fetchCurrencies();
+    fetchHistoricalData(selectedCurrency);
     // Atualizar a cada 1 minuto
-    const interval = setInterval(fetchCurrencies, 60000);
+    const interval = setInterval(() => {
+      fetchCurrencies();
+      fetchHistoricalData(selectedCurrency);
+    }, 60000);
     return () => clearInterval(interval);
-  }, []);
+  }, [selectedCurrency]);
 
   if (loading) {
     return (
@@ -84,9 +116,15 @@ export default function CurrencyWidget() {
         </span>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-3 mb-4">
         {currencies.map((currency) => (
-          <div key={currency.code} className="flex items-center justify-between">
+          <div 
+            key={currency.code} 
+            className={`flex items-center justify-between p-2 rounded cursor-pointer transition-colors ${
+              selectedCurrency === currency.code ? 'bg-primary/10' : 'hover:bg-muted/50'
+            }`}
+            onClick={() => setSelectedCurrency(currency.code)}
+          >
             <div>
               <p className="font-medium text-sm text-foreground">{currency.name}</p>
               <p className="text-xs text-muted-foreground">{currency.code}/BRL</p>
@@ -110,6 +148,63 @@ export default function CurrencyWidget() {
           </div>
         ))}
       </div>
+
+      {/* Gráfico Histórico */}
+      {historicalData.length > 0 && (
+        <div className="mt-4 pt-4 border-t border-border">
+          <p className="text-xs text-muted-foreground mb-2">
+            Variação 24h - {currencies.find(c => c.code === selectedCurrency)?.name}
+          </p>
+          <ResponsiveContainer width="100%" height={120}>
+            <LineChart data={historicalData}>
+              <XAxis 
+                dataKey="time" 
+                tick={{ fontSize: 10 }}
+                interval="preserveStartEnd"
+                tickFormatter={(value, index) => {
+                  // Mostrar apenas alguns labels
+                  if (index === 0 || index === historicalData.length - 1) {
+                    return value;
+                  }
+                  return '';
+                }}
+              />
+              <YAxis 
+                tick={{ fontSize: 10 }}
+                width={60}
+                domain={['auto', 'auto']}
+                tickFormatter={(value) => 
+                  selectedCurrency === 'BTC' 
+                    ? `${(value / 1000).toFixed(0)}k`
+                    : value.toFixed(2)
+                }
+              />
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: 'hsl(var(--popover))', 
+                  border: '1px solid hsl(var(--border))',
+                  borderRadius: '6px',
+                  fontSize: '12px'
+                }}
+                formatter={(value: any) => [
+                  `R$ ${selectedCurrency === 'BTC' 
+                    ? value.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                    : value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                  }`,
+                  'Valor'
+                ]}
+              />
+              <Line 
+                type="monotone" 
+                dataKey="value" 
+                stroke="hsl(var(--primary))" 
+                strokeWidth={2}
+                dot={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
     </Card>
   );
 }

@@ -147,3 +147,6 @@
 
 ### Bugs Reportados
 - [x] Corrigir erro RangeError no widget de cotação de moedas (maximumFractionDigits)
+- [x] Implementar gráfico de linha com histórico de 24h das moedas
+- [x] Adicionar seletor de moeda no widget
+- [x] Buscar dados históricos da API
