@@ -150,3 +150,4 @@
 - [x] Implementar gráfico de linha com histórico de 24h das moedas
 - [x] Adicionar seletor de moeda no widget
 - [x] Buscar dados históricos da API
+- [x] Criar página Métricas (erro 404)
