@@ -15,6 +15,10 @@ import Settings from './pages/Settings';
 import Metricas from './pages/Metricas';
 import ChatIA from './pages/ChatIA';
 import PosVendas from './pages/PosVendas';
+import Pedidos from './pages/Pedidos';
+import ContasPagar from './pages/ContasPagar';
+import ContasReceber from './pages/ContasReceber';
+import FluxoCaixa from './pages/FluxoCaixa';
 import { isAuthenticated } from "./lib/auth";
 import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
@@ -42,12 +46,13 @@ function Router() {
           <Route path="/pos-vendas" component={PosVendas} />
         <Route path="/callback" component={Callback} />
         <Route path={"/setup"} component={Setup} />
-        <Route path={"/pedidos"} component={API} />
-        <Route path={"/produtos"} component={API} />
+        <Route path={"/pedidos"} component={Pedidos} />       <Route path={"/produtos"} component={API} />
         <Route path={"/anuncios"} component={API} />
         <Route path={"/clientes"} component={API} />
         <Route path={"/entregas"} component={API} />
-        <Route path={"/financeiro"} component={API} />
+        <Route path="/contas-pagar" component={ContasPagar} />
+        <Route path="/contas-receber" component={ContasReceber} />
+        <Route path="/fluxo-caixa" component={FluxoCaixa} />
         <Route path={"/notas"} component={API} />
         <Route path={"/relatorios"} component={API} />
         <Route path="/configuracoes" component={Settings} />

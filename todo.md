@@ -188,3 +188,22 @@
 - [x] Implementar auto-refresh a cada 5 minutos
 - [ ] Adicionar status de conexão com Lexos Hub
 - [ ] Criar componente de logs de sincronização
+
+## Atualizar Páginas Operacionais com Dados Reais
+
+- [x] Atualizar página de Pedidos com dados reais
+- [ ] Atualizar página de Produtos com dados reais
+- [ ] Atualizar página de Anúncios com dados reais
+- [ ] Atualizar página de Clientes com dados reais
+- [ ] Atualizar página de Entregas com dados reais
+- [ ] Adicionar funcionalidade de busca e filtros
+
+## Módulo Financeiro - Baseado na Planilha
+
+- [x] Criar página Contas a Pagar
+- [x] Criar página Contas a Receber
+- [x] Criar página Fluxo de Caixa
+- [ ] Criar página Classificações
+- [ ] Adicionar formulários de lançamento
+- [ ] Implementar filtros por data e status
+- [ ] Criar relatórios financeiros
