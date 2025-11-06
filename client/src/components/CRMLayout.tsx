@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Link, useLocation } from 'wouter';
 import { useState, useEffect } from 'react';
 import GlobalSearch from './GlobalSearch';
+import AssistenteIAFloat from './AssistenteIAFloat';
 import { 
   LayoutDashboard, 
   ShoppingCart, 
@@ -68,14 +69,15 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
       ]
     },
     {
-      title: "Operacional",
+      title: 'OPERACIONAL',
       items: [
-        { path: "/pedidos", icon: <ShoppingCart size={20} />, label: "Pedidos", badge: 12, color: "text-orange-500" },
-        { path: "/produtos", icon: <Package size={20} />, label: "Produtos", color: "text-green-500" },
-        { path: "/anuncios", icon: <Megaphone size={20} />, label: "Anúncios", color: "text-red-500" },
-        { path: "/clientes", icon: <Users size={20} />, label: "Clientes", color: "text-cyan-500" },
-        { path: "/entregas", icon: <Truck size={20} />, label: "Entregas", color: "text-indigo-500" },
-        { path: "/pos-vendas", icon: <Headphones size={20} />, label: "Pós-Vendas", color: "text-teal-500" },
+        { path: '/pedidos', icon: <ShoppingCart size={20} />, label: 'Pedidos', badge: 12, color: 'text-orange-500' },
+        { path: '/produtos', icon: <Package size={20} />, label: 'Produtos', color: 'text-green-500' },
+        { path: '/anuncios', icon: <Megaphone size={20} />, label: 'Anúncios', color: 'text-red-500' },
+        { path: '/clientes', icon: <Users size={20} />, label: 'Clientes', color: 'text-cyan-500' },
+        { path: '/entregas', icon: <Truck size={20} />, label: 'Entregas', color: 'text-blue-500' },
+        { path: '/pos-vendas', icon: <Headphones size={20} />, label: 'Pós-Vendas', color: 'text-teal-500' },
+        { path: '/importacao', icon: <Calculator size={20} />, label: 'Importação', color: 'text-indigo-500' },
       ]
     },
     {
@@ -220,6 +222,9 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
 
       {/* Global Search */}
       <GlobalSearch open={searchOpen} onOpenChange={setSearchOpen} />
+
+      {/* Assistente IA Flutuante */}
+      <AssistenteIAFloat />
     </div>
   );
 }

@@ -16,6 +16,7 @@ import Metricas from './pages/Metricas';
 import ChatIA from './pages/ChatIA';
 import PosVendas from './pages/PosVendas';
 import Pedidos from './pages/Pedidos';
+import Importacao from './pages/Importacao';
 import ContasPagar from './pages/ContasPagar';
 import ContasReceber from './pages/ContasReceber';
 import FluxoCaixa from './pages/FluxoCaixa';
@@ -56,6 +57,7 @@ function Router() {
         <Route path={"/notas"} component={API} />
         <Route path={"/relatorios"} component={API} />
         <Route path="/configuracoes" component={Settings} />
+        <Route path="/importacao" component={Importacao} />
         <Route path="/metricas" component={Metricas} />
         <Route path={"/docs"} component={Docs} />
         <Route path={"/404"} component={NotFound} />

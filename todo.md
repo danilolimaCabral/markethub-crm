@@ -232,3 +232,24 @@
 - [x] Criar overlay escuro quando menu aberto
 - [x] Ocultar sidebar por padrão no mobile
 - [x] Conteúdo principal em tela cheia no mobile
+
+## Módulo de Importação e Comex
+
+- [x] Criar menu de Importação no CRM
+- [x] Implementar calculadora de custos de importação
+- [x] Adicionar campos para % de margem e comissão
+- [ ] Criar gerador de proposta comercial em PDF
+- [ ] Implementar importação de cotações de frete
+- [ ] Criar cadastro de produtos importados
+- [ ] Adicionar Assistente IA com sugestões de reunião
+- [ ] Implementar dicas de negociação da IA
+
+## Assistente IA - Sugestões de Reunião
+
+- [x] Criar botão flutuante de IA no CRM
+- [x] Implementar painel de sugestões de reunião
+- [x] Analisar dados do CRM para gerar sugestões
+- [x] Criar templates de pauta de reunião
+- [x] Adicionar sistema de urgência (alta/média/baixa)
+- [x] Implementar sugestões de melhorias no negócio
+- [x] Criar dicas para aumentar vendas
