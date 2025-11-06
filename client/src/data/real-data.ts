@@ -1,34 +1,36 @@
 /**
- * Dados Realistas Baseados no Lexos Hub
- * Fonte: Dashboard TRUE IMPORTADOS BR (05/11/2025)
+ * Dados Reais Baseados no Lexos Hub
+ * Fonte: Dashboard TRUE IMPORTADOS BR (06/11/2025 - DADOS REAIS)
+ * Período: Últimos 30 dias
+ * Atualizado via scraping automático
  */
 
 export const REAL_METRICS = {
-  totalVendas: 379979,
-  totalPedidos: 1161,
-  ticketMedio: 329,
-  pedidosConferidos: 821,
-  pedidosPendentes: 340,
-  taxaConferencia: 70.7,
+  totalVendas: 408262,
+  totalPedidos: 1231,
+  ticketMedio: 333,
+  pedidosConferidos: 900,
+  pedidosPendentes: 331,
+  taxaConferencia: 73.1,
   produtosAtivos: 248,
   anunciosAtivos: 312,
 };
 
 export const REAL_CATEGORIES = [
-  { name: 'Antenas', percentage: 43.7, value: 166030 },
-  { name: 'Conversores de Áudio e Vídeo', percentage: 18.6, value: 70696 },
-  { name: 'Acabamentos para Racks', percentage: 8.8, value: 33438 },
-  { name: 'Internet e Redes', percentage: 7.0, value: 26599 },
-  { name: 'Armas de Gel', percentage: 6.9, value: 26219 },
-  { name: 'Cabos', percentage: 5.0, value: 19000 },
-  { name: 'Drones de Brinquedo', percentage: 4.0, value: 15200 },
-  { name: 'Tablets', percentage: 3.0, value: 11400 },
-  { name: 'Outros', percentage: 3.0, value: 11397 },
+  { name: 'Antenas', percentage: 43.9, value: 179227 },
+  { name: 'Armas de Gel', percentage: 18.5, value: 75528 },
+  { name: 'Outros', percentage: 9.4, value: 38377 },
+  { name: 'Cabos', percentage: 6.9, value: 28170 },
+  { name: 'Conversores de Áudio e Vídeo', percentage: 5.2, value: 21230 },
+  { name: 'Acabamentos para Racks', percentage: 4.8, value: 19597 },
+  { name: 'Internet e Redes', percentage: 4.5, value: 18372 },
+  { name: 'Drones de Brinquedo', percentage: 3.9, value: 15922 },
+  { name: 'Tablets', percentage: 2.9, value: 11839 },
 ];
 
 export const REAL_MARKETPLACES = [
-  { name: 'Mercado Livre', percentage: 99.987, value: 379979, color: '#FFE600' },
-  { name: 'Outra plataforma', percentage: 0.013, value: 50, color: '#666' },
+  { name: 'Mercado Livre', percentage: 99.988, value: 408213, color: '#FFE600' },
+  { name: 'Outra plataforma', percentage: 0.012, value: 49, color: '#666' },
 ];
 
 // Dados de vendas diárias (últimos 30 dias)
