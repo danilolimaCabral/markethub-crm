@@ -367,3 +367,4 @@
 - [x] Corrigir erro de ref em DialogTrigger com Card
 - [x] Corrigir erro de ref em DialogTrigger com Button  
 - [x] Adicionar key prop em listas do DashboardCRM
+- [x] Corrigir erro de ref em DialogTrigger com Button no DashboardFinanceiro
