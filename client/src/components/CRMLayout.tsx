@@ -199,15 +199,6 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
             </div>
           </Link>
           
-          {user?.role === 'admin' && (
-            <Link href="/gerenciar-usuarios">
-              <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer hover:bg-accent transition-colors mb-2">
-                <Users size={20} className="text-muted-foreground" />
-                <span className="flex-1 font-medium text-sm text-foreground">Gerenciar Usuários</span>
-              </div>
-            </Link>
-          )}
-          
           <div className="flex items-center gap-3 px-3 py-2.5 mb-3">
             <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-sm">U</span>

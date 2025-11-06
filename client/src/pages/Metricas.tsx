@@ -71,8 +71,10 @@ export default function Metricas() {
   ];
 
   const distribuicaoCanais = [
-    { name: 'Mercado Livre', value: 99.987, color: '#FFE600' },
-    { name: 'Outros', value: 0.013, color: '#666' },
+    { name: 'Mercado Livre', value: 41, color: '#FFE600' },
+    { name: 'Amazon', value: 28, color: '#FF9900' },
+    { name: 'Shopee', value: 18, color: '#EE4D2D' },
+    { name: 'Site Próprio', value: 13, color: '#4F46E5' },
   ];
 
   const dadosAtuais = dadosPorPeriodo[periodoSelecionado];
