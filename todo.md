@@ -335,3 +335,14 @@
 - [ ] Atualizar página de Clientes
 - [ ] Atualizar página de Anúncios
 - [ ] Atualizar página de Pós-Vendas
+
+## Agente de Atualização Automática
+
+- [ ] Criar script de scraping do Lexos Hub
+- [ ] Implementar scheduler a cada 1 hora
+- [ ] Atualizar dados de Dashboard
+- [ ] Atualizar dados de Pedidos
+- [ ] Atualizar dados de Produtos
+- [ ] Atualizar dados de Entregas
+- [ ] Criar sistema de logs de sincronização
+- [ ] Adicionar indicador de última atualização
