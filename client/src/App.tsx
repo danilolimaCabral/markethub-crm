@@ -4,7 +4,9 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import CRMLayout from "./components/CRMLayout";
+import PrivateRoute from "./components/PrivateRoute";
 import DashboardCRM from "./pages/DashboardCRM";
 import Setup from "./pages/Setup";
 import API from "./pages/API";
@@ -26,28 +28,20 @@ import TabelaPreco from './pages/TabelaPreco';
 import ContasPagar from './pages/ContasPagar';
 import ContasReceber from './pages/ContasReceber';
 import FluxoCaixa from './pages/FluxoCaixa';
-import { isAuthenticated } from "./lib/auth";
 import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
 function Router() {
-  // DEMO MODE: Bypass authentication for demonstration
-  const authenticated = true; // isAuthenticated();
-
-  // Public routes (no authentication required)
-  if (!authenticated) {
-    return (
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/callback" component={Callback} />
-        <Route component={Login} />
-      </Switch>
-    );
-  }
-
-  // Protected routes (authentication required)
   return (
-    <CRMLayout>
-      <Switch>
+    <Switch>
+      {/* Public routes */}
+      <Route path="/login" component={Login} />
+      <Route path="/callback" component={Callback} />
+      
+      {/* Protected routes */}
+      <Route path="/">
+        <PrivateRoute>
+          <CRMLayout>
+            <Switch>
         <Route path={"/"} component={DashboardCRM} />
           <Route path="/chat" component={ChatIA} />
           <Route path="/pos-vendas" component={PosVendas} />
@@ -71,9 +65,12 @@ function Router() {
         <Route path={"/docs"} component={Docs} />
         <Route path={"/404"} component={NotFound} />
         {/* Final fallback route */}
-        <Route component={NotFound} />
-      </Switch>
-    </CRMLayout>
+              <Route component={NotFound} />
+            </Switch>
+          </CRMLayout>
+        </PrivateRoute>
+      </Route>
+    </Switch>
   );
 }
 
@@ -83,15 +80,17 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="dark"
-        switchable
-      >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider
+          defaultTheme="dark"
+          switchable
+        >
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+          </TooltipProvider>
+        </ThemeProvider>
+      </AuthProvider>
     </ErrorBoundary>
   );
 }
