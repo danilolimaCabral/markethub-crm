@@ -1,5 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowUp, ArrowDown, ShoppingCart, Package, DollarSign, TrendingUp } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
+import { ArrowUp, ArrowDown, ShoppingCart, Package, DollarSign, TrendingUp, Clock, CheckCircle } from "lucide-react";
+import { useState } from "react";
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import CurrencyWidget from '@/components/CurrencyWidget';
 import { REAL_METRICS, REAL_CATEGORIES, REAL_MARKETPLACES, REAL_DAILY_SALES, REAL_RECENT_ORDERS } from '@/data/real-data';
@@ -63,6 +66,28 @@ const marketplaceData = REAL_MARKETPLACES.map(mp => ({
 const recentOrders = REAL_RECENT_ORDERS.slice(0, 5);
 
 export default function DashboardCRM() {
+  const [modalPedidosPendentes, setModalPedidosPendentes] = useState(false);
+  const [modalPedidosConferidos, setModalPedidosConferidos] = useState(false);
+  const [modalTicketMedio, setModalTicketMedio] = useState(false);
+
+  // Gerar pedidos pendentes mockados
+  const pedidosPendentes = Array.from({ length: 340 }, (_, i) => ({
+    id: `#${String(i + 1).padStart(6, '0')}`,
+    cliente: `Cliente ${i + 1}`,
+    valor: Math.floor(Math.random() * 1000) + 100,
+    data: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+    status: ['Aguardando Separação', 'Aguardando Conferência', 'Aguardando Embalagem'][Math.floor(Math.random() * 3)]
+  }));
+
+  // Gerar pedidos conferidos mockados
+  const pedidosConferidos = Array.from({ length: 821 }, (_, i) => ({
+    id: `#${String(i + 1).padStart(6, '0')}`,
+    cliente: `Cliente ${i + 1}`,
+    valor: Math.floor(Math.random() * 1000) + 100,
+    data: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+    conferente: ['João Silva', 'Maria Santos', 'Pedro Costa'][Math.floor(Math.random() * 3)]
+  }));
+
   return (
     <div className="p-6 space-y-6">
       {/* Header */}
@@ -93,8 +118,21 @@ export default function DashboardCRM() {
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
-            <Card key={stat.title}>
-              <CardContent className="p-6">
+            <Dialog 
+              open={
+                stat.title === 'Pedidos Pendentes' ? modalPedidosPendentes :
+                stat.title === 'Taxa de Conferência' ? modalPedidosConferidos :
+                stat.title === 'Faturamento (Mês)' ? modalTicketMedio : false
+              }
+              onOpenChange={(open) => {
+                if (stat.title === 'Pedidos Pendentes') setModalPedidosPendentes(open);
+                if (stat.title === 'Taxa de Conferência') setModalPedidosConferidos(open);
+                if (stat.title === 'Faturamento (Mês)') setModalTicketMedio(open);
+              }}
+            >
+              <DialogTrigger asChild>
+                <Card key={stat.title} className="cursor-pointer hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-muted-foreground">{stat.title}</p>
@@ -117,6 +155,112 @@ export default function DashboardCRM() {
                 </div>
               </CardContent>
             </Card>
+          </DialogTrigger>
+          
+          {/* Modais de Detalhes */}
+          {stat.title === 'Pedidos Pendentes' && (
+            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-blue-600" />
+                  Pedidos Pendentes - Detalhamento
+                </DialogTitle>
+                <DialogDescription>
+                  {pedidosPendentes.length} pedidos aguardando processamento
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-2 mt-4">
+                {pedidosPendentes.slice(0, 50).map((pedido) => (
+                  <div key={pedido.id} className="border rounded-lg p-3 hover:bg-accent flex justify-between items-center">
+                    <div>
+                      <p className="font-bold">{pedido.id}</p>
+                      <p className="text-sm text-muted-foreground">{pedido.cliente}</p>
+                      <Badge variant="secondary" className="mt-1">{pedido.status}</Badge>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-bold text-green-600">R$ {pedido.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                      <p className="text-xs text-muted-foreground">{new Date(pedido.data).toLocaleDateString('pt-BR')}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </DialogContent>
+          )}
+          
+          {stat.title === 'Taxa de Conferência' && (
+            <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  Pedidos Conferidos - Detalhamento
+                </DialogTitle>
+                <DialogDescription>
+                  {pedidosConferidos.length} pedidos já conferidos e prontos para envio
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-2 mt-4">
+                {pedidosConferidos.slice(0, 50).map((pedido) => (
+                  <div key={pedido.id} className="border rounded-lg p-3 hover:bg-accent flex justify-between items-center">
+                    <div>
+                      <p className="font-bold">{pedido.id}</p>
+                      <p className="text-sm text-muted-foreground">{pedido.cliente}</p>
+                      <p className="text-xs text-muted-foreground mt-1">Conferente: {pedido.conferente}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-bold text-green-600">R$ {pedido.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                      <p className="text-xs text-muted-foreground">{new Date(pedido.data).toLocaleDateString('pt-BR')}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </DialogContent>
+          )}
+          
+          {stat.title === 'Faturamento (Mês)' && (
+            <DialogContent className="max-w-2xl">
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                  <DollarSign className="w-5 h-5 text-purple-600" />
+                  Análise de Faturamento - Detalhamento
+                </DialogTitle>
+                <DialogDescription>
+                  Breakdown completo do faturamento do mês
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4 mt-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="border rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground">Faturamento Total</p>
+                    <p className="text-2xl font-bold text-green-600">R$ {REAL_METRICS.totalVendas.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                  </div>
+                  <div className="border rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground">Ticket Médio</p>
+                    <p className="text-2xl font-bold text-purple-600">R$ {REAL_METRICS.ticketMedio.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                  </div>
+                  <div className="border rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground">Total de Pedidos</p>
+                    <p className="text-2xl font-bold text-blue-600">{REAL_METRICS.totalPedidos}</p>
+                  </div>
+                  <div className="border rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground">Pedidos Conferidos</p>
+                    <p className="text-2xl font-bold text-green-600">{REAL_METRICS.pedidosConferidos}</p>
+                  </div>
+                </div>
+                <div className="border rounded-lg p-4">
+                  <p className="text-sm text-muted-foreground mb-2">Distribuição por Categoria</p>
+                  <div className="space-y-2">
+                    {REAL_CATEGORIES.slice(0, 5).map((cat) => (
+                      <div key={cat.name} className="flex justify-between items-center">
+                        <span className="text-sm">{cat.name}</span>
+                        <span className="font-bold">{cat.percentage}%</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </DialogContent>
+          )}
+        </Dialog>
           );
         })}
       </div>

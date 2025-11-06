@@ -346,3 +346,7 @@
 - [ ] Atualizar dados de Entregas
 - [ ] Criar sistema de logs de sincronização
 - [ ] Adicionar indicador de última atualização
+- [x] Tornar cards do dashboard clicáveis com modais detalhados
+- [x] Modal de Pedidos Pendentes
+- [x] Modal de Pedidos Conferidos  
+- [x] Modal de Ticket Médio
