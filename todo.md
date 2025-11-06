@@ -377,3 +377,23 @@
 - [ ] Atualizar componentes para exibir mensagem quando dados não disponíveis
 - [ ] Testar sistema com apenas dados reais
 - [ ] Documentar quais dados ainda precisam de integração
+
+## Indicador Visual de Sincronização
+
+- [ ] Corrigir warnings de refs no DashboardCRM
+- [ ] Criar componente SyncIndicator
+- [ ] Adicionar badge de status (Sincronizado/Sincronizando/Erro)
+- [ ] Mostrar timestamp da última sincronização
+- [ ] Adicionar botão de atualização manual
+- [ ] Integrar com dados de sync-log.json
+- [ ] Testar indicador no Dashboard
+
+## Configuração PM2 para Scheduler em Produção
+
+- [x] Criar arquivo ecosystem.config.cjs
+- [x] Instalar PM2 globalmente
+- [x] Iniciar scheduler com PM2
+- [x] Configurar auto-start no boot
+- [x] Testar funcionamento do scheduler
+- [x] Verificar logs do PM2
+- [x] Documentar comandos de gerenciamento

@@ -1,0 +1,538 @@
+{
+  "lastUpdate": "2025-11-06T15:25:03.568Z",
+  "lexos": {
+    "lastUpdate": "2025-11-06T15:25:03.070Z",
+    "metrics": {
+      "totalVendas": 408262,
+      "totalPedidos": 1231,
+      "ticketMedio": 333,
+      "pedidosConferidos": 900,
+      "pedidosPendentes": 331,
+      "taxaConferencia": 73.1,
+      "produtosAtivos": 248
+    },
+    "categories": [
+      {
+        "name": "Antenas",
+        "percentage": 43.9,
+        "value": 179227
+      },
+      {
+        "name": "Armas de Gel",
+        "percentage": 18.5,
+        "value": 75528
+      },
+      {
+        "name": "Outros",
+        "percentage": 9.4,
+        "value": 38377
+      },
+      {
+        "name": "Cabos",
+        "percentage": 6.9,
+        "value": 28170
+      },
+      {
+        "name": "Conversores de Áudio e Vídeo",
+        "percentage": 5.2,
+        "value": 21230
+      },
+      {
+        "name": "Acabamentos para Racks",
+        "percentage": 4.8,
+        "value": 19597
+      },
+      {
+        "name": "Internet e Redes",
+        "percentage": 4.5,
+        "value": 18372
+      },
+      {
+        "name": "Drones de Brinquedo",
+        "percentage": 3.9,
+        "value": 15922
+      },
+      {
+        "name": "Tablets",
+        "percentage": 2.9,
+        "value": 11839
+      }
+    ],
+    "marketplaces": [
+      {
+        "name": "Mercado Livre",
+        "percentage": 99.988,
+        "value": 408213
+      },
+      {
+        "name": "Outra plataforma",
+        "percentage": 0.012,
+        "value": 49
+      }
+    ],
+    "pedidos": [],
+    "produtos": []
+  },
+  "financial": {
+    "lastUpdate": "2025-11-06T15:25:03.568Z",
+    "contasPagar": [],
+    "contasReceber": [
+      {
+        "id": "FIN-1762442703567-1",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703567-2",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703567-3",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703567-4",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703567-5",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-6",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-7",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "receber + Fluxo de Caixa Realizado\"",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-8",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-9",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-10",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-11",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-12",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-13",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-14",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-15",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-16",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-17",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-18",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-19",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-20",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-21",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-22",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-23",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-24",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-25",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-26",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-27",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-28",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-29",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-30",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-31",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-32",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-33",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-34",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-35",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-36",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-37",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-38",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-39",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-40",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-41",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-42",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-43",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-44",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-45",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-46",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-47",
+        "descricao": "",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-48",
+        "descricao": "",
+        "valor": null,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      },
+      {
+        "id": "FIN-1762442703568-49",
+        "descricao": "Para mais informações ou modelos personalizados entre em contato por e-mail: contato@excelsolucao.com.br\"",
+        "valor": 0,
+        "vencimento": "",
+        "status": "pendente",
+        "tipo": "receber",
+        "categoria": "Outros"
+      }
+    ],
+    "metrics": {
+      "totalPagar": 0,
+      "totalReceber": null,
+      "saldoProjetado": null,
+      "contasVencidas": 0,
+      "totalVencido": 0
+    }
+  },
+  "summary": {
+    "totalVendas": 408262,
+    "totalPedidos": 1231,
+    "ticketMedio": 333,
+    "contasPagar": 0,
+    "contasReceber": null,
+    "saldoProjetado": null
+  }
+}

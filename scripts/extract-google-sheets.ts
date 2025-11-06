@@ -6,6 +6,11 @@
 import axios from 'axios';
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const SHEETS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQY39dmgm-RWT_wI-3YvUuvfdZlqPkOhsIf9mmANPnLZX-Sj5vAcD_iEv7fjChHiw/pub?output=csv';
 const DATA_DIR = path.join(__dirname, '../data');
@@ -125,7 +130,7 @@ function calculateMetrics(contasPagar: FinancialRecord[], contasReceber: Financi
 }
 
 // Executar se chamado diretamente
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   extractGoogleSheetsData()
     .then(() => process.exit(0))
     .catch(() => process.exit(1));

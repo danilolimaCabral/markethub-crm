@@ -7,6 +7,11 @@ import axios from 'axios';
 import * as cheerio from 'cheerio';
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const LEXOS_URL = 'https://hub.lexos.com.br';
 const DATA_DIR = path.join(__dirname, '../data');
@@ -101,7 +106,7 @@ async function extractLexosData(): Promise<LexosData> {
 }
 
 // Executar se chamado diretamente
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   extractLexosData()
     .then(() => process.exit(0))
     .catch(() => process.exit(1));

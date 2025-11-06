@@ -4,10 +4,15 @@
  * Pode ser agendado para execução automática (cron job)
  */
 
-import { extractLexosData } from './extract-lexos-data';
-import { extractGoogleSheetsData } from './extract-google-sheets';
+import { extractLexosData } from './extract-lexos-data.js';
+import { extractGoogleSheetsData } from './extract-google-sheets.js';
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const DATA_DIR = path.join(__dirname, '../data');
 const CONSOLIDATED_FILE = path.join(DATA_DIR, 'consolidated-data.json');
@@ -115,7 +120,7 @@ function saveSyncLog(log: SyncLog) {
 }
 
 // Executar se chamado diretamente
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   syncAllData()
     .then(() => process.exit(0))
     .catch(() => process.exit(1));
