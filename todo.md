@@ -364,3 +364,6 @@
 - [x] Atualizar com dados reais do Lexos Hub
 - [x] Adicionar gráficos de vendas por período
 - [x] Mostrar análise por categoria e produto
+- [x] Corrigir erro de ref em DialogTrigger com Card
+- [x] Corrigir erro de ref em DialogTrigger com Button  
+- [x] Adicionar key prop em listas do DashboardCRM
