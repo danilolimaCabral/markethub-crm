@@ -355,3 +355,8 @@
 - [x] Mostrar status (emitida, cancelada, denegada)
 - [x] Integrar com dados de pedidos
 - [x] Adicionar filtros e busca
+- [x] Criar página de Produtos com dados reais
+- [x] Listar 248 produtos ativos
+- [x] Mostrar estoque, preço, categoria
+- [x] Adicionar filtros e busca
+- [x] Integrar com dados do Lexos Hub

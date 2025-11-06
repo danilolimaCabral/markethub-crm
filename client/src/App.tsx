@@ -17,6 +17,7 @@ import ChatIA from './pages/ChatIA';
 import PosVendas from './pages/PosVendas';
 import Entregas from "@/pages/Entregas";
 import NotasFiscais from "@/pages/NotasFiscais";
+import Produtos from "@/pages/Produtos";
 import Pedidos from './pages/Pedidos';
 import Importacao from './pages/Importacao';
 import InteligenciaMercado from './pages/InteligenciaMercado';
@@ -51,7 +52,7 @@ function Router() {
           <Route path="/pos-vendas" component={PosVendas} />
         <Route path="/callback" component={Callback} />
         <Route path={"/setup"} component={Setup} />
-        <Route path={"/pedidos"} component={Pedidos} />       <Route path={"/produtos"} component={API} />
+        <Route path={"/pedidos"} component={Pedidos} />         <Route path="/produtos" component={Produtos} />
         <Route path={"/anuncios"} component={API} />
         <Route path={"/clientes"} component={API} />
           <Route path="/entregas" component={Entregas} />
