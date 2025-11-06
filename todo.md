@@ -253,3 +253,28 @@
 - [x] Adicionar sistema de urgência (alta/média/baixa)
 - [x] Implementar sugestões de melhorias no negócio
 - [x] Criar dicas para aumentar vendas
+
+## Geração de Proposta Comercial
+
+- [ ] Implementar geração de PDF da proposta
+- [ ] Criar template de proposta profissional
+- [ ] Incluir todos os dados da calculadora
+- [ ] Adicionar logo e dados da empresa
+- [ ] Permitir download do PDF
+
+## Inteligência de Mercado - Comparação de Preços
+
+- [x] Criar ícone de Comparação de Mercado
+- [x] Implementar busca automática de preços na internet
+- [x] Comparar preços dos produtos com concorrência
+- [x] Criar análise de competitividade (caro/barato/médio)
+- [x] Gerar sugestões de ajuste de preço
+- [x] Adicionar alertas de oportunidades
+- [x] Mostrar tendências de preço do mercado
+
+- [x] Criar sistema de alertas de produtos para importar
+- [x] Calcular margem de lucro potencial
+- [x] Analisar demanda de mercado
+- [x] Identificar diferença de preço Brasil vs importação
+- [x] Gerar ranking de melhores oportunidades
+- [x] Criar página de Inteligência de Mercado
