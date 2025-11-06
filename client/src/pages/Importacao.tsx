@@ -3,7 +3,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Calculator, FileText, Download, DollarSign, Percent, TrendingUp } from "lucide-react";
+import { Calculator, FileText, Download, DollarSign, Percent, TrendingUp, Printer } from "lucide-react";
+import { baixarPropostaHTML, imprimirProposta } from "@/lib/gerador-proposta";
 
 export default function Importacao() {
   // Estados para os campos do formulário
@@ -39,8 +40,63 @@ export default function Importacao() {
   const valorFinalCliente = valorComMargem + comissaoBusca;
 
   const handleGerarProposta = () => {
-    // Função para gerar proposta em PDF
-    alert("Gerando proposta comercial...");
+    const dadosProposta = {
+      valorMercadoria,
+      taxaDolar,
+      valorCIF,
+      impostoImportacao,
+      ipi,
+      pis,
+      cofins,
+      taxaSiscomex,
+      icms,
+      marinhaMercante,
+      honorariosComissaria,
+      sdaDespachante,
+      armazenagemItajai,
+      freteRodoviario,
+      expedienteItajai,
+      margemLucro,
+      comissaoBusca,
+      cifReais,
+      totalTributos,
+      totalDespesas,
+      custoTotal,
+      valorComMargem,
+      valorFinalCliente
+    };
+    
+    imprimirProposta(dadosProposta);
+  };
+
+  const handleBaixarProposta = () => {
+    const dadosProposta = {
+      valorMercadoria,
+      taxaDolar,
+      valorCIF,
+      impostoImportacao,
+      ipi,
+      pis,
+      cofins,
+      taxaSiscomex,
+      icms,
+      marinhaMercante,
+      honorariosComissaria,
+      sdaDespachante,
+      armazenagemItajai,
+      freteRodoviario,
+      expedienteItajai,
+      margemLucro,
+      comissaoBusca,
+      cifReais,
+      totalTributos,
+      totalDespesas,
+      custoTotal,
+      valorComMargem,
+      valorFinalCliente
+    };
+    
+    baixarPropostaHTML(dadosProposta);
   };
 
   return (
@@ -301,16 +357,17 @@ export default function Importacao() {
               className="w-full mt-4"
               size="lg"
             >
-              <FileText className="w-5 h-5 mr-2" />
-              Gerar Proposta Comercial
+              <Printer className="w-5 h-5 mr-2" />
+              Imprimir Proposta Comercial
             </Button>
 
             <Button
               variant="outline"
               className="w-full"
+              onClick={handleBaixarProposta}
             >
               <Download className="w-5 h-5 mr-2" />
-              Exportar Cálculo (PDF)
+              Baixar Proposta (HTML)
             </Button>
           </CardContent>
         </Card>

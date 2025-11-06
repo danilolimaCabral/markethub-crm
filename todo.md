@@ -256,11 +256,11 @@
 
 ## Geração de Proposta Comercial
 
-- [ ] Implementar geração de PDF da proposta
-- [ ] Criar template de proposta profissional
-- [ ] Incluir todos os dados da calculadora
-- [ ] Adicionar logo e dados da empresa
-- [ ] Permitir download do PDF
+- [x] Implementar geração de PDF da proposta
+- [x] Criar template de proposta profissional
+- [x] Incluir todos os dados da calculadora
+- [x] Adicionar logo e dados da empresa
+- [x] Permitir download do PDF
 
 ## Inteligência de Mercado - Comparação de Preços
 
@@ -278,3 +278,30 @@
 - [x] Identificar diferença de preço Brasil vs importação
 - [x] Gerar ranking de melhores oportunidades
 - [x] Criar página de Inteligência de Mercado
+
+## Melhorias de Detalhamento
+
+- [ ] Criar modal de detalhes de Pedidos Pendentes
+- [ ] Mostrar status detalhado de cada pedido
+- [ ] Adicionar informações de cliente e produtos
+- [ ] Expandir detalhes das Contas a Pagar
+- [ ] Mostrar histórico e anexos de contas
+- [ ] Adicionar ações (marcar como paga, editar, etc.)
+
+## Melhorias de Detalhamento
+
+- [ ] Criar modal de detalhes de Pedidos Pendentes
+- [ ] Mostrar status detalhado de cada pedido
+- [ ] Adicionar informações de cliente e produtos
+- [ ] Expandir detalhes das Contas a Pagar
+- [ ] Mostrar histórico e anexos de contas
+- [ ] Adicionar ações (marcar como paga, editar, etc.)
+
+## Tabela de Preços
+
+- [x] Criar página de Tabela de Preços
+- [x] Mostrar preço atual dos produtos
+- [x] Mostrar preço do mercado (comparação)
+- [x] Adicionar status de competitividade
+- [x] Implementar sugestões de ajuste de preço
+- [x] Permitir edição de preços na tabela

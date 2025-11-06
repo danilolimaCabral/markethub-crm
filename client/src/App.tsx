@@ -18,6 +18,7 @@ import PosVendas from './pages/PosVendas';
 import Pedidos from './pages/Pedidos';
 import Importacao from './pages/Importacao';
 import InteligenciaMercado from './pages/InteligenciaMercado';
+import TabelaPreco from './pages/TabelaPreco';
 import ContasPagar from './pages/ContasPagar';
 import ContasReceber from './pages/ContasReceber';
 import FluxoCaixa from './pages/FluxoCaixa';
@@ -60,6 +61,7 @@ function Router() {
         <Route path="/configuracoes" component={Settings} />
         <Route path="/importacao" component={Importacao} />
         <Route path="/inteligencia-mercado" component={InteligenciaMercado} />
+        <Route path="/tabela-preco" component={TabelaPreco} />
         <Route path="/metricas" component={Metricas} />
         <Route path={"/docs"} component={Docs} />
         <Route path={"/404"} component={NotFound} />
