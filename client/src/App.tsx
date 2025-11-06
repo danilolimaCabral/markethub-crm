@@ -18,6 +18,7 @@ import PosVendas from './pages/PosVendas';
 import Entregas from "@/pages/Entregas";
 import NotasFiscais from "@/pages/NotasFiscais";
 import Produtos from "@/pages/Produtos";
+import AnaliseVendas from "@/pages/AnaliseVendas";
 import Pedidos from './pages/Pedidos';
 import Importacao from './pages/Importacao';
 import InteligenciaMercado from './pages/InteligenciaMercado';
@@ -60,8 +61,8 @@ function Router() {
         <Route path="/contas-pagar" component={ContasPagar} />
         <Route path="/contas-receber" component={ContasReceber} />
         <Route path="/fluxo-caixa" component={FluxoCaixa} />
-        <Route path={"/notas"} component={API} />
-        <Route path={"/relatorios"} component={API} />
+        <Route path={"/notas"} component={API} />        <Route path="/relatorios" component={API} />
+        <Route path="/vendas" component={AnaliseVendas} />
         <Route path="/configuracoes" component={Settings} />
         <Route path="/importacao" component={Importacao} />
         <Route path="/inteligencia-mercado" component={InteligenciaMercado} />

@@ -360,3 +360,7 @@
 - [x] Mostrar estoque, preço, categoria
 - [x] Adicionar filtros e busca
 - [x] Integrar com dados do Lexos Hub
+- [x] Verificar e corrigir erro na página de Análise de Vendas
+- [x] Atualizar com dados reais do Lexos Hub
+- [x] Adicionar gráficos de vendas por período
+- [x] Mostrar análise por categoria e produto
