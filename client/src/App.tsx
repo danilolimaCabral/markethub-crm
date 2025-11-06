@@ -28,6 +28,7 @@ import TabelaPreco from './pages/TabelaPreco';
 import ContasPagar from './pages/ContasPagar';
 import ContasReceber from './pages/ContasReceber';
 import FluxoCaixa from './pages/FluxoCaixa';
+import GerenciarUsuarios from './pages/GerenciarUsuarios';
 import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
 function Router() {
@@ -58,6 +59,7 @@ function Router() {
         <Route path={"/notas"} component={API} />        <Route path="/relatorios" component={API} />
         <Route path="/vendas" component={AnaliseVendas} />
         <Route path="/configuracoes" component={Settings} />
+        <Route path="/gerenciar-usuarios" component={GerenciarUsuarios} />
         <Route path="/importacao" component={Importacao} />
         <Route path="/inteligencia-mercado" component={InteligenciaMercado} />
         <Route path="/tabela-preco" component={TabelaPreco} />

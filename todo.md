@@ -399,3 +399,27 @@
 - [x] Quantificar ganhos de produtividade
 - [x] Documentar ROI esperado
 - [x] Adicionar casos de uso reais
+
+## Painel de Administração de Usuários
+
+- [x] Criar página de Gerenciamento de Usuários
+- [x] Implementar listagem de todos os usuários cadastrados
+- [x] Adicionar formulário para criar novos usuários
+- [x] Implementar funcionalidade de editar usuários
+- [x] Implementar funcionalidade de remover usuários com confirmação
+- [x] Adicionar controle de roles (admin/user)
+- [x] Implementar filtros e busca de usuários
+- [x] Proteger rota apenas para admins
+- [x] Adicionar item no menu lateral
+- [x] Testar todas as funcionalidades CRUD
+
+## Limpeza de Dados Mockados
+
+- [x] Remover referências a Amazon nos gráficos e dados
+- [x] Remover referências a Shopee nos gráficos e dados
+- [x] Manter apenas Mercado Livre (99,987%) como marketplace real
+- [x] Revisar Dashboard e remover dados fictícios
+- [x] Revisar Análise de Vendas e manter apenas dados reais
+- [x] Revisar Inteligência de Mercado e remover mockups
+- [x] Verificar todos os componentes e páginas
+- [x] Garantir consistência com dados do Lexos Hub
