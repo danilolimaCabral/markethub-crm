@@ -16,6 +16,7 @@ import {
   Sparkles
 } from "lucide-react";
 import { useState } from "react";
+import { useLocation } from "wouter";
 
 // Dados mockados de comparação de mercado (baseados em produtos reais)
 const produtosComparacao = [
@@ -142,6 +143,13 @@ const oportunidadesImportacao = produtosComparacao
 
 export default function InteligenciaMercado() {
   const [busca, setBusca] = useState("");
+  const [, setLocation] = useLocation();
+
+  const handleCalcularImportacao = (produto: typeof produtosComparacao[0]) => {
+    // Redireciona para página de importação com dados do produto
+    setLocation('/importacao');
+    // Aqui poderia passar dados via state/context se necessário
+  };
 
   const getStatusBadge = (status: string) => {
     const config = {
@@ -286,7 +294,11 @@ export default function InteligenciaMercado() {
                   </div>
                 </div>
 
-                <Button size="sm" className="w-full mt-3">
+                <Button 
+                  size="sm" 
+                  className="w-full mt-3"
+                  onClick={() => handleCalcularImportacao(produto)}
+                >
                   <DollarSign className="w-4 h-4 mr-2" />
                   Calcular Importação
                 </Button>

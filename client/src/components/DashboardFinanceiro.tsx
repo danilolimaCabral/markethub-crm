@@ -1,7 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { AlertTriangle, TrendingUp, TrendingDown, DollarSign, Calendar, Lightbulb, CheckCircle, Clock } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { AlertTriangle, TrendingUp, TrendingDown, DollarSign, Calendar, Lightbulb, CheckCircle, Clock, X, Bitcoin, TrendingUpIcon } from "lucide-react";
+import { useState } from "react";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 // Importar dados reais das contas
@@ -172,6 +174,7 @@ const getSugestoesInvestimento = () => {
 const sugestaoInvestimento = getSugestoesInvestimento();
 
 export default function DashboardFinanceiro() {
+  const [modalContasAberto, setModalContasAberto] = useState(false);
   return (
     <div className="space-y-6">
       {/* Alertas de Contas Vencidas */}
@@ -188,7 +191,65 @@ export default function DashboardFinanceiro() {
                   Total: R$ {totalVencido.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                 </p>
               </div>
-              <Button variant="destructive" size="sm">Ver Detalhes</Button>
+              <Dialog open={modalContasAberto} onOpenChange={setModalContasAberto}>
+                <DialogTrigger asChild>
+                  <Button variant="destructive" size="sm">Ver Detalhes</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2 text-red-600">
+                      <AlertTriangle className="w-5 h-5" />
+                      Contas Vencidas - Ação Necessária
+                    </DialogTitle>
+                    <DialogDescription>
+                      {contasVencidas.length} conta(s) vencida(s) totalizando R$ {totalVencido.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-3 mt-4">
+                    {contasVencidas.map((conta) => (
+                      <div key={conta.id} className="border rounded-lg p-4 hover:bg-accent">
+                        <div className="flex justify-between items-start mb-2">
+                          <div>
+                            <h4 className="font-bold">{conta.descricao}</h4>
+                            <p className="text-sm text-muted-foreground">{conta.categoria}</p>
+                          </div>
+                          <Badge variant="destructive">Vencido</Badge>
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm mt-3">
+                          <div>
+                            <p className="text-xs text-muted-foreground">Valor</p>
+                            <p className="font-bold text-red-600">R$ {conta.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs text-muted-foreground">Vencimento</p>
+                            <p className="font-medium">{new Date(conta.vencimento).toLocaleDateString('pt-BR')}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs text-muted-foreground">Dias Atraso</p>
+                            <p className="font-bold text-red-600">
+                              {Math.floor((new Date().getTime() - new Date(conta.vencimento).getTime()) / (1000 * 60 * 60 * 24))} dias
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-xs text-muted-foreground">Forma Pagamento</p>
+                            <p className="font-medium">{conta.formaPagamento}</p>
+                          </div>
+                        </div>
+                        <div className="flex gap-2 mt-3">
+                          <Button size="sm" variant="default" className="flex-1">
+                            <CheckCircle className="w-4 h-4 mr-1" />
+                            Marcar como Paga
+                          </Button>
+                          <Button size="sm" variant="outline" className="flex-1">
+                            <Calendar className="w-4 h-4 mr-1" />
+                            Agendar Pagamento
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </CardContent>
         </Card>

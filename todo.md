@@ -195,7 +195,7 @@
 - [ ] Atualizar página de Produtos com dados reais
 - [ ] Atualizar página de Anúncios com dados reais
 - [ ] Atualizar página de Clientes com dados reais
-- [ ] Atualizar página de Entregas com dados reais
+- [x] Atualizar página de Entregas com dados reais
 - [ ] Adicionar funcionalidade de busca e filtros
 
 ## Módulo Financeiro - Baseado na Planilha
@@ -305,3 +305,33 @@
 - [x] Adicionar status de competitividade
 - [x] Implementar sugestões de ajuste de preço
 - [x] Permitir edição de preços na tabela
+
+- [x] Implementar modal de detalhes de contas vencidas
+- [x] Mostrar lista completa das contas com descrição
+- [x] Adicionar ações (marcar como paga, agendar pagamento)
+
+## Sugestões de Investimento
+
+- [ ] Criar sistema de sugestões de investimento
+- [ ] Incluir criptomoedas (Bitcoin, Ethereum, etc.)
+- [ ] Incluir renda fixa (CDB, Tesouro Direto)
+- [ ] Incluir ações e fundos
+- [ ] Analisar saldo disponível e perfil de risco
+- [ ] Mostrar rentabilidade estimada
+- [x] Ativar botão Calcular Importação na Inteligência de Mercado
+
+## Módulo de Entregas
+
+- [x] Criar página de Entregas completa
+- [x] Listar entregas com status
+- [x] Integrar com dados de pedidos
+- [x] Adicionar rastreamento
+- [x] Mostrar métricas de desempenho
+
+## Atualização de Módulos com Dados Reais
+
+- [x] Atualizar página de Entregas
+- [ ] Atualizar página de Produtos (248 produtos)
+- [ ] Atualizar página de Clientes
+- [ ] Atualizar página de Anúncios
+- [ ] Atualizar página de Pós-Vendas
