@@ -397,3 +397,33 @@
 - [x] Testar funcionamento do scheduler
 - [x] Verificar logs do PM2
 - [x] Documentar comandos de gerenciamento
+
+## Botão de Sincronização Manual
+
+- [ ] Adicionar botão "Sincronizar Agora" no Dashboard
+- [ ] Criar endpoint/função para trigger manual de sincronização
+- [ ] Adicionar feedback visual durante sincronização
+- [ ] Mostrar toast de sucesso/erro após sincronização
+- [ ] Atualizar timestamp de última sincronização
+
+## Criação de Usuário e Senha
+
+- [ ] Criar usuário para acesso ao sistema
+- [ ] Definir senha segura
+- [ ] Documentar credenciais
+
+## Correção da Tabela de Preços
+
+- [ ] Investigar problema na tabela de preços
+- [ ] Identificar causa raiz do erro
+- [ ] Corrigir problema
+- [ ] Testar tabela de preços
+
+## Tela de Login Moderna
+
+- [x] Criar novo design de login com gradientes e animações
+- [x] Adicionar logo do IA BRUNO CRM
+- [x] Implementar glassmorphism e efeitos visuais
+- [x] Adicionar animações de transição
+- [x] Tornar responsivo para mobile
+- [x] Testar em diferentes resoluções
