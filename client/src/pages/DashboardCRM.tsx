@@ -115,25 +115,23 @@ export default function DashboardCRM() {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      {stats.map((stat) => {
-        const Icon = stat.icon;
-        return (
-          <Dialog 
-            key={stat.title}
-            open={
-              stat.title === 'Pedidos Pendentes' ? modalPedidosPendentes :
-              stat.title === 'Taxa de Conferência' ? modalPedidosConferidos :
-              stat.title === 'Faturamento (Mês)' ? modalTicketMedio : false
-            }
-            onOpenChange={(open) => {
-              if (stat.title === 'Pedidos Pendentes') setModalPedidosPendentes(open);
-              if (stat.title === 'Taxa de Conferência') setModalPedidosConferidos(open);
-              if (stat.title === 'Faturamento (Mês)' ) setModalTicketMedio(open);
-            }}
-          >
-            <DialogTrigger asChild>
-              <div className="cursor-pointer hover:shadow-lg transition-shadow">
-              <Card>
+        {stats.map((stat) => {
+          const Icon = stat.icon;
+          return (
+            <Dialog 
+              open={
+                stat.title === 'Pedidos Pendentes' ? modalPedidosPendentes :
+                stat.title === 'Taxa de Conferência' ? modalPedidosConferidos :
+                stat.title === 'Faturamento (Mês)' ? modalTicketMedio : false
+              }
+              onOpenChange={(open) => {
+                if (stat.title === 'Pedidos Pendentes') setModalPedidosPendentes(open);
+                if (stat.title === 'Taxa de Conferência') setModalPedidosConferidos(open);
+                if (stat.title === 'Faturamento (Mês)') setModalTicketMedio(open);
+              }}
+            >
+              <DialogTrigger asChild>
+                <Card key={stat.title} className="cursor-pointer hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -157,7 +155,6 @@ export default function DashboardCRM() {
                 </div>
               </CardContent>
             </Card>
-              </div>
           </DialogTrigger>
           
           {/* Modais de Detalhes */}

@@ -24,7 +24,7 @@ import {
   X,
   Target
 } from 'lucide-react';
-import { useAuth } from '@/contexts/AuthContext';
+import { logout } from '@/lib/auth';
 
 interface NavItem {
   path: string;
@@ -42,7 +42,6 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [searchOpen, setSearchOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { logout, user } = useAuth();
 
   // Atalho Ctrl+K para abrir pesquisa
   useEffect(() => {
@@ -58,6 +57,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
 
   const handleLogout = () => {
     logout();
+    window.location.href = "/login";
   };
 
   // Navegação organizada por seções estilo Pulse

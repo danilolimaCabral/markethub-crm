@@ -193,9 +193,7 @@ export default function DashboardFinanceiro() {
               </div>
               <Dialog open={modalContasAberto} onOpenChange={setModalContasAberto}>
                 <DialogTrigger asChild>
-                  <div>
                   <Button variant="destructive" size="sm">Ver Detalhes</Button>
-                  </div>
                 </DialogTrigger>
                 <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
                   <DialogHeader>
