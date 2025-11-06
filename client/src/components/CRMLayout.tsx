@@ -77,6 +77,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
         { path: '/anuncios', icon: <Megaphone size={20} />, label: 'Anúncios', color: 'text-red-500' },
         { path: '/clientes', icon: <Users size={20} />, label: 'Clientes', color: 'text-cyan-500' },
         { path: '/entregas', icon: <Truck size={20} />, label: 'Entregas', color: 'text-blue-500' },
+        { path: '/notas-fiscais', icon: <FileText size={20} />, label: 'Notas Fiscais', color: 'text-slate-500' },
         { path: '/pos-vendas', icon: <Headphones size={20} />, label: 'Pós-Vendas', color: 'text-teal-500' },
         { path: '/importacao', icon: <Calculator size={20} />, label: 'Importação', color: 'text-indigo-500' },
         { path: '/inteligencia-mercado', icon: <Target size={20} />, label: 'Inteligência de Mercado', color: 'text-purple-500' },

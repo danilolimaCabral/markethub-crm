@@ -350,3 +350,8 @@
 - [x] Modal de Pedidos Pendentes
 - [x] Modal de Pedidos Conferidos  
 - [x] Modal de Ticket Médio
+- [x] Criar página de Notas Fiscais com dados reais
+- [x] Listar NF-e emitidas
+- [x] Mostrar status (emitida, cancelada, denegada)
+- [x] Integrar com dados de pedidos
+- [x] Adicionar filtros e busca
