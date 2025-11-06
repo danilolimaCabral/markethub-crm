@@ -364,3 +364,16 @@
 - [x] Atualizar com dados reais do Lexos Hub
 - [x] Adicionar gráficos de vendas por período
 - [x] Mostrar análise por categoria e produto
+
+## Remoção de Dados Fictícios e Integração de Dados Reais
+
+- [ ] Acessar Lexos Hub e extrair lista completa de pedidos reais
+- [ ] Extrair lista completa de produtos reais do Lexos Hub
+- [ ] Remover dados fictícios de pedidos (REAL_RECENT_ORDERS)
+- [ ] Remover dados fictícios de produtos (REAL_TOP_PRODUCTS)
+- [ ] Remover dados fictícios de vendas diárias (REAL_DAILY_SALES)
+- [ ] Remover dados financeiros mockados (contas a pagar/receber)
+- [ ] Atualizar real-data.ts com apenas dados autênticos
+- [ ] Atualizar componentes para exibir mensagem quando dados não disponíveis
+- [ ] Testar sistema com apenas dados reais
+- [ ] Documentar quais dados ainda precisam de integração

@@ -9,7 +9,11 @@
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "sync:lexos": "tsx scripts/extract-lexos-data.ts",
+    "sync:sheets": "tsx scripts/extract-google-sheets.ts",
+    "sync:all": "tsx scripts/sync-data.ts",
+    "scheduler": "tsx scripts/scheduler.ts"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
