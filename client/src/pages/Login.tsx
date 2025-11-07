@@ -2,14 +2,25 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useLocation } from 'wouter';
-import { Brain, Lock, User } from 'lucide-react';
+import { Brain, Lock, User, Mail } from 'lucide-react';
 import { toast } from 'sonner';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Login() {
   const [, setLocation] = useLocation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [recoveryEmail, setRecoveryEmail] = useState('');
+  const [isRecoveryOpen, setIsRecoveryOpen] = useState(false);
+  const [isRecoveryLoading, setIsRecoveryLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,6 +51,32 @@ export default function Login() {
       
       setIsLoading(false);
     }, 800);
+  };
+
+  const handlePasswordRecovery = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!recoveryEmail) {
+      toast.error('Digite seu email');
+      return;
+    }
+
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(recoveryEmail)) {
+      toast.error('Email inválido');
+      return;
+    }
+
+    setIsRecoveryLoading(true);
+    
+    // Simular envio de email
+    setTimeout(() => {
+      toast.success('Código de recuperação enviado para seu email!');
+      setIsRecoveryOpen(false);
+      setRecoveryEmail('');
+      setIsRecoveryLoading(false);
+    }, 1500);
   };
 
   return (
@@ -92,9 +129,62 @@ export default function Login() {
 
             {/* Password Field */}
             <div className="space-y-2">
-              <label htmlFor="password" className="text-slate-300 text-sm font-medium">
-                Senha
-              </label>
+              <div className="flex items-center justify-between">
+                <label htmlFor="password" className="text-slate-300 text-sm font-medium">
+                  Senha
+                </label>
+                <Dialog open={isRecoveryOpen} onOpenChange={setIsRecoveryOpen}>
+                  <DialogTrigger asChild>
+                    <button
+                      type="button"
+                      className="text-xs text-purple-400 hover:text-purple-300 transition-colors"
+                    >
+                      Esqueci minha senha
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="bg-slate-900 border-slate-800">
+                    <DialogHeader>
+                      <DialogTitle className="text-white">Recuperar Senha</DialogTitle>
+                      <DialogDescription className="text-slate-400">
+                        Digite seu email para receber o código de recuperação
+                      </DialogDescription>
+                    </DialogHeader>
+                    <form onSubmit={handlePasswordRecovery} className="space-y-4 mt-4">
+                      <div className="space-y-2">
+                        <label htmlFor="recovery-email" className="text-slate-300 text-sm font-medium">
+                          Email
+                        </label>
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-500" />
+                          <Input
+                            id="recovery-email"
+                            type="email"
+                            placeholder="seu@email.com"
+                            value={recoveryEmail}
+                            onChange={(e) => setRecoveryEmail(e.target.value)}
+                            className="pl-11 bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 focus:bg-slate-800 focus:border-purple-500 transition-all h-12 rounded-xl"
+                            disabled={isRecoveryLoading}
+                          />
+                        </div>
+                      </div>
+                      <Button
+                        type="submit"
+                        disabled={isRecoveryLoading}
+                        className="w-full h-12 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-lg transition-all"
+                      >
+                        {isRecoveryLoading ? (
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                            Enviando...
+                          </div>
+                        ) : (
+                          'Enviar Código'
+                        )}
+                      </Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              </div>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-500" />
                 <Input
@@ -112,8 +202,8 @@ export default function Login() {
             {/* Submit Button */}
             <Button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold h-12 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] mt-6"
               disabled={isLoading}
+              className="w-full h-12 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold shadow-lg transition-all mt-6"
             >
               {isLoading ? (
                 <div className="flex items-center justify-center gap-2">
@@ -127,27 +217,18 @@ export default function Login() {
           </form>
 
           {/* Register Link */}
-          <div className="text-center mt-6">
-            <p className="text-slate-400 text-sm">
-              Não tem uma conta?{' '}
-              <button
-                onClick={() => toast.info('Funcionalidade de cadastro em breve')}
-                className="text-purple-400 hover:text-purple-300 font-medium transition-colors"
-              >
-                Cadastre-se
-              </button>
-            </p>
-          </div>
+          <p className="text-center text-slate-400 text-sm mt-6">
+            Não tem uma conta?{' '}
+            <button className="text-purple-400 hover:text-purple-300 transition-colors font-medium">
+              Cadastre-se
+            </button>
+          </p>
 
-          {/* Demo Credentials Box */}
-          <div className="mt-6 p-4 bg-slate-800/50 border border-slate-700/50 rounded-xl">
-            <p className="text-slate-400 text-xs mb-2">Credenciais de demonstração:</p>
-            <p className="text-slate-300 text-sm">
-              <span className="text-slate-500">Usuário:</span> admin
-            </p>
-            <p className="text-slate-300 text-sm">
-              <span className="text-slate-500">Senha:</span> admin123
-            </p>
+          {/* Demo Credentials */}
+          <div className="mt-8 p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
+            <p className="text-xs text-slate-400 mb-2">Credenciais de demonstração:</p>
+            <p className="text-sm text-slate-300">Usuário: <span className="font-mono text-purple-400">admin</span></p>
+            <p className="text-sm text-slate-300">Senha: <span className="font-mono text-purple-400">admin123</span></p>
           </div>
         </div>
       </div>

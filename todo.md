@@ -427,3 +427,22 @@
 - [x] Adicionar animações de transição
 - [x] Tornar responsivo para mobile
 - [x] Testar em diferentes resoluções
+
+## Bug: Login Não Funcionando
+
+- [ ] Resetar servidor de desenvolvimento
+- [ ] Verificar logs do console
+- [ ] Testar fluxo de login manualmente
+- [ ] Verificar se localStorage está sendo salvo
+- [ ] Verificar redirecionamento após login
+- [ ] Corrigir problema identificado
+
+## Funcionalidade Esqueci Minha Senha
+
+- [x] Adicionar link "Esqueci minha senha" na tela de login
+- [x] Criar modal/dialog para recuperação de senha
+- [x] Implementar formulário de email
+- [x] Adicionar validação de email
+- [x] Simular envio de código de recuperação
+- [x] Adicionar feedback visual (toast)
+- [x] Testar fluxo completo

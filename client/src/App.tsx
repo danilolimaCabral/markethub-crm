@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
+import { useState, useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import CRMLayout from "./components/CRMLayout";
@@ -30,8 +31,28 @@ import { isAuthenticated } from "./lib/auth";
 import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
 function Router() {
-  // DEMO MODE: Bypass authentication for demonstration
-  const authenticated = true; // isAuthenticated();
+  // Check if user is authenticated via localStorage with state
+  const [authenticated, setAuthenticated] = useState(() => {
+    const userStr = localStorage.getItem('ia_bruno_user');
+    return !!userStr;
+  });
+
+  // Listen for storage changes
+  useEffect(() => {
+    const checkAuth = () => {
+      const userStr = localStorage.getItem('ia_bruno_user');
+      setAuthenticated(!!userStr);
+    };
+    
+    window.addEventListener('storage', checkAuth);
+    // Also check periodically
+    const interval = setInterval(checkAuth, 500);
+    
+    return () => {
+      window.removeEventListener('storage', checkAuth);
+      clearInterval(interval);
+    };
+  }, []);
 
   // Public routes (no authentication required)
   if (!authenticated) {
