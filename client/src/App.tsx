@@ -12,6 +12,7 @@ import API from "./pages/API";
 import Docs from "./pages/Docs";
 import Login from "./pages/Login";
 import Callback from "./pages/Callback";
+import LandingPage from "./pages/LandingPage";
 import Setup2FA from "./pages/Setup2FA";
 import Verify2FA from "./pages/Verify2FA";
 import Settings from './pages/Settings';
@@ -65,10 +66,11 @@ function Router() {
   if (!authenticated) {
     return (
       <Switch>
+        <Route path="/" component={LandingPage} />
         <Route path="/login" component={Login} />
         <Route path="/verify-2fa" component={Verify2FA} />
         <Route path="/callback" component={Callback} />
-        <Route component={Login} />
+        <Route component={LandingPage} />
       </Switch>
     );
   }
@@ -81,8 +83,8 @@ function Router() {
           <Route path="/chat" component={ChatIA} />
           <Route path="/pos-vendas" component={PosVendas} />
         <Route path="/callback" component={Callback} />
-        <Route path={"/setup"} component={Setup} />
-        <Route path={"/pedidos"} component={Pedidos} />         <Route path="/produtos" component={Produtos} />
+        <Route path="/pedidos" component={Pedidos} />
+        <Route path="/produtos" component={Produtos} />
         <Route path={"/anuncios"} component={API} />
         <Route path={"/clientes"} component={API} />
           <Route path="/entregas" component={Entregas} />
@@ -90,7 +92,8 @@ function Router() {
         <Route path="/contas-pagar" component={ContasPagar} />
         <Route path="/contas-receber" component={ContasReceber} />
         <Route path="/fluxo-caixa" component={FluxoCaixa} />
-        <Route path={"/notas"} component={API} />        <Route path="/relatorios" component={API} />
+        <Route path={"/notas"} component={API} />
+        <Route path="/relatorios" component={API} />
         <Route path="/vendas" component={AnaliseVendas} />
         <Route path="/configuracoes" component={Settings} />
         <Route path="/setup-2fa" component={Setup2FA} />
