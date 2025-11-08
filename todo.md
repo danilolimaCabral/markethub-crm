@@ -446,3 +446,26 @@
 - [x] Simular envio de código de recuperação
 - [x] Adicionar feedback visual (toast)
 - [x] Testar fluxo completo
+
+## Botão Sincronizar Agora
+
+- [x] Adicionar botão "Sincronizar Agora" no Dashboard
+- [x] Criar função para executar sync-data.ts manualmente
+- [x] Adicionar feedback visual durante sincronização
+- [x] Mostrar toast de sucesso/erro
+- [x] Atualizar timestamp após sincronização
+
+## Correção de Warnings React
+
+- [ ] Corrigir warning de refs em Card dentro de DialogTrigger
+- [ ] Corrigir warning de refs em Button dentro de DialogTrigger
+- [ ] Adicionar keys únicas em lista de Dialogs no DashboardCRM
+- [ ] Testar se warnings foram resolvidos
+
+## Bug: Erro 404 no Logout
+
+- [x] Investigar erro 404 ao clicar em Sair
+- [x] Verificar rota de logout no App.tsx
+- [x] Corrigir redirecionamento após logout (mudado para /)
+- [x] Limpar localStorage corretamente
+- [x] Testar fluxo completo de logout
