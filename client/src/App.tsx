@@ -12,6 +12,8 @@ import API from "./pages/API";
 import Docs from "./pages/Docs";
 import Login from "./pages/Login";
 import Callback from "./pages/Callback";
+import Setup2FA from "./pages/Setup2FA";
+import Verify2FA from "./pages/Verify2FA";
 import Settings from './pages/Settings';
 import Metricas from './pages/Metricas';
 import ChatIA from './pages/ChatIA';
@@ -59,6 +61,7 @@ function Router() {
     return (
       <Switch>
         <Route path="/login" component={Login} />
+        <Route path="/verify-2fa" component={Verify2FA} />
         <Route path="/callback" component={Callback} />
         <Route component={Login} />
       </Switch>
@@ -85,6 +88,7 @@ function Router() {
         <Route path={"/notas"} component={API} />        <Route path="/relatorios" component={API} />
         <Route path="/vendas" component={AnaliseVendas} />
         <Route path="/configuracoes" component={Settings} />
+        <Route path="/setup-2fa" component={Setup2FA} />
         <Route path="/importacao" component={Importacao} />
         <Route path="/inteligencia-mercado" component={InteligenciaMercado} />
         <Route path="/tabela-preco" component={TabelaPreco} />

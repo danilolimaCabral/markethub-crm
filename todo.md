@@ -462,10 +462,48 @@
 - [ ] Adicionar keys únicas em lista de Dialogs no DashboardCRM
 - [ ] Testar se warnings foram resolvidos
 
-## Bug: Erro 404 no Logout
+## Bug: Logout Não Funcionando
 
 - [x] Investigar erro 404 ao clicar em Sair
 - [x] Verificar rota de logout no App.tsx
 - [x] Corrigir redirecionamento após logout (mudado para /)
-- [x] Limpar localStorage corretamente
-- [x] Testar fluxo completo de logout
+- [x] Verificar se logout() está limpando localStorage
+- [x] Corrigir logout para limpar todos os dados (lexos_user, ia_bruno_user)
+- [x] Adicionar localStorage.clear() para garantir
+
+## Autenticação de 2 Fatores (2FA)
+
+- [ ] Criar tela de configuração de 2FA
+- [ ] Implementar geração de código TOTP (Time-based One-Time Password)
+- [ ] Criar tela de verificação de código 2FA no login
+- [ ] Adicionar suporte a QR Code para apps autenticadores
+- [ ] Implementar backup codes para recuperação
+- [ ] Adicionar opção de envio de código por email
+- [ ] Criar interface para ativar/desativar 2FA
+- [ ] Armazenar secret do 2FA de forma segura
+- [ ] Testar fluxo completo de 2FA
+
+## Autenticação de 2 Fatores (2FA)
+
+- [x] Criar biblioteca TOTP para gerar e validar códigos
+- [x] Implementar geração de secret aleatório em base32
+- [x] Implementar função de verificação TOTP com janela de tempo
+- [x] Criar função para gerar URL de QR Code
+- [x] Implementar geração de códigos de backup
+- [x] Instalar biblioteca qrcode para geração de QR Code
+- [x] Criar página Setup2FA com 3 etapas (setup, verify, backup)
+- [x] Implementar geração e exibição de QR Code
+- [x] Adicionar opção de copiar secret manualmente
+- [x] Criar sistema de verificação de código na configuração
+- [x] Implementar download de códigos de backup
+- [x] Criar página Verify2FA para validação no login
+- [x] Adicionar suporte a códigos de backup na verificação
+- [x] Atualizar Login.tsx para verificar se 2FA está habilitado
+- [x] Redirecionar para Verify2FA quando 2FA ativo
+- [x] Adicionar rotas /setup-2fa e /verify-2fa no App.tsx
+- [x] Criar aba de Segurança na página de Configurações
+- [x] Adicionar botão "Configurar 2FA" quando desativado
+- [x] Mostrar status ativo quando 2FA habilitado
+- [x] Implementar botão de desativar 2FA
+- [x] Adicionar persistência de configuração 2FA no localStorage
+- [x] Testar fluxo completo de configuração e uso

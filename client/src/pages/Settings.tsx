@@ -17,12 +17,39 @@ import {
   Link as LinkIcon,
   Moon,
   Sun,
-  Monitor
+  Monitor,
+  Shield,
+  Lock
 } from 'lucide-react';
+import { useLocation } from 'wouter';
 import { saveAPIConfig, getAPIConfig, isAPIConfigured } from '@/lib/api-config';
 
 export default function Settings() {
   const { theme, setTheme } = useTheme();
+  const [, setLocation] = useLocation();
+  
+  // Verificar se 2FA está habilitado
+  const [is2FAEnabled, setIs2FAEnabled] = useState(() => {
+    const user = JSON.parse(localStorage.getItem('ia_bruno_user') || '{}');
+    const users = JSON.parse(localStorage.getItem('ia_bruno_users') || '[]');
+    const existingUser = users.find((u: any) => u.username === user.username);
+    return existingUser?.twoFactorEnabled || false;
+  });
+
+  const handleDisable2FA = () => {
+    const user = JSON.parse(localStorage.getItem('ia_bruno_user') || '{}');
+    const users = JSON.parse(localStorage.getItem('ia_bruno_users') || '[]');
+    const userIndex = users.findIndex((u: any) => u.username === user.username);
+    
+    if (userIndex !== -1) {
+      users[userIndex].twoFactorEnabled = false;
+      users[userIndex].twoFactorSecret = null;
+      users[userIndex].backupCodes = [];
+      localStorage.setItem('ia_bruno_users', JSON.stringify(users));
+      setIs2FAEnabled(false);
+      toast.success('Autenticação de 2 fatores desativada');
+    }
+  };
   
   const [apiConfig, setApiConfig] = useState(() => {
     const config = getAPIConfig();
@@ -58,10 +85,14 @@ export default function Settings() {
       </div>
 
       <Tabs defaultValue="api" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-3 lg:w-[500px]">
+        <TabsList className="grid w-full grid-cols-4 lg:w-[700px]">
           <TabsTrigger value="api">
             <Key className="w-4 h-4 mr-2" />
             API Lexos
+          </TabsTrigger>
+          <TabsTrigger value="security">
+            <Shield className="w-4 h-4 mr-2" />
+            Segurança
           </TabsTrigger>
           <TabsTrigger value="appearance">
             <Palette className="w-4 h-4 mr-2" />
@@ -180,6 +211,91 @@ export default function Settings() {
                   Escuro
                 </Button>
               </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="security" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Shield className="w-5 h-5" />
+                Autenticação de 2 Fatores (2FA)
+              </CardTitle>
+              <CardDescription>
+                Adicione uma camada extra de segurança à sua conta
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {is2FAEnabled ? (
+                <>
+                  <Alert className="bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800">
+                    <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
+                    <AlertDescription className="text-green-800 dark:text-green-200">
+                      ✅ Autenticação de 2 fatores ativada! Sua conta está protegida.
+                    </AlertDescription>
+                  </Alert>
+
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3 p-4 bg-muted rounded-lg">
+                      <Lock className="w-5 h-5 text-primary mt-0.5" />
+                      <div className="flex-1">
+                        <h4 className="font-medium mb-1">Proteção Ativa</h4>
+                        <p className="text-sm text-muted-foreground">
+                          Você precisará do código do seu aplicativo autenticador sempre que fizer login.
+                        </p>
+                      </div>
+                    </div>
+
+                    <Button 
+                      variant="destructive" 
+                      onClick={handleDisable2FA}
+                      className="gap-2"
+                    >
+                      Desativar 2FA
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <Alert>
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertDescription>
+                      A autenticação de 2 fatores adiciona uma camada extra de segurança, exigindo um código do seu celular além da senha.
+                    </AlertDescription>
+                  </Alert>
+
+                  <div className="space-y-3">
+                    <h4 className="font-medium">Benefícios:</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        Proteção contra acesso não autorizado
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        Códigos temporários que mudam a cada 30 segundos
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        Códigos de backup para emergências
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        Compatível com Google Authenticator, Authy e outros
+                      </li>
+                    </ul>
+                  </div>
+
+                  <Button 
+                    onClick={() => setLocation('/setup-2fa')}
+                    className="gap-2"
+                  >
+                    <Shield className="w-4 h-4" />
+                    Configurar 2FA
+                  </Button>
+                </>
+              )}
             </CardContent>
           </Card>
         </TabsContent>

@@ -36,15 +36,27 @@ export default function Login() {
     setTimeout(() => {
       // Validar credenciais (admin/admin123)
       if (username === 'admin' && password === 'admin123') {
-        // Salvar usuário no localStorage
-        localStorage.setItem('ia_bruno_user', JSON.stringify({
+        const user = {
           username: 'admin',
           name: 'Administrador',
           role: 'admin'
-        }));
+        };
+
+        // Verificar se 2FA está habilitado
+        const users = JSON.parse(localStorage.getItem('ia_bruno_users') || '[]');
+        const existingUser = users.find((u: any) => u.username === username);
         
-        toast.success('Login realizado com sucesso!');
-        setLocation('/');
+        if (existingUser && existingUser.twoFactorEnabled) {
+          // Salvar dados temporários para verificação 2FA
+          sessionStorage.setItem('temp_login_user', JSON.stringify(user));
+          toast.info('Digite o código de verificação');
+          setLocation('/verify-2fa');
+        } else {
+          // Login direto sem 2FA
+          localStorage.setItem('ia_bruno_user', JSON.stringify(user));
+          toast.success('Login realizado com sucesso!');
+          setLocation('/');
+        }
       } else {
         toast.error('Usuário ou senha incorretos');
       }
