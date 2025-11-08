@@ -598,3 +598,70 @@
 - [x] Atualizar perfis pré-configurados (Admin, Vendedor, Financeiro, Operacional)
 - [x] Atualizar mapeamento ROUTE_TO_MODULE no CRMLayout
 - [x] Atualizar hook usePermissions com lista completa
+
+## Proteção de Rotas
+
+- [ ] Criar componente ProtectedRoute
+- [ ] Implementar verificação de permissões
+- [ ] Criar página 403 (Acesso Negado)
+- [ ] Integrar ProtectedRoute no App.tsx
+- [ ] Testar acesso com diferentes perfis
+
+## Gerenciamento de Perfis Personalizados
+
+- [ ] Criar página de gerenciamento de perfis
+- [ ] Implementar CRUD de perfis
+- [ ] Permitir criar perfis personalizados
+- [ ] Salvar perfis no localStorage
+- [ ] Integrar perfis personalizados no formulário de usuários
+- [ ] Adicionar opção de duplicar perfil existente
+
+## Sistema de Log de Auditoria
+
+- [ ] Criar função de registro de logs
+- [ ] Registrar login/logout
+- [ ] Registrar criação/edição/exclusão de usuários
+- [ ] Registrar mudanças de permissões
+- [ ] Salvar logs no localStorage
+- [ ] Criar página de visualização de logs
+- [ ] Implementar filtros de logs (data, usuário, ação)
+- [ ] Adicionar exportação de logs
+
+## Correção Tabela de Preços
+
+- [ ] Verificar erro na página TabelaPreco.tsx
+- [ ] Corrigir imports ou componentes quebrados
+- [ ] Testar funcionamento da página
+
+## Documentação Completa do Sistema
+
+- [x] Criar documento DOCUMENTACAO_COMPLETA.md
+- [x] Documentar cada módulo do sistema (22 módulos)
+- [x] Documentar funcionalidades principais
+- [x] Criar índice navegável
+- [x] Documentar arquitetura e tecnologias
+- [x] Documentar sistema de autenticação e 2FA
+- [x] Documentar sistema de permissões
+- [x] Documentar integrações (Mercado Livre)
+
+## Guia de Instalação e Deploy
+
+- [x] Criar documento GUIA_INSTALACAO.md
+- [x] Documentar requisitos do sistema
+- [x] Guia de instalação local passo a passo
+- [x] Guia de deploy na nuvem (Vercel, Netlify, GitHub Pages, AWS, VPS)
+- [x] Configuração de variáveis de ambiente
+- [x] Guia de personalização (nome, logo, cores)
+- [x] Troubleshooting comum com soluções
+
+## Comercialização do Produto
+
+- [x] Sugerir 5 nomes comerciais com análise
+- [x] Criar documento COMERCIALIZACAO.md
+- [x] Listar 8 diferenciais competitivos
+- [x] Sugerir 3 modelos de preços (licença, SaaS, híbrido)
+- [x] Criar pitch de vendas (curto, médio e longo)
+- [x] Criar argumentos FAB (Features, Advantages, Benefits)
+- [x] Listar objeções comuns e respostas
+- [x] Sugerir bônus e incentivos
+- [x] Definir público-alvo e posicionamento
