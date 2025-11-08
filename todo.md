@@ -821,3 +821,10 @@
 - [ ] Preparar conteúdo dos slides de apresentação
 - [ ] Gerar slides profissionais
 - [ ] Criar guia de gravação passo a passo
+
+## Nova Logo MarketHub CRM
+
+- [x] Gerar nova logo profissional (M+H estilizado com hub/rede)
+- [x] Aplicar logo no sistema (logo-final.png)
+- [x] Forçar atualização do cache com Date.now()
+- [x] Logo com gradiente roxo/azul aplicada
