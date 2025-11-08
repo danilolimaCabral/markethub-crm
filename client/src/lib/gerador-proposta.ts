@@ -268,7 +268,7 @@ export function gerarPropostaHTML(dados: DadosProposta): string {
   </div>
 
   <div class="footer">
-    <p><strong>IA BRUNO CRM</strong></p>
+    <p><strong>MarketHub CRM</strong></p>
     <p>Sistema Inteligente de Gestão</p>
     <p>Proposta gerada automaticamente em ${hoje}</p>
   </div>

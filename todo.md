@@ -703,3 +703,13 @@
 - [x] Atualizar sidebar colors (blue-600)
 - [x] Manter charts em tons de azul
 - [x] Cores aplicadas em todo o sistema
+
+## Correção de Nome Antigo
+
+- [x] Buscar "IA BRUNO CRM" em todos os arquivos
+- [x] Substituir por "MarketHub CRM" no CRMLayout
+- [x] Atualizar página de login
+- [x] Atualizar logo no CRMLayout
+- [x] Atualizar gerador de proposta
+- [x] Atualizar biblioteca TOTP
+- [x] Sistema completamente renomeado

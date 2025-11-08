@@ -178,12 +178,12 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
         <div className="p-3 md:p-4 border-b border-border">
           <div className="flex items-center gap-3">
             <img 
-              src="/logo-ia-bruno-crm.png" 
-              alt="IA BRUNO CRM" 
+              src="/logo-markethub.png" 
+              alt="MarketHub CRM" 
               className="w-8 h-8 md:w-10 md:h-10 object-contain"
             />
             <div className="min-w-0">
-              <h1 className="font-bold text-base md:text-lg text-foreground truncate">IA BRUNO CRM</h1>
+              <h1 className="font-bold text-base md:text-lg text-foreground truncate">MarketHub CRM</h1>
               <p className="text-xs text-muted-foreground hidden md:block">Sistema Inteligente de Gestão</p>
             </div>
           </div>
