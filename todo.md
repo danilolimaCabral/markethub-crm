@@ -687,3 +687,19 @@
 - [x] Aplicar cores da identidade visual (verde emerald + azul)
 - [x] Salvar logo em client/public/logo-markethub.png
 - [x] Aplicar cores emerald-600 como primary no index.css
+
+## Limpeza de Módulos Não Implementados
+
+- [ ] Verificar quais páginas realmente existem
+- [ ] Remover módulos não implementados da lista de permissões
+- [ ] Atualizar AVAILABLE_MODULES em Users.tsx
+- [ ] Atualizar perfis pré-configurados
+- [ ] Manter apenas módulos com páginas funcionais
+
+## Atualização de Paleta de Cores
+
+- [x] Mudar cores de verde esmeralda para azul profissional
+- [x] Atualizar primary colors no index.css (blue-600)
+- [x] Atualizar sidebar colors (blue-600)
+- [x] Manter charts em tons de azul
+- [x] Cores aplicadas em todo o sistema

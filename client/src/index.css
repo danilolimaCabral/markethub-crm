@@ -43,11 +43,11 @@
 }
 
 :root {
-  --primary: var(--color-emerald-600);
-  --primary-foreground: var(--color-emerald-50);
-  --sidebar-primary: var(--color-emerald-600);
-  --sidebar-primary-foreground: var(--color-emerald-50);
-  --chart-1: var(--color-emerald-300);
+  --primary: var(--color-blue-600);
+  --primary-foreground: var(--color-blue-50);
+  --sidebar-primary: var(--color-blue-600);
+  --sidebar-primary-foreground: var(--color-blue-50);
+  --chart-1: var(--color-blue-300);
   --chart-2: var(--color-blue-500);
   --chart-3: var(--color-blue-600);
   --chart-4: var(--color-blue-700);
