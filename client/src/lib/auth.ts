@@ -1,13 +1,13 @@
 import { generateCodeVerifier, generateCodeChallenge, generateState, storePKCEParams, retrievePKCEParams } from './pkce';
 
 /**
- * OAuth2 Configuration for Lexos Hub
+ * OAuth2 Configuration for MarketHub CRM
  */
 const OAUTH_CONFIG = {
   authorizationEndpoint: 'https://api.example.com/Autenticacao/',
   tokenEndpoint: 'https://api.example.com/Autenticacao/Token',
   refreshEndpoint: 'https://api.example.com/Autenticacao/RefreshToken',
-  clientId: '6b6c14ef-a27a-4467-8bb3-e0d7dc4b206f', // Lexos API Client ID
+  clientId: '6b6c14ef-a27a-4467-8bb3-e0d7dc4b206f', // External API Client ID
   redirectUri: window.location.origin + '/callback',
   scope: 'openid',
 };
@@ -238,7 +238,7 @@ export function logout(): void {
   clearTokens();
   // Limpar todos os dados de autenticação
   localStorage.removeItem('markethub_user');
-  localStorage.removeItem('ia_bruno_user'); // Manter para compatibilidade
+  localStorage.removeItem('markethub_user'); // Manter para compatibilidade
   localStorage.clear(); // Limpar tudo para garantir
   window.location.href = '/';
 }

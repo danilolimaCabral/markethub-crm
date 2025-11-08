@@ -759,3 +759,13 @@
 - [x] Copiar logo v2 para logo.png
 - [x] Adicionar cache busting (?v=2)
 - [x] Logo atualizada com sucesso
+
+## Forçar Atualização da Logo
+
+- [x] Usar timestamp dinâmico no caminho da logo
+- [x] Criar logo-new-1762577940.png
+- [x] Atualizar const.ts
+- [x] Substituir todas as referências a "Lexos Hub" por "MarketHub CRM"
+- [x] Substituir "IA BRUNO" por "MarketHub"
+- [x] Substituir URLs de api.lexos.com.br por api.example.com
+- [x] Limpar completamente o código de nomes antigos

@@ -28,7 +28,7 @@ export default function Docs() {
     {
       title: "Referência",
       items: [
-        { name: "API Lexos Hub", desc: "Documentação da API" },
+        { name: "API MarketHub CRM", desc: "Documentação da API" },
         { name: "Ferramentas MCP", desc: "16 ferramentas disponíveis" },
         { name: "Renovação de Tokens", desc: "Como renovar tokens" }
       ]
@@ -81,20 +81,20 @@ export default function Docs() {
             </CardHeader>
             <CardContent className="space-y-2">
               <a
-                href="https://lexosapi.developer.azure-api.net/"
+                href="https://api.example.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-primary hover:underline"
               >
-                Portal da API Lexos Hub <ExternalLink className="w-4 h-4" />
+                Portal da API MarketHub CRM <ExternalLink className="w-4 h-4" />
               </a>
               <a
-                href="http://chat.lexos.com.br/"
+                href="http://support.example.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-primary hover:underline"
               >
-                Suporte Lexos Hub <ExternalLink className="w-4 h-4" />
+                Suporte MarketHub CRM <ExternalLink className="w-4 h-4" />
               </a>
             </CardContent>
           </Card>

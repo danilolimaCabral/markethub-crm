@@ -4,7 +4,7 @@ export const APP_TITLE = import.meta.env.VITE_APP_TITLE || "MarketHub CRM";
 
 export const APP_LOGO =
   import.meta.env.VITE_APP_LOGO ||
-  "/logo.png?v=2";
+  "/logo-new-1762577940.png";
 
 // Generate login URL at runtime so redirect URI reflects the current origin.
 export const getLoginUrl = () => {

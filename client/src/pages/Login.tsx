@@ -45,7 +45,7 @@ export default function Login() {
         };
 
         // Verificar se 2FA está habilitado
-        const users = JSON.parse(localStorage.getItem('ia_bruno_users') || '[]');
+        const users = JSON.parse(localStorage.getItem('markethub_users') || '[]');
         const existingUser = users.find((u: any) => u.username === username);
         
         if (existingUser && existingUser.twoFactorEnabled) {
@@ -55,7 +55,7 @@ export default function Login() {
           setLocation('/verify-2fa');
         } else {
           // Login direto sem 2FA
-          localStorage.setItem('ia_bruno_user', JSON.stringify(user));
+          localStorage.setItem('markethub_user', JSON.stringify(user));
           toast.success('Login realizado com sucesso!');
           setLocation('/');
         }
@@ -113,7 +113,7 @@ export default function Login() {
       };
 
       // Salvar usuário no localStorage
-      localStorage.setItem('ia_bruno_user', JSON.stringify(user));
+      localStorage.setItem('markethub_user', JSON.stringify(user));
       
       toast.success(`Bem-vindo, ${decoded.name}!`);
       setLocation('/');

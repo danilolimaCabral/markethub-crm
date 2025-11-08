@@ -27,7 +27,7 @@ export default function Setup2FA() {
     setSecret(newSecret);
 
     // Pegar nome do usuário do localStorage
-    const user = JSON.parse(localStorage.getItem('ia_bruno_user') || '{}');
+    const user = JSON.parse(localStorage.getItem('markethub_user') || '{}');
     const accountName = user.username || 'admin';
 
     // Gerar URL do QR Code
@@ -57,7 +57,7 @@ export default function Setup2FA() {
   };
 
   const handleDownloadBackupCodes = () => {
-    const text = `IA BRUNO CRM - Códigos de Backup 2FA\n\n${backupCodes.join('\n')}\n\nGuarde estes códigos em local seguro. Cada código pode ser usado apenas uma vez.`;
+    const text = `MarketHub CRM - Códigos de Backup 2FA\n\n${backupCodes.join('\n')}\n\nGuarde estes códigos em local seguro. Cada código pode ser usado apenas uma vez.`;
     const blob = new Blob([text], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -81,11 +81,11 @@ export default function Setup2FA() {
 
       if (isValid) {
         // Salvar configuração 2FA no localStorage
-        const user = JSON.parse(localStorage.getItem('ia_bruno_user') || '{}');
+        const user = JSON.parse(localStorage.getItem('markethub_user') || '{}');
         user.twoFactorEnabled = true;
         user.twoFactorSecret = secret;
         user.backupCodes = backupCodes;
-        localStorage.setItem('ia_bruno_user', JSON.stringify(user));
+        localStorage.setItem('markethub_user', JSON.stringify(user));
 
         toast.success('2FA configurado com sucesso!');
         setStep('backup');

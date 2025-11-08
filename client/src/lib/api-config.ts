@@ -10,7 +10,7 @@ export interface LexosAPIConfig {
   expiresAt?: number;
 }
 
-const CONFIG_KEY = 'lexos_api_config';
+const CONFIG_KEY = 'markethub_api_config';
 
 /**
  * Salvar configuração da API

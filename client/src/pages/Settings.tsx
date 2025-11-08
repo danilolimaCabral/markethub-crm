@@ -30,22 +30,22 @@ export default function Settings() {
   
   // Verificar se 2FA está habilitado
   const [is2FAEnabled, setIs2FAEnabled] = useState(() => {
-    const user = JSON.parse(localStorage.getItem('ia_bruno_user') || '{}');
-    const users = JSON.parse(localStorage.getItem('ia_bruno_users') || '[]');
+    const user = JSON.parse(localStorage.getItem('markethub_user') || '{}');
+    const users = JSON.parse(localStorage.getItem('markethub_users') || '[]');
     const existingUser = users.find((u: any) => u.username === user.username);
     return existingUser?.twoFactorEnabled || false;
   });
 
   const handleDisable2FA = () => {
-    const user = JSON.parse(localStorage.getItem('ia_bruno_user') || '{}');
-    const users = JSON.parse(localStorage.getItem('ia_bruno_users') || '[]');
+    const user = JSON.parse(localStorage.getItem('markethub_user') || '{}');
+    const users = JSON.parse(localStorage.getItem('markethub_users') || '[]');
     const userIndex = users.findIndex((u: any) => u.username === user.username);
     
     if (userIndex !== -1) {
       users[userIndex].twoFactorEnabled = false;
       users[userIndex].twoFactorSecret = null;
       users[userIndex].backupCodes = [];
-      localStorage.setItem('ia_bruno_users', JSON.stringify(users));
+      localStorage.setItem('markethub_users', JSON.stringify(users));
       setIs2FAEnabled(false);
       toast.success('Autenticação de 2 fatores desativada');
     }

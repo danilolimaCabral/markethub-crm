@@ -6,7 +6,7 @@ import { Package, Search, TrendingUp, TrendingDown, AlertTriangle, CheckCircle, 
 import { useState } from "react";
 import { REAL_CATEGORIES } from "@/data/real-data";
 
-// Categorias reais do Lexos Hub
+// Categorias reais do MarketHub CRM
 const categorias = REAL_CATEGORIES.map(cat => cat.name);
 
 // Gerar 248 produtos baseados nas categorias reais

@@ -103,7 +103,7 @@ export default function Users() {
 
   // Carregar usuários do localStorage
   useEffect(() => {
-    const savedUsers = localStorage.getItem('ia_bruno_users');
+    const savedUsers = localStorage.getItem('markethub_users');
     if (savedUsers) {
       setUsers(JSON.parse(savedUsers));
     } else {
@@ -117,7 +117,7 @@ export default function Users() {
         permissions: PERMISSION_PROFILES.admin.modules
       };
       setUsers([defaultAdmin]);
-      localStorage.setItem('ia_bruno_users', JSON.stringify([defaultAdmin]));
+      localStorage.setItem('markethub_users', JSON.stringify([defaultAdmin]));
     }
   }, []);
 
@@ -199,7 +199,7 @@ export default function Users() {
           : u
       );
       setUsers(updatedUsers);
-      localStorage.setItem('ia_bruno_users', JSON.stringify(updatedUsers));
+      localStorage.setItem('markethub_users', JSON.stringify(updatedUsers));
       toast.success('Usuário atualizado com sucesso!');
     } else {
       // Criar novo usuário
@@ -209,7 +209,7 @@ export default function Users() {
       };
       const updatedUsers = [...users, newUser];
       setUsers(updatedUsers);
-      localStorage.setItem('ia_bruno_users', JSON.stringify(updatedUsers));
+      localStorage.setItem('markethub_users', JSON.stringify(updatedUsers));
       toast.success('Usuário criado com sucesso!');
     }
 
@@ -226,7 +226,7 @@ export default function Users() {
     if (confirm('Tem certeza que deseja excluir este usuário?')) {
       const updatedUsers = users.filter(u => u.id !== userId);
       setUsers(updatedUsers);
-      localStorage.setItem('ia_bruno_users', JSON.stringify(updatedUsers));
+      localStorage.setItem('markethub_users', JSON.stringify(updatedUsers));
       toast.success('Usuário excluído com sucesso!');
     }
   };

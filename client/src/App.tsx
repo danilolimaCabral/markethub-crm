@@ -39,14 +39,14 @@ import { useTokenRefresh } from "./hooks/useTokenRefresh";
 function Router() {
   // Check if user is authenticated via localStorage with state
   const [authenticated, setAuthenticated] = useState(() => {
-    const userStr = localStorage.getItem('ia_bruno_user');
+    const userStr = localStorage.getItem('markethub_user');
     return !!userStr;
   });
 
   // Listen for storage changes
   useEffect(() => {
     const checkAuth = () => {
-      const userStr = localStorage.getItem('ia_bruno_user');
+      const userStr = localStorage.getItem('markethub_user');
       setAuthenticated(!!userStr);
     };
     

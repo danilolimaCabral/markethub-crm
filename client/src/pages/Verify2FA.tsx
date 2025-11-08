@@ -34,7 +34,7 @@ export default function Verify2FA() {
       }
 
       // Pegar usuário completo do localStorage
-      const users = JSON.parse(localStorage.getItem('ia_bruno_users') || '[]');
+      const users = JSON.parse(localStorage.getItem('markethub_users') || '[]');
       const user = users.find((u: any) => u.username === tempUser.username);
 
       if (!user || !user.twoFactorEnabled) {
@@ -58,7 +58,7 @@ export default function Verify2FA() {
           // Atualizar no localStorage
           const userIndex = users.findIndex((u: any) => u.username === user.username);
           users[userIndex] = user;
-          localStorage.setItem('ia_bruno_users', JSON.stringify(users));
+          localStorage.setItem('markethub_users', JSON.stringify(users));
           
           isValid = true;
           toast.info('Código de backup usado. Restam ' + backupCodes.length + ' códigos.');
@@ -70,7 +70,7 @@ export default function Verify2FA() {
 
       if (isValid) {
         // Login bem-sucedido
-        localStorage.setItem('ia_bruno_user', JSON.stringify(user));
+        localStorage.setItem('markethub_user', JSON.stringify(user));
         sessionStorage.removeItem('temp_login_user');
         
         toast.success('Login realizado com sucesso!');

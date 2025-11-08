@@ -49,7 +49,7 @@ export default function Dashboard() {
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle>Status da Integração</CardTitle>
-                  <CardDescription>Informações sobre sua conexão com o Lexos Hub</CardDescription>
+                  <CardDescription>Informações sobre sua conexão com o MarketHub CRM</CardDescription>
                 </div>
                 <Button variant="outline" size="sm">
                   <RefreshCw className="w-4 h-4 mr-2" />

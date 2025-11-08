@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { TrendingUp, TrendingDown, DollarSign, ShoppingCart, Package, Calendar } from "lucide-react";
 import { REAL_CATEGORIES } from "@/data/real-data";
 
-// Dados reais do Lexos Hub
+// Dados reais do MarketHub CRM
 const dadosReais = {
   faturamentoTotal: 379979,
   pedidosTotal: 1161,

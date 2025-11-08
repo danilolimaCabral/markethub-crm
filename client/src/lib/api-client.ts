@@ -1,9 +1,9 @@
 import { getValidAccessToken, getIntegrationKey, isAPIConfigured } from './api-config';
 
 /**
- * Lexos Hub API Configuration
+ * MarketHub CRM API Configuration
  */
-const LEXOS_API_BASE_URL = 'https://api.lexos.com.br';
+const MARKETHUB_API_BASE_URL = 'https://api.example.com';
 
 export interface LexosAPIError {
   message: string;
@@ -12,7 +12,7 @@ export interface LexosAPIError {
 }
 
 /**
- * Make authenticated request to Lexos Hub API
+ * Make authenticated request to MarketHub CRM API
  */
 export async function callLexosAPI<T = any>(
   endpoint: string,
@@ -32,7 +32,7 @@ export async function callLexosAPI<T = any>(
   }
 
   // Build full URL
-  const url = `${LEXOS_API_BASE_URL}${endpoint}`;
+  const url = `${MARKETHUB_API_BASE_URL}${endpoint}`;
 
   // Merge headers
   const headers = {
@@ -66,13 +66,13 @@ export async function callLexosAPI<T = any>(
 
     return await response.json();
   } catch (error) {
-    console.error('Lexos API Error:', error);
+    console.error('External API Error:', error);
     throw error;
   }
 }
 
 /**
- * API Methods for Lexos Hub
+ * API Methods for MarketHub CRM
  */
 
 // ========== PEDIDOS (Orders) ==========

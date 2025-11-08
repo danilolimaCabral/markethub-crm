@@ -18,7 +18,7 @@ export function usePermissions() {
     const checkPermissions = () => {
       try {
         // Obter usuário logado
-        const userStr = localStorage.getItem('ia_bruno_user');
+        const userStr = localStorage.getItem('markethub_user');
         if (!userStr) {
           setUserPermissions([]);
           setIsAdmin(false);
@@ -37,7 +37,7 @@ export function usePermissions() {
         }
 
         // Buscar permissões do usuário na lista de usuários
-        const usersStr = localStorage.getItem('ia_bruno_users');
+        const usersStr = localStorage.getItem('markethub_users');
         if (usersStr) {
           const users = JSON.parse(usersStr);
           const user = users.find((u: any) => u.username === currentUser.username);

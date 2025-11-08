@@ -49,11 +49,11 @@ export default function Setup() {
   };
 
   const handleDownloadEnv = () => {
-    const envContent = `LEXOS_API_KEY=${tokens.accessToken}
-LEXOS_CLIENT_ID=${credentials.clientId}
-LEXOS_CLIENT_SECRET=${credentials.clientSecret}
-LEXOS_REFRESH_TOKEN=${tokens.refreshToken}
-LEXOS_API_BASE_URL=https://api.lexos.com.br`;
+    const envContent = `MARKETHUB_API_KEY=${tokens.accessToken}
+MARKETHUB_CLIENT_ID=${credentials.clientId}
+MARKETHUB_CLIENT_SECRET=${credentials.clientSecret}
+MARKETHUB_REFRESH_TOKEN=${tokens.refreshToken}
+MARKETHUB_API_BASE_URL=https://api.example.com`;
 
     const blob = new Blob([envContent], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
@@ -115,7 +115,7 @@ LEXOS_API_BASE_URL=https://api.lexos.com.br`;
                 <CardHeader>
                   <CardTitle>Credenciais da API</CardTitle>
                   <CardDescription>
-                    Insira as credenciais obtidas no portal do Lexos Hub
+                    Insira as credenciais obtidas no portal do MarketHub CRM
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -124,12 +124,12 @@ LEXOS_API_BASE_URL=https://api.lexos.com.br`;
                     <AlertDescription>
                       <strong>Onde obter:</strong> Acesse{" "}
                       <a
-                        href="https://api.lexos.com.br/Autenticacao/"
+                        href="https://api.example.com/Autenticacao/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline"
                       >
-                        api.lexos.com.br/Autenticacao/
+                        api.example.com/Autenticacao/
                       </a>{" "}
                       para criar uma aplicação e obter Client ID e Secret
                     </AlertDescription>
@@ -167,12 +167,12 @@ LEXOS_API_BASE_URL=https://api.lexos.com.br`;
                     <p className="text-sm text-muted-foreground">
                       Obtenha fazendo login em{" "}
                       <a
-                        href="https://api.lexos.com.br/Autenticacao/"
+                        href="https://api.example.com/Autenticacao/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline"
                       >
-                        api.lexos.com.br/Autenticacao/
+                        api.example.com/Autenticacao/
                       </a>{" "}
                       e copiando o código da URL de redirecionamento
                     </p>
@@ -203,12 +203,12 @@ LEXOS_API_BASE_URL=https://api.lexos.com.br`;
                   <p>
                     <strong>Passo 1:</strong> Crie uma conta de desenvolvedor em{" "}
                     <a
-                      href="https://lexosapi.developer.azure-api.net/signup"
+                      href="https://api.example.com/signup"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary hover:underline"
                     >
-                      lexosapi.developer.azure-api.net/signup
+                      api.example.com/signup
                     </a>
                   </p>
                   <p>
@@ -305,11 +305,11 @@ LEXOS_API_BASE_URL=https://api.lexos.com.br`;
                   </Alert>
 
                   <div className="bg-muted rounded-lg p-4 font-mono text-sm space-y-1">
-                    <div>LEXOS_API_KEY={tokens.accessToken.substring(0, 30)}...</div>
-                    <div>LEXOS_CLIENT_ID={credentials.clientId}</div>
-                    <div>LEXOS_CLIENT_SECRET=***</div>
-                    <div>LEXOS_REFRESH_TOKEN={tokens.refreshToken.substring(0, 20)}...</div>
-                    <div>LEXOS_API_BASE_URL=https://api.lexos.com.br</div>
+                    <div>MARKETHUB_API_KEY={tokens.accessToken.substring(0, 30)}...</div>
+                    <div>MARKETHUB_CLIENT_ID={credentials.clientId}</div>
+                    <div>MARKETHUB_CLIENT_SECRET=***</div>
+                    <div>MARKETHUB_REFRESH_TOKEN={tokens.refreshToken.substring(0, 20)}...</div>
+                    <div>MARKETHUB_API_BASE_URL=https://api.example.com</div>
                   </div>
 
                   <Button

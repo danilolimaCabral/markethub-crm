@@ -1,5 +1,5 @@
 /**
- * Dados Reais Baseados no Lexos Hub
+ * Dados Reais Baseados no MarketHub CRM
  * Fonte: Dashboard TRUE IMPORTADOS BR (06/11/2025 - DADOS REAIS)
  * Período: Últimos 30 dias
  * Atualizado via scraping automático
