@@ -523,6 +523,14 @@ export default function LandingPage() {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+            <div className="flex justify-center gap-6 mb-4">
+              <a href="/termos" className="hover:text-white transition-colors">
+                Termos de Uso
+              </a>
+              <a href="/privacidade" className="hover:text-white transition-colors">
+                Política de Privacidade
+              </a>
+            </div>
             © 2025 MarketHub CRM. Todos os direitos reservados.
           </div>
         </div>

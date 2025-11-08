@@ -43,6 +43,8 @@ import OnboardingWizard from './pages/OnboardingWizard';
 import WebhookSimulator from './pages/WebhookSimulator';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import TermosUso from './pages/TermosUso';
+import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
 import { isAuthenticated } from "./lib/auth";
 import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
@@ -80,6 +82,8 @@ function Router() {
         <Route path="/onboarding" component={OnboardingWizard} />
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:slug" component={BlogPost} />
+        <Route path="/termos" component={TermosUso} />
+        <Route path="/privacidade" component={PoliticaPrivacidade} />
         <Route path="/verify-2fa" component={Verify2FA} />
         <Route path="/callback" component={Callback} />
         <Route component={LandingPage} />
