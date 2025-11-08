@@ -828,3 +828,79 @@
 - [x] Aplicar logo no sistema (logo-final.png)
 - [x] Forçar atualização do cache com Date.now()
 - [x] Logo com gradiente roxo/azul aplicada
+
+## Kit Completo de Vendas
+
+- [ ] Criar estratégia de vendas completa
+- [ ] Definir canais de divulgação (LinkedIn, Facebook, Instagram, Google Ads)
+- [ ] Criar materiais de marketing (posts, emails, anúncios)
+- [ ] Criar argumentos e scripts de vendas
+- [ ] Criar proposta comercial profissional
+- [ ] Criar landing page de vendas
+- [ ] Criar funil de vendas
+- [ ] Criar follow-up automático
+
+## Módulo de Produtos Funcional
+
+- [x] Criar página Produtos.tsx com CRUD completo
+- [x] Implementar listagem de produtos
+- [x] Criar formulário de cadastro de produto
+- [x] Adicionar campos: nome, SKU, preço, estoque, categoria, descrição
+- [x] Implementar upload de imagem do produto (base64)
+- [x] Criar função de editar produto
+- [x] Criar função de excluir produto
+- [x] Salvar produtos no localStorage (markethub_produtos)
+- [x] Adicionar filtros e busca
+- [x] Criar modal de visualização de detalhes
+- [x] Criar modal de edição
+- [x] Criar modal de adição
+- [x] Implementar toast de sucesso/erro
+- [ ] Integrar com sincronização do Mercado Livre
+
+## Dashboard com Métricas Reais
+
+- [ ] Atualizar Dashboard para usar dados do localStorage
+- [ ] Criar card de Vendas do Mês (dados reais)
+- [ ] Criar card de Pedidos Pendentes (dados reais)
+- [ ] Criar card de Produtos em Estoque (dados reais)
+- [ ] Criar card de Faturamento (dados reais)
+- [ ] Adicionar gráficos interativos
+- [ ] Implementar atualização em tempo real
+
+## Sistema de Notificações
+
+- [ ] Criar componente de central de notificações
+- [ ] Implementar badge de notificações não lidas
+- [ ] Criar notificação de pedidos novos
+- [ ] Criar notificação de estoque baixo
+- [ ] Criar notificação de contas a vencer
+- [ ] Criar notificação de mensagens de clientes
+- [ ] Salvar notificações no localStorage
+- [ ] Adicionar som de alerta (opcional)
+- [ ] Implementar marcar como lida
+
+## Diagramas do Sistema
+
+- [ ] Criar diagrama de arquitetura geral
+- [ ] Criar diagrama de banco de dados (ER Diagram)
+- [ ] Criar diagrama de fluxo de autenticação
+- [ ] Criar diagrama de fluxo de integração com marketplaces
+- [ ] Criar diagrama de componentes frontend
+- [ ] Criar diagrama de casos de uso
+- [ ] Criar diagrama de sequência (principais fluxos)
+
+## Relatório de Teste Geral
+
+- [ ] Criar documento de plano de testes
+- [ ] Testar módulo de Autenticação (Login, 2FA, Logout)
+- [ ] Testar módulo de Usuários (CRUD, Permissões)
+- [ ] Testar módulo de Produtos (CRUD, Upload, Filtros)
+- [ ] Testar módulo de Pedidos
+- [ ] Testar módulo de Clientes
+- [ ] Testar módulo de Financeiro
+- [ ] Testar módulo de Relatórios
+- [ ] Testar integração Mercado Livre
+- [ ] Testar importação de planilhas
+- [ ] Testar custos variáveis (PAX)
+- [ ] Criar relatório consolidado de testes
+- [ ] Agendar execução automática diária dos testes
