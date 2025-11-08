@@ -3,12 +3,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Check, Calculator, TrendingUp, Bell, Shield, Zap, Users, BarChart3, ArrowRight, Star } from 'lucide-react';
 import { useLocation } from 'wouter';
+import ChatbotIA from '@/components/ChatbotIA';
 
 export default function LandingPage() {
   const [, setLocation] = useLocation();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      {/* Chatbot IA */}
+      <ChatbotIA />
       {/* Header/Navbar */}
       <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -27,7 +30,7 @@ export default function LandingPage() {
             <a href="#depoimentos" className="text-sm font-medium hover:text-purple-600 transition">Depoimentos</a>
             <a href="#faq" className="text-sm font-medium hover:text-purple-600 transition">FAQ</a>
             <Button variant="outline" size="sm" onClick={() => setLocation('/login')}>
-              Entrar
+              Área do Cliente
             </Button>
             <Button size="sm" className="bg-gradient-to-r from-purple-600 to-blue-600" onClick={() => setLocation('/cadastro')}>
               Começar Grátis
