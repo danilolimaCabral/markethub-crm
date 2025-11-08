@@ -39,6 +39,7 @@ import CalculadoraTaxasML from './pages/CalculadoraTaxasML';
 import Forbidden from './pages/Forbidden';
 import Cadastro from './pages/Cadastro';
 import Onboarding from './pages/Onboarding';
+import OnboardingWizard from './pages/OnboardingWizard';
 import WebhookSimulator from './pages/WebhookSimulator';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
@@ -76,7 +77,7 @@ function Router() {
         <Route path="/" component={LandingPage} />
         <Route path="/login" component={Login} />
         <Route path="/cadastro" component={Cadastro} />
-        <Route path="/onboarding" component={Onboarding} />
+        <Route path="/onboarding" component={OnboardingWizard} />
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/verify-2fa" component={Verify2FA} />

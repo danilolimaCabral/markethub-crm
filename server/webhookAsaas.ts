@@ -74,6 +74,9 @@ async function processWebhook(event: string, payment: any) {
           subscriptionStatus: 'active',
           subscriptionEndsAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // +30 dias
         });
+        
+        // TODO: Enviar email de boas-vindas
+        // TODO: Se onboardingCompleted === false, redirecionar para /onboarding
         break;
 
       case 'PAYMENT_OVERDUE':
