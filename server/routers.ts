@@ -293,6 +293,77 @@ export const appRouter = router({
       }),
   }),
 
+  // ==================== STATISTICS ====================
+  stats: router({ dashboard: protectedProcedure.query(async ({ ctx }) => {
+      const produtos = await db.getProductsByUserId(ctx.user.id);
+      const pedidos = await db.getOrdersByUserId(ctx.user.id);
+      const transacoes = await db.getTransactionsByUserId(ctx.user.id);
+
+      // Estatísticas de produtos
+      const totalProdutos = produtos.length;
+      const produtosAtivos = produtos.filter(p => p.active).length;
+      const estoqueBaixo = produtos.filter(p => p.stock > 0 && p.minStock && p.stock <= p.minStock).length;
+      const semEstoque = produtos.filter(p => p.stock === 0).length;
+      const valorEstoque = produtos.reduce((acc, p) => acc + (p.salePrice * p.stock), 0) / 100;
+
+      // Estatísticas de pedidos
+      const totalPedidos = pedidos.length;
+      const pedidosPendentes = pedidos.filter(p => p.status === 'pending').length;
+      const pedidosEntregues = pedidos.filter(p => p.status === 'delivered').length;
+      const faturamentoTotal = pedidos
+        .filter(p => p.status === 'delivered')
+        .reduce((acc, p) => acc + p.totalAmount, 0) / 100;
+      const lucroTotal = pedidos
+        .filter(p => p.status === 'delivered' && p.netProfit)
+        .reduce((acc, p) => acc + (p.netProfit || 0), 0) / 100;
+
+      // Estatísticas de transações
+      const receitas = transacoes
+        .filter(t => t.type === 'income' && t.status === 'paid')
+        .reduce((acc, t) => acc + t.amount, 0) / 100;
+      const despesas = transacoes
+        .filter(t => t.type === 'expense' && t.status === 'paid')
+        .reduce((acc, t) => acc + t.amount, 0) / 100;
+      const contasPendentes = transacoes.filter(t => t.status === 'pending').length;
+
+      // Pedidos recentes (últimos 5)
+      const pedidosRecentes = pedidos.slice(0, 5);
+
+      // Produtos com estoque baixo (top 5)
+      const produtosEstoqueBaixo = produtos
+        .filter(p => p.stock > 0 && p.minStock && p.stock <= p.minStock)
+        .sort((a, b) => a.stock - b.stock)
+        .slice(0, 5);
+
+      return {
+        produtos: {
+          total: totalProdutos,
+          ativos: produtosAtivos,
+          estoqueBaixo,
+          semEstoque,
+          valorEstoque,
+        },
+        pedidos: {
+          total: totalPedidos,
+          pendentes: pedidosPendentes,
+          entregues: pedidosEntregues,
+          faturamentoTotal,
+          lucroTotal,
+        },
+        financeiro: {
+          receitas,
+          despesas,
+          saldo: receitas - despesas,
+          contasPendentes,
+        },
+        recentes: {
+          pedidos: pedidosRecentes,
+          produtosEstoqueBaixo,
+        },
+      };
+    }),
+  }),
+
   // ==================== USER PROFILE ====================
   user: router({
     getProfile: protectedProcedure.query(async ({ ctx }) => {
