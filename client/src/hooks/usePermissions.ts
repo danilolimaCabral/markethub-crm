@@ -31,7 +31,7 @@ export function usePermissions() {
         // Se for admin, tem acesso total
         if (currentUser.role === 'admin' || currentUser.username === 'admin') {
           setIsAdmin(true);
-          setUserPermissions(['dashboard', 'leads', 'sales', 'mercadolivre', 'products', 'customers', 'reports', 'settings', 'users']);
+          setUserPermissions(['dashboard', 'chat', 'pedidos', 'produtos', 'anuncios', 'clientes', 'entregas', 'notas-fiscais', 'pos-vendas', 'importacao', 'inteligencia-mercado', 'tabela-preco', 'contas-pagar', 'contas-receber', 'fluxo-caixa', 'relatorios', 'vendas', 'metricas', 'mercado-livre', 'importacao-financeira', 'usuarios', 'configuracoes']);
           setLoading(false);
           return;
         }

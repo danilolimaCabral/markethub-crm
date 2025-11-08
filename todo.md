@@ -588,3 +588,13 @@
 - [ ] Implementar sincronização periódica automática
 - [ ] Implementar importação por email
 - [ ] Implementar integração com Google Sheets
+
+## Ajuste de Módulos de Permissões
+
+- [x] Revisar páginas realmente implementadas no sistema
+- [x] Atualizar lista AVAILABLE_MODULES em Users.tsx (22 módulos)
+- [x] Adicionar módulos: anuncios, clientes, importacao, relatorios
+- [x] Manter apenas módulos com páginas funcionais
+- [x] Atualizar perfis pré-configurados (Admin, Vendedor, Financeiro, Operacional)
+- [x] Atualizar mapeamento ROUTE_TO_MODULE no CRMLayout
+- [x] Atualizar hook usePermissions com lista completa

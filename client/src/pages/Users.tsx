@@ -30,36 +30,49 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from 'sonner';
 import { UserPlus, Pencil, Trash2, Shield, User } from 'lucide-react';
 
-// Definir módulos disponíveis no sistema
+// Definir módulos disponíveis no sistema (baseado em páginas realmente implementadas)
 const AVAILABLE_MODULES = [
-  { id: 'dashboard', name: 'Dashboard', description: 'Visão geral do sistema' },
-  { id: 'leads', name: 'Leads', description: 'Gerenciamento de leads' },
-  { id: 'sales', name: 'Vendas', description: 'Controle de vendas' },
-  { id: 'mercadolivre', name: 'Mercado Livre', description: 'Integração ML' },
-  { id: 'products', name: 'Produtos', description: 'Catálogo de produtos' },
-  { id: 'customers', name: 'Clientes', description: 'Base de clientes' },
-  { id: 'reports', name: 'Relatórios', description: 'Relatórios e análises' },
-  { id: 'settings', name: 'Configurações', description: 'Configurações do sistema' },
-  { id: 'users', name: 'Usuários', description: 'Gerenciar usuários' },
+  { id: 'dashboard', name: 'Dashboard', description: 'Visão geral e métricas' },
+  { id: 'chat', name: 'Assistente IA', description: 'Chat com inteligência artificial' },
+  { id: 'pedidos', name: 'Pedidos', description: 'Gerenciamento de pedidos' },
+  { id: 'produtos', name: 'Produtos', description: 'Catálogo de produtos' },
+  { id: 'anuncios', name: 'Anúncios', description: 'Gerenciar anúncios' },
+  { id: 'clientes', name: 'Clientes', description: 'Base de clientes' },
+  { id: 'entregas', name: 'Entregas', description: 'Controle de entregas' },
+  { id: 'notas-fiscais', name: 'Notas Fiscais', description: 'Gestão de NF-e' },
+  { id: 'pos-vendas', name: 'Pós-Vendas', description: 'Atendimento pós-venda' },
+  { id: 'importacao', name: 'Importação', description: 'Importar dados' },
+  { id: 'inteligencia-mercado', name: 'Inteligência de Mercado', description: 'Análise de mercado' },
+  { id: 'tabela-preco', name: 'Tabela de Preços', description: 'Gestão de preços' },
+  { id: 'contas-pagar', name: 'Contas a Pagar', description: 'Gestão de despesas' },
+  { id: 'contas-receber', name: 'Contas a Receber', description: 'Gestão de receitas' },
+  { id: 'fluxo-caixa', name: 'Fluxo de Caixa', description: 'Controle financeiro' },
+  { id: 'relatorios', name: 'Relatórios', description: 'Relatórios gerenciais' },
+  { id: 'vendas', name: 'Análise de Vendas', description: 'Relatórios de vendas' },
+  { id: 'metricas', name: 'Métricas', description: 'Indicadores e KPIs' },
+  { id: 'mercado-livre', name: 'Mercado Livre', description: 'Integração com ML' },
+  { id: 'importacao-financeira', name: 'Importação Financeira', description: 'Importar planilhas' },
+  { id: 'usuarios', name: 'Usuários', description: 'Gerenciar usuários' },
+  { id: 'configuracoes', name: 'Configurações', description: 'Configurações do sistema' },
 ];
 
 // Perfis pré-configurados
 const PERMISSION_PROFILES = {
   admin: {
-    name: 'Administrador',
-    modules: ['dashboard', 'leads', 'sales', 'mercadolivre', 'products', 'customers', 'reports', 'settings', 'users']
+    name: 'Administrador (Acesso Total)',
+    modules: ['dashboard', 'chat', 'pedidos', 'produtos', 'anuncios', 'clientes', 'entregas', 'notas-fiscais', 'pos-vendas', 'importacao', 'inteligencia-mercado', 'tabela-preco', 'contas-pagar', 'contas-receber', 'fluxo-caixa', 'relatorios', 'vendas', 'metricas', 'mercado-livre', 'importacao-financeira', 'usuarios', 'configuracoes']
   },
   vendedor: {
     name: 'Vendedor',
-    modules: ['dashboard', 'leads', 'sales', 'mercadolivre', 'products', 'customers']
+    modules: ['dashboard', 'chat', 'pedidos', 'produtos', 'anuncios', 'clientes', 'pos-vendas', 'mercado-livre', 'vendas', 'metricas']
   },
   financeiro: {
     name: 'Financeiro',
-    modules: ['dashboard', 'sales', 'reports']
+    modules: ['dashboard', 'contas-pagar', 'contas-receber', 'fluxo-caixa', 'notas-fiscais', 'relatorios', 'vendas', 'metricas', 'importacao-financeira']
   },
-  suporte: {
-    name: 'Suporte',
-    modules: ['dashboard', 'customers', 'products']
+  operacional: {
+    name: 'Operacional',
+    modules: ['dashboard', 'pedidos', 'produtos', 'anuncios', 'clientes', 'entregas', 'notas-fiscais', 'pos-vendas', 'importacao', 'mercado-livre']
   }
 };
 
