@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import CRMLayout from "@/components/CRMLayout";
-import { Package, ShoppingCart, Users, DollarSign, TrendingUp, AlertTriangle, RefreshCw, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { Package, ShoppingCart, Users, DollarSign, TrendingUp, AlertTriangle, RefreshCw, ArrowUpRight, ArrowDownRight, Calculator } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { Link } from "wouter";
 
 interface DashboardMetrics {
   totalProdutos: number;
@@ -81,10 +82,18 @@ export default function Dashboard() {
             <h1 className="text-3xl font-bold">Dashboard</h1>
             <p className="text-muted-foreground">Visão geral do seu negócio</p>
           </div>
-          <Button onClick={loadMetrics} disabled={loading}>
-            <RefreshCw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
-            Atualizar
-          </Button>
+          <div className="flex gap-2">
+            <Link href="/calculadora-taxas-ml">
+              <Button variant="default" className="bg-amber-600 hover:bg-amber-700">
+                <Calculator className="w-4 h-4 mr-2" />
+                Calculadora Taxas ML
+              </Button>
+            </Link>
+            <Button onClick={loadMetrics} disabled={loading}>
+              <RefreshCw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
+              Atualizar
+            </Button>
+          </div>
         </div>
 
         {/* Cards de Métricas Principais */}

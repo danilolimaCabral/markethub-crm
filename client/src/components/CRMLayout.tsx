@@ -66,6 +66,7 @@ const ROUTE_TO_MODULE: Record<string, string> = {
   '/usuarios': 'usuarios',
   '/configuracoes': 'configuracoes',
   '/mercado-livre': 'mercado-livre',
+  '/calculadora-taxas-ml': 'calculadora-taxas-ml',
   '/importacao-financeira': 'importacao-financeira',
 };
 
@@ -124,6 +125,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
         { path: "/fluxo-caixa", icon: <TrendingUp size={20} />, label: "Fluxo de Caixa", color: "text-blue-600" },
         { path: "/notas", icon: <FileText size={20} />, label: "Notas Fiscais", color: "text-slate-500" },
         { path: "/precos", icon: <Calculator size={20} />, label: "Tabela de Preços", color: "text-yellow-600" },
+        { path: "/calculadora-taxas-ml", icon: <Calculator size={20} />, label: "Calculadora Taxas ML", color: "text-amber-600" },
       ]
     },
     {
