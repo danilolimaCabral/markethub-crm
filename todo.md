@@ -713,3 +713,13 @@
 - [x] Atualizar gerador de proposta
 - [x] Atualizar biblioteca TOTP
 - [x] Sistema completamente renomeado
+
+## Substituição de lexos-hub por MarketHub CRM
+
+- [x] Buscar "lexos" em todos os arquivos
+- [x] Atualizar email no CRMLayout (user@markethub.com)
+- [x] Atualizar localStorage keys no auth.ts
+- [x] Atualizar email no Settings.tsx
+- [x] Remover referências a "Lexos Hub" e "Lexos API"
+- [x] Atualizar para "API Externa" genérica
+- [x] Sistema limpo de referências antigas

@@ -237,8 +237,8 @@ export async function getAccessToken(): Promise<string | null> {
 export function logout(): void {
   clearTokens();
   // Limpar todos os dados de autenticação
-  localStorage.removeItem('lexos_user');
-  localStorage.removeItem('ia_bruno_user');
+  localStorage.removeItem('markethub_user');
+  localStorage.removeItem('ia_bruno_user'); // Manter para compatibilidade
   localStorage.clear(); // Limpar tudo para garantir
   window.location.href = '/';
 }

@@ -88,7 +88,7 @@ export default function Settings() {
         <TabsList className="grid w-full grid-cols-4 lg:w-[700px]">
           <TabsTrigger value="api">
             <Key className="w-4 h-4 mr-2" />
-            API Lexos
+            API Externa
           </TabsTrigger>
           <TabsTrigger value="security">
             <Shield className="w-4 h-4 mr-2" />
@@ -109,10 +109,10 @@ export default function Settings() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <LinkIcon className="w-5 h-5" />
-                Integração com API Lexos
+                Integração com API Externa
               </CardTitle>
               <CardDescription>
-                Configure as credenciais para conectar com o Lexos Hub e trazer dados reais
+                Configure as credenciais para conectar com sistemas externos e trazer dados reais
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -120,7 +120,7 @@ export default function Settings() {
                 <Alert className="bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800">
                   <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
                   <AlertDescription className="text-green-800 dark:text-green-200">
-                    ✅ API configurada e ativa! Os dados do Lexos Hub estão sendo sincronizados.
+                    ✅ API configurada e ativa! Os dados externos estão sendo sincronizados.
                   </AlertDescription>
                 </Alert>
               )}
@@ -139,7 +139,7 @@ export default function Settings() {
                     onChange={(e) => setApiConfig(prev => ({ ...prev, integrationKey: e.target.value }))}
                   />
                   <p className="text-xs text-muted-foreground">
-                    Encontre em: Lexos Hub → Integrações → Sua API → Integration Key
+                    Chave de integração fornecida pelo sistema externo
                   </p>
                 </div>
 
@@ -156,7 +156,7 @@ export default function Settings() {
                     onChange={(e) => setApiConfig(prev => ({ ...prev, accessToken: e.target.value }))}
                   />
                   <p className="text-xs text-muted-foreground">
-                    Obtenha fazendo login no portal de autenticação do Lexos
+                    Token de acesso fornecido pelo sistema externo
                   </p>
                 </div>
               </div>
@@ -173,9 +173,9 @@ export default function Settings() {
                 <AlertDescription>
                   <strong>Como obter as credenciais:</strong>
                   <ol className="list-decimal list-inside mt-2 space-y-1 text-sm">
-                    <li>Acesse o Lexos Hub (www.lexos.com.br)</li>
-                    <li>Vá em Integrações e copie a Integration Key</li>
-                    <li>Faça login no portal de autenticação para obter o Access Token</li>
+                    <li>Acesse o sistema externo que deseja integrar</li>
+                    <li>Obtenha a Integration Key nas configurações de API</li>
+                    <li>Gere um Access Token no portal de autenticação</li>
                     <li>Cole as credenciais acima e clique em Salvar</li>
                   </ol>
                 </AlertDescription>
@@ -316,7 +316,7 @@ export default function Settings() {
 
               <div className="space-y-2">
                 <Label>Email</Label>
-                <Input value="user@lexos.com" disabled />
+                <Input value="user@markethub.com" disabled />
               </div>
 
               <Alert>
