@@ -504,7 +504,7 @@ export default function LandingPage() {
             <div>
               <h3 className="font-semibold mb-4">Recursos</h3>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="#" className="hover:text-white transition">Blog</a></li>
+                <li><a href="/blog" className="hover:text-white transition">Blog</a></li>
                 <li><a href="#" className="hover:text-white transition">Tutoriais</a></li>
                 <li><a href="#" className="hover:text-white transition">Base de Conhecimento</a></li>
                 <li><a href="#" className="hover:text-white transition">API Docs</a></li>
