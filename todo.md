@@ -723,3 +723,20 @@
 - [x] Remover referências a "Lexos Hub" e "Lexos API"
 - [x] Atualizar para "API Externa" genérica
 - [x] Sistema limpo de referências antigas
+
+## Novo Logo e Cores Roxo/Violeta
+
+- [x] Gerar novo logo profissional com iniciais "MH"
+- [x] Conceito minimalista + hub conectado
+- [x] Cores roxo/violeta (#8B5CF6)
+- [x] Atualizar paleta de cores no index.css (purple-600)
+- [x] Aplicar logo no sistema (logo-markethub-purple.png)
+- [x] Atualizar cores primary, sidebar e charts
+
+## Estrutura de Banco de Dados
+
+- [ ] Criar modelagem completa (ER Diagram)
+- [ ] Definir todas as tabelas necessárias
+- [ ] Estabelecer relacionamentos e chaves
+- [ ] Gerar scripts SQL (MySQL e PostgreSQL)
+- [ ] Criar documentação técnica do banco
