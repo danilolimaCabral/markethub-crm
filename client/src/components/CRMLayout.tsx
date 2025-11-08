@@ -3,6 +3,7 @@ import { Link, useLocation } from 'wouter';
 import { useState, useEffect } from 'react';
 import GlobalSearch from './GlobalSearch';
 import AssistenteIAFloat from './AssistenteIAFloat';
+import Notifications from './Notifications';
 import { usePermissions } from '@/hooks/usePermissions';
 import { 
   LayoutDashboard, 
@@ -182,10 +183,11 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
               alt="MarketHub CRM" 
               className="w-8 h-8 md:w-10 md:h-10 object-contain"
             />
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <h1 className="font-bold text-base md:text-lg text-foreground truncate">MarketHub CRM</h1>
               <p className="text-xs text-muted-foreground hidden md:block">Sistema Inteligente de Gestão</p>
             </div>
+            <Notifications />
           </div>
         </div>
 

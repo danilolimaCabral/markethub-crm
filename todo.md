@@ -859,13 +859,17 @@
 
 ## Dashboard com Métricas Reais
 
-- [ ] Atualizar Dashboard para usar dados do localStorage
-- [ ] Criar card de Vendas do Mês (dados reais)
-- [ ] Criar card de Pedidos Pendentes (dados reais)
-- [ ] Criar card de Produtos em Estoque (dados reais)
-- [ ] Criar card de Faturamento (dados reais)
-- [ ] Adicionar gráficos interativos
-- [ ] Implementar atualização em tempo real
+- [x] Atualizar Dashboard para usar dados do localStorage
+- [x] Criar card de Total de Produtos
+- [x] Criar card de Valor em Estoque (cálculo automático)
+- [x] Criar card de Estoque Baixo (< 10 unidades)
+- [x] Criar card de Usuários Ativos
+- [x] Criar card de Vendas do Mês (preparado para integração)
+- [x] Criar card de Pedidos Pendentes (preparado para integração)
+- [x] Adicionar botão de atualizar métricas
+- [x] Adicionar alerta visual para estoque baixo
+- [x] Formatar valores em moeda brasileira
+- [x] Mostrar última atualização
 
 ## Sistema de Notificações
 
