@@ -665,3 +665,16 @@
 - [x] Listar objeções comuns e respostas
 - [x] Sugerir bônus e incentivos
 - [x] Definir público-alvo e posicionamento
+
+## Gestão de Custos Variáveis (PAX)
+
+- [x] Adaptar página Importacao.tsx para Custos Variáveis
+- [x] Criar 6 categorias de custos (Impostos, Fretes, Comissão, Mídia, Embalagens, Taxas Financeiras)
+- [x] Implementar cadastro de custos por categoria
+- [x] Adicionar campo de tipo (percentual ou valor fixo)
+- [x] Criar cálculo automático de PAX total
+- [x] Implementar visualização de custos por categoria
+- [x] Criar calculadora de PAX com lucro líquido e margem
+- [x] Salvar custos no localStorage
+- [x] Adicionar ícones e cores por categoria
+- [x] Implementar remoção de custos
