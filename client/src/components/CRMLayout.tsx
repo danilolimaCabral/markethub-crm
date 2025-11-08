@@ -187,7 +187,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
             />
             <div className="min-w-0 flex-1">
               <h1 className="font-bold text-base md:text-lg text-foreground truncate">MarketHub CRM</h1>
-              <p className="text-xs text-muted-foreground hidden md:block">Sistema Inteligente de Gestão</p>
+              <p className="text-xs text-muted-foreground hidden md:block">v2.0 - Atualizado</p>
             </div>
             <Notifications />
           </div>
