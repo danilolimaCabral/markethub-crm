@@ -10,6 +10,7 @@ import { toast } from 'sonner';
 import { asaasService } from '@/services/asaasService';
 import { subscriptionService } from '@/services/subscriptionService';
 import { PLANS } from '@/types/asaas';
+import { validarCNPJ, consultarCNPJReceitaFederal, validarContaMercadoLivre, formatarCNPJ, limparCNPJ } from '@/lib/cnpjValidator';
 
 const PLANOS = [
   {
@@ -81,13 +82,74 @@ export default function Cadastro() {
     nomeCompleto: '',
     email: '',
     telefone: '',
+    cnpj: '',
+    mercadoLivreUserId: '',
     senha: '',
     confirmarSenha: ''
+  });
+
+  const [validacoes, setValidacoes] = useState({
+    cnpjValido: false,
+    mlValido: false,
+    validando: false
   });
 
   const handleSelecionarPlano = (planoId: string) => {
     setPlanoSelecionado(planoId);
     setEtapa('dados');
+  };
+
+  const handleValidarCNPJ = async () => {
+    if (!formData.cnpj) {
+      toast.error('Digite o CNPJ');
+      return;
+    }
+
+    setValidacoes(prev => ({ ...prev, validando: true }));
+
+    try {
+      const resultado = await consultarCNPJReceitaFederal(formData.cnpj);
+      
+      if (resultado.valido) {
+        setValidacoes(prev => ({ ...prev, cnpjValido: true, validando: false }));
+        toast.success(`CNPJ válido: ${resultado.razaoSocial}`);
+        
+        // Preencher nome da empresa automaticamente
+        if (resultado.nomeFantasia) {
+          setFormData(prev => ({ ...prev, nomeEmpresa: resultado.nomeFantasia! }));
+        }
+      } else {
+        setValidacoes(prev => ({ ...prev, cnpjValido: false, validando: false }));
+        toast.error(resultado.erro || 'CNPJ inválido');
+      }
+    } catch (error) {
+      setValidacoes(prev => ({ ...prev, cnpjValido: false, validando: false }));
+      toast.error('Erro ao validar CNPJ');
+    }
+  };
+
+  const handleValidarMercadoLivre = async () => {
+    if (!formData.mercadoLivreUserId) {
+      toast.error('Digite seu User ID do Mercado Livre');
+      return;
+    }
+
+    setValidacoes(prev => ({ ...prev, validando: true }));
+
+    try {
+      const resultado = await validarContaMercadoLivre(formData.mercadoLivreUserId);
+      
+      if (resultado.valido) {
+        setValidacoes(prev => ({ ...prev, mlValido: true, validando: false }));
+        toast.success(`Conta válida: @${resultado.nickname}`);
+      } else {
+        setValidacoes(prev => ({ ...prev, mlValido: false, validando: false }));
+        toast.error(resultado.erro || 'Conta inválida');
+      }
+    } catch (error) {
+      setValidacoes(prev => ({ ...prev, mlValido: false, validando: false }));
+      toast.error('Erro ao validar Mercado Livre');
+    }
   };
 
   const handleCadastro = async (e: React.FormEvent) => {
