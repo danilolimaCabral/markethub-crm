@@ -143,6 +143,13 @@ export default function Cadastro() {
       };
 
       localStorage.setItem('markethub_user', JSON.stringify(novoUsuario));
+      
+      // Criar tokens de autenticação para acesso imediato
+      const authTokens = {
+        accessToken: `mock_token_${userId}`,
+        expiresAt: Date.now() + (30 * 24 * 60 * 60 * 1000), // 30 dias
+      };
+      localStorage.setItem('auth_tokens', JSON.stringify(authTokens));
 
       // 3. Salvar assinatura local
       const trialEndsAt = new Date();

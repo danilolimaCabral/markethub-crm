@@ -3,6 +3,7 @@ import { Link, useLocation } from 'wouter';
 import { useState, useEffect } from 'react';
 import GlobalSearch from './GlobalSearch';
 import AssistenteIAFloat from './AssistenteIAFloat';
+import BannerTesteTemporario from './BannerTesteTemporario';
 import Notifications from './Notifications';
 import { usePermissions } from '@/hooks/usePermissions';
 import { 
@@ -154,6 +155,7 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex h-screen bg-background">
+      <BannerTesteTemporario />
       {/* Mobile Menu Button */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}

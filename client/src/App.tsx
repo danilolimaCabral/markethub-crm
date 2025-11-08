@@ -45,6 +45,7 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import TermosUso from './pages/TermosUso';
 import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
+import TesteInstantaneo from './pages/TesteInstantaneo';
 import { isAuthenticated } from "./lib/auth";
 import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
@@ -84,6 +85,7 @@ function Router() {
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/termos" component={TermosUso} />
         <Route path="/privacidade" component={PoliticaPrivacidade} />
+        <Route path="/teste-24h" component={TesteInstantaneo} />
         <Route path="/verify-2fa" component={Verify2FA} />
         <Route path="/callback" component={Callback} />
         <Route component={LandingPage} />
