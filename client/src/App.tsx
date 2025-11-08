@@ -66,11 +66,11 @@ function Router() {
   if (!authenticated) {
     return (
       <Switch>
-        <Route path="/site" component={LandingPage} />
+        <Route path="/" component={LandingPage} />
         <Route path="/login" component={Login} />
         <Route path="/verify-2fa" component={Verify2FA} />
         <Route path="/callback" component={Callback} />
-        <Route component={Login} />
+        <Route component={LandingPage} />
       </Switch>
     );
   }
@@ -79,8 +79,7 @@ function Router() {
   return (
     <CRMLayout>
       <Switch>
-        <Route path="/" component={DashboardCRM} />
-        <Route path="/dashboard" component={DashboardCRM} />
+        <Route path={"/"} component={DashboardCRM} />
           <Route path="/chat" component={ChatIA} />
           <Route path="/pos-vendas" component={PosVendas} />
         <Route path="/callback" component={Callback} />
@@ -106,7 +105,6 @@ function Router() {
         <Route path="/mercado-livre" component={MercadoLivre} />
         <Route path="/importacao-financeira" component={ImportacaoFinanceira} />
         <Route path="/calculadora-taxas-ml" component={CalculadoraTaxasML} />
-        <Route path="/site" component={LandingPage} />
         <Route path={"/docs"} component={Docs} />
         <Route path={"/403"} component={Forbidden} />
         <Route path={"/404"} component={NotFound} />

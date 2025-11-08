@@ -27,7 +27,7 @@ export default function LandingPage() {
             <a href="#depoimentos" className="text-sm font-medium hover:text-purple-600 transition">Depoimentos</a>
             <a href="#faq" className="text-sm font-medium hover:text-purple-600 transition">FAQ</a>
             <Button variant="outline" size="sm" onClick={() => setLocation('/login')}>
-              Área do Cliente
+              Entrar
             </Button>
             <Button size="sm" className="bg-gradient-to-r from-purple-600 to-blue-600" onClick={() => setLocation('/cadastro')}>
               Começar Grátis
