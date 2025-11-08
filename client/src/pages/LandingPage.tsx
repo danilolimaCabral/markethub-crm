@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Check, Calculator, TrendingUp, Bell, Shield, Zap, Users, BarChart3, ArrowRight, Star } from 'lucide-react';
+import { Check, Calculator, TrendingUp, Bell, Shield, Zap, Users, BarChart3, ArrowRight, Star, Instagram, Facebook, Linkedin, Youtube, Twitter } from 'lucide-react';
 import { useLocation } from 'wouter';
 import ChatbotIA from '@/components/ChatbotIA';
 import { useEffect, useRef } from 'react';
@@ -437,9 +437,58 @@ export default function LandingPage() {
                 </div>
                 <span className="font-bold text-lg">MarketHub CRM</span>
               </div>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-gray-400 mb-4">
                 O CRM especializado em vendedores de marketplace
               </p>
+              
+              {/* Redes Sociais */}
+              <div className="flex items-center gap-3">
+                <a 
+                  href="https://instagram.com/markethubcrm" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-110"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-4 w-4" />
+                </a>
+                <a 
+                  href="https://facebook.com/markethubcrm" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-all duration-300 hover:scale-110"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-4 w-4" />
+                </a>
+                <a 
+                  href="https://linkedin.com/company/markethubcrm" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-all duration-300 hover:scale-110"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+                <a 
+                  href="https://youtube.com/@markethubcrm" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-red-600 transition-all duration-300 hover:scale-110"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="h-4 w-4" />
+                </a>
+                <a 
+                  href="https://twitter.com/markethubcrm" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-sky-500 transition-all duration-300 hover:scale-110"
+                  aria-label="Twitter/X"
+                >
+                  <Twitter className="h-4 w-4" />
+                </a>
+              </div>
             </div>
 
             <div>
