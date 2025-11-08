@@ -751,3 +751,11 @@
 - [x] Atualizar package.json para "markethub-crm"
 - [x] Atualizar ecosystem.config.js
 - [x] Substituir URLs de API externa
+
+## Correção da Logo v2
+
+- [x] Verificar caminho da logo no const.ts
+- [x] Verificar se arquivo logo-markethub-v2.png existe
+- [x] Copiar logo v2 para logo.png
+- [x] Adicionar cache busting (?v=2)
+- [x] Logo atualizada com sucesso
