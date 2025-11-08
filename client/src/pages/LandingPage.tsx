@@ -71,7 +71,7 @@ export default function LandingPage() {
               <Button 
                 variant="outline" 
                 size="sm" 
-                onClick={() => setLocation('/login')}
+                onClick={() => setLocation('/cadastro')}
                 className="hover:bg-purple-50 hover:text-purple-600 hover:border-purple-300 transition-all duration-200"
               >
                 Área do Cliente

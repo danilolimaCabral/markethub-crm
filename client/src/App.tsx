@@ -35,6 +35,8 @@ import MercadoLivre from './pages/MercadoLivre';
 import ImportacaoFinanceira from './pages/ImportacaoFinanceira';
 import CalculadoraTaxasML from './pages/CalculadoraTaxasML';
 import Forbidden from './pages/Forbidden';
+import Cadastro from './pages/Cadastro';
+import Onboarding from './pages/Onboarding';
 import { isAuthenticated } from "./lib/auth";
 import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
@@ -68,6 +70,8 @@ function Router() {
       <Switch>
         <Route path="/" component={LandingPage} />
         <Route path="/login" component={Login} />
+        <Route path="/cadastro" component={Cadastro} />
+        <Route path="/onboarding" component={Onboarding} />
         <Route path="/verify-2fa" component={Verify2FA} />
         <Route path="/callback" component={Callback} />
         <Route component={LandingPage} />
