@@ -1,0 +1,148 @@
+{
+  "project_info": {
+    "title": "MarketHub CRM",
+    "created": 1762578961.476812,
+    "last_updated": 1762579335.6647398,
+    "total_slides": 17
+  },
+  "slides": {
+    "titulo": "edited",
+    "problema": "edited",
+    "solucao": "edited",
+    "dashboard": "edited",
+    "pedidos": "edited",
+    "pedidos_cont": "edited",
+    "produtos": "edited",
+    "financeiro": "edited",
+    "relatorios": "edited",
+    "equipe": "edited",
+    "tecnologia": "edited",
+    "diferenciais": "edited",
+    "beneficios": "edited",
+    "casos_uso": "edited",
+    "planos": "edited",
+    "proximos_passos": "edited",
+    "contato": "edited"
+  },
+  "outline": [
+    {
+      "id": "titulo",
+      "title": "MarketHub CRM",
+      "summary": "Slide de abertura com logo, título principal 'MarketHub CRM', subtítulo 'Gestão Inteligente de Marketplaces' e tagline sobre centralização de Mercado Livre, Amazon e Shopee",
+      "image_plan": "/home/ubuntu/lexos-hub-web/client/public/logo-markethub-purple.png - The title slide needs a strong, relevant logo. Image 7 is a logo explicitly named \"MarketHub CRM\" with a modern, tech-focused design.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "problema",
+      "title": "O Problema que Resolvemos",
+      "summary": "Apresentar estatísticas sobre tempo perdido (15h semanais) e consequências da gestão fragmentada: 23% atraso em envios, 18% perda de vendas, 40% tempo em tarefas repetitivas",
+      "image_plan": "/home/ubuntu/lexos-hub-web/client/public/logo-markethub.png - This slide introduces the core concept of centralizing multiple marketplaces (Mercado Livre, Amazon, Shopee). Image 6 visually represents this hub concept.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "solucao",
+      "title": "A Solução MarketHub",
+      "summary": "Explicar integração nativa com três marketplaces em painel único, sincronização automática em tempo real e redução de 85% em erros operacionais",
+      "image_plan": "/home/ubuntu/lexos-hub-web/client/public/logo-crescevendas.png - This slide discusses the problem of fragmentation and time loss. Image 5, a growth-focused logo, can be used to represent the *opposite* of the problem (the desired outcome of growth), or it can be used later. Given the limited options, I will reserve the more abstract logos for later and search for a visual representation of fragmentation/stress.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "dashboard",
+      "title": "Dashboard Unificado",
+      "summary": "Mostrar visão consolidada de pedidos, produtos e métricas de todos marketplaces com atualizações em tempo real para decisões imediatas",
+      "image_plan": "/home/ubuntu/lexos-hub-web/client/public/logo-markethub-v2.png - This slide discusses the solution: a central hub for multiple marketplaces. Image 8 is a visual representation of a central hub connecting various marketplace icons and features, which is highly relevant.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "pedidos",
+      "title": "Gestão de Pedidos - Visão Unificada",
+      "summary": "Apresentar o conceito de lista única de pedidos de Mercado Livre, Amazon e Shopee com badges dos três marketplaces. Explicar a visão consolidada e mostrar a imagem do dashboard real do sistema com os pedidos listados.",
+      "image_plan": "/home/ubuntu/upload/119956.jpg - Imagem do dashboard real mostrando a interface de gestão de pedidos do MarketHub CRM",
+      "slide_template_key": ""
+    },
+    {
+      "id": "pedidos_cont",
+      "title": "Gestão de Pedidos - Funcionalidades",
+      "summary": "Detalhar as três funcionalidades principais da gestão de pedidos: Filtros Inteligentes (por status, marketplace, data ou cliente), Sincronização Automática (atualização de status para todas plataformas) e Rastreamento Unificado (gerenciar códigos em um único lugar). Usar cards com ícones para cada funcionalidade.",
+      "slide_template_key": "",
+      "image_plan": ""
+    },
+    {
+      "id": "produtos",
+      "title": "Sincronização de Produtos",
+      "summary": "Explicar cadastro único que replica para todos marketplaces e atualização de preço/estoque em um clique mantendo consistência",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "financeiro",
+      "title": "Controle Financeiro (PAX)",
+      "summary": "Apresentar cálculo automático de custos variáveis (impostos, fretes, comissões, mídia) mostrando margem líquida real por produto",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "relatorios",
+      "title": "Relatórios e Análises",
+      "summary": "Mostrar dashboards visuais com vendas por marketplace, produtos lucrativos e análise de custos substituindo planilhas manuais",
+      "image_plan": "/home/ubuntu/upload/120021.jpg - This slide is about financial control (PAX) and variable costs. Image 2 is a screenshot/table explicitly listing \"Contas Variáveis (PAX ou Custo Variável)\" and categories like taxes, freights, and commissions, making it highly relevant.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "equipe",
+      "title": "Gestão de Equipe",
+      "summary": "Explicar sistema de permissões granulares por módulo e perfis pré-configurados (Admin, Vendedor, Financeiro) para segurança",
+      "image_plan": "/home/ubuntu/lexos-hub-web/client/public/logo.svg.png - This slide is about reports and analysis, leading to growth. Image 4 is a logo focused on \"CresceVendas\" (Sales Growth) with an upward arrow, which visually supports the outcome of the analysis.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "tecnologia",
+      "title": "Segurança e Tecnologia",
+      "summary": "Destacar autenticação 2FA com Google Authenticator e banco PostgreSQL profissional para escalabilidade e confiabilidade",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "diferenciais",
+      "title": "Diferenciais Competitivos",
+      "summary": "Enfatizar única solução brasileira com integração nativa aos três marketplaces, documentação em português e arquitetura moderna customizável",
+      "image_plan": "/home/ubuntu/screenshots/webdev-preview-1762577731.png - This slide is about security and technology, specifically mentioning 2FA and PostgreSQL. Image 10 is a login screen with a modern, secure appearance, which relates to system access and security.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "beneficios",
+      "title": "Benefícios Mensuráveis",
+      "summary": "Apresentar métricas: 70% redução em tempo de gestão e 35% aumento médio em vendas devido à melhor organização",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "casos_uso",
+      "title": "Casos de Uso",
+      "summary": "Definir perfil ideal: lojistas com faturamento acima de R$ 50 mil/mês operando múltiplos marketplaces com equipes de 3-20 pessoas",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "planos",
+      "title": "Planos e Investimento",
+      "summary": "Apresentar três modelos (Licença perpétua, SaaS mensal, Híbrido) com ROI típico em 2-3 meses",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "proximos_passos",
+      "title": "Próximos Passos",
+      "summary": "Convidar para demonstração gratuita personalizada e informar implementação completa em 5-7 dias com treinamento e suporte",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "contato",
+      "title": "Entre em Contato",
+      "summary": "Slide final com informações de contato: email contato@markethub.com, site www.markethub.com, WhatsApp e call-to-action para demonstração",
+      "image_plan": "",
+      "slide_template_key": ""
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casos de Uso</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+      padding: 60px 80px;
+      display: flex;
+      flex-direction: column;
+    }
+    .main-content {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 50px;
+      flex: 1;
+      margin-bottom: 40px;
+    }
+    .left-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .title {
+      font-size: 48px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: #10B981;
+      margin-bottom: 30px;
+    }
+    .subtitle {
+      font-size: 22px;
+      font-weight: 600;
+      color: #E0E7FF;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .description {
+      font-size: 18px;
+      font-weight: 400;
+      color: #E0E7FF;
+      line-height: 1.7;
+    }
+    .right-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .criteria-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      min-height: 120px;
+    }
+    .criteria-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(16, 185, 129, 0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      color: #10B981;
+      min-width: 72px;
+      min-height: 72px;
+    }
+    .criteria-content {
+      flex: 1;
+    }
+    .criteria-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: #10B981;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+    .criteria-label {
+      font-size: 18px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+    .criteria-description {
+      font-size: 15px;
+      font-weight: 400;
+      color: #E0E7FF;
+      line-height: 1.4;
+    }
+    .segments-section {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 24px 32px;
+    }
+    .segments-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .segments-list {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .segment-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .segment-icon {
+      font-size: 20px;
+      color: #10B981;
+    }
+    .segment-text {
+      font-size: 17px;
+      font-weight: 600;
+      color: #E0E7FF;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="main-content">
+      <div class="left-section">
+        <h1 class="title">Casos de Uso</h1>
+        <div class="divider"></div>
+        <div class="subtitle">Perfil Ideal de Cliente</div>
+        <div class="description">MarketHub CRM foi desenvolvido especificamente para lojistas que operam em múltiplos marketplaces e precisam de gestão centralizada e profissional</div>
+      </div>
+      
+      <div class="right-section">
+        <div class="criteria-card">
+          <div class="criteria-icon"><i class="fas fa-dollar-sign"></i></div>
+          <div class="criteria-content">
+            <div class="criteria-value">R$ 50 mil+/mês</div>
+            <div class="criteria-label">Faturamento Mínimo</div>
+            <div class="criteria-description">Volume de vendas que justifica investimento em automação e gestão profissional</div>
+          </div>
+        </div>
+        
+        <div class="criteria-card">
+          <div class="criteria-icon"><i class="fas fa-store"></i></div>
+          <div class="criteria-content">
+            <div class="criteria-value">2-3 Marketplaces</div>
+            <div class="criteria-label">Múltiplos Canais</div>
+            <div class="criteria-description">Operação em Mercado Livre, Amazon e/ou Shopee com necessidade de visão unificada</div>
+          </div>
+        </div>
+        
+        <div class="criteria-card">
+          <div class="criteria-icon"><i class="fas fa-users"></i></div>
+          <div class="criteria-content">
+            <div class="criteria-value">3-20 Pessoas</div>
+            <div class="criteria-label">Tamanho da Equipe</div>
+            <div class="criteria-description">Equipe que precisa de controle de permissões e colaboração organizada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="segments-section">
+      <div class="segments-title">Segmentos Ideais</div>
+      <div class="segments-list">
+        <div class="segment-item">
+          <i class="fas fa-tshirt segment-icon"></i>
+          <span class="segment-text">Moda e Vestuário</span>
+        </div>
+        <div class="segment-item">
+          <i class="fas fa-laptop segment-icon"></i>
+          <span class="segment-text">Eletrônicos</span>
+        </div>
+        <div class="segment-item">
+          <i class="fas fa-couch segment-icon"></i>
+          <span class="segment-text">Casa e Decoração</span>
+        </div>
+        <div class="segment-item">
+          <i class="fas fa-dumbbell segment-icon"></i>
+          <span class="segment-text">Esportes</span>
+        </div>
+        <div class="segment-item">
+          <i class="fas fa-baby segment-icon"></i>
+          <span class="segment-text">Infantil</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

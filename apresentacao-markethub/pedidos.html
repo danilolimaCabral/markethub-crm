@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Pedidos - Visão Unificada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+      padding: 25px 70px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: center;
+    }
+    .left-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .title {
+      font-size: 34px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .divider {
+      width: 70px;
+      height: 4px;
+      background: #10B981;
+      margin-bottom: 12px;
+    }
+    .description {
+      font-size: 16px;
+      font-weight: 400;
+      color: #E0E7FF;
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+    .marketplace-section {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 12px 18px;
+      margin-bottom: 12px;
+    }
+    .marketplace-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 10px;
+    }
+    .marketplace-badges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      justify-items: center;
+    }
+    .badge {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #FFFFFF;
+      text-align: center;
+      width: 100%;
+    }
+    .highlight-box {
+      background: rgba(16, 185, 129, 0.15);
+      border-left: 4px solid #10B981;
+      padding: 10px 14px;
+    }
+    .highlight-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: #FFFFFF;
+      line-height: 1.4;
+    }
+    .right-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dashboard-image {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.4));
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="left-content">
+      <h1 class="title">Gestão de Pedidos<br>Visão Unificada</h1>
+      <div class="divider"></div>
+      <p class="description">Todos os pedidos de múltiplos marketplaces aparecem em uma única lista consolidada com controle total</p>
+      
+      <div class="marketplace-section">
+        <div class="marketplace-title">Marketplaces Integrados:</div>
+        <div class="marketplace-badges">
+          <div class="badge">Mercado Livre</div>
+          <div class="badge">Amazon</div>
+          <div class="badge">Shopee</div>
+        </div>
+      </div>
+      
+      <div class="highlight-box">
+        <div class="highlight-text">
+          ✓ Elimine a necessidade de acessar 3 plataformas diferentes<br><br>
+          ✓ Visão consolidada economiza horas de trabalho diário
+        </div>
+      </div>
+    </div>
+    
+    <div class="right-content">
+      <img src="/home/ubuntu/upload/119956.jpg" alt="Dashboard de Pedidos MarketHub CRM" class="dashboard-image">
+    </div>
+  </div>
+</body>
+</html>

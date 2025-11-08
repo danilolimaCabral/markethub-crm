@@ -769,3 +769,55 @@
 - [x] Substituir "IA BRUNO" por "MarketHub"
 - [x] Substituir URLs de api.lexos.com.br por api.example.com
 - [x] Limpar completamente o código de nomes antigos
+
+## Pesquisa e Integração com Marketplaces
+
+### Mercado Livre
+- [ ] Pesquisar documentação completa da API
+- [ ] Documentar OAuth2 e autenticação
+- [ ] Documentar endpoints de pedidos
+- [ ] Documentar endpoints de produtos
+- [ ] Documentar endpoints de perguntas
+- [ ] Documentar webhooks disponíveis
+- [ ] Criar exemplos de código
+
+### Amazon
+- [ ] Pesquisar Amazon Selling Partner API (SP-API)
+- [ ] Documentar processo de registro
+- [ ] Documentar autenticação LWA (Login with Amazon)
+- [ ] Documentar endpoints de pedidos
+- [ ] Documentar endpoints de inventário
+- [ ] Documentar endpoints de preços
+- [ ] Criar exemplos de código
+
+### Shopee
+- [ ] Pesquisar Shopee Open Platform API
+- [ ] Documentar processo de registro
+- [ ] Documentar autenticação
+- [ ] Documentar endpoints de pedidos
+- [ ] Documentar endpoints de produtos
+- [ ] Documentar gestão de estoque
+- [ ] Criar exemplos de código
+
+### Documentação Final
+- [ ] Criar guia completo de integrações
+- [ ] Comparativo entre as 3 APIs
+- [ ] Fluxos de sincronização
+- [ ] Tratamento de erros
+- [ ] Rate limits e boas práticas
+
+## Correção de Segurança - Login
+
+- [x] Remover exibição de credenciais de demonstração visíveis
+- [x] Campo de senha já está como type="password"
+- [x] Credenciais removidas da interface
+
+## Material de Vídeo de Apresentação
+
+- [x] Criar script completo do vídeo (3-4 minutos, 11 cenas)
+- [x] Definir narração e textos na tela
+- [x] Adicionar notas de produção
+- [x] Criar checklist de gravação
+- [ ] Preparar conteúdo dos slides de apresentação
+- [ ] Gerar slides profissionais
+- [ ] Criar guia de gravação passo a passo

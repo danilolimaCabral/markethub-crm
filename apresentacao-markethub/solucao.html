@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Solução MarketHub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+      padding: 60px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .left-content {
+      display: flex;
+      flex-direction: column;
+    }
+    .title {
+      font-size: 48px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+    }
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: #10B981;
+      margin-bottom: 30px;
+    }
+    .description {
+      font-size: 20px;
+      font-weight: 400;
+      color: #E0E7FF;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(16, 185, 129, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #10B981;
+      min-width: 48px;
+      min-height: 48px;
+    }
+    .feature-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+    .right-content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .success-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 36px;
+      min-height: 160px;
+    }
+    .success-value {
+      font-size: 64px;
+      font-weight: 800;
+      color: #10B981;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .success-label {
+      font-size: 20px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+    .success-description {
+      font-size: 16px;
+      font-weight: 400;
+      color: #E0E7FF;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="left-content">
+      <h1 class="title">A Solução MarketHub</h1>
+      <div class="divider"></div>
+      <p class="description">Integração nativa com os três maiores marketplaces do Brasil concentra toda operação em painel único e inteligente</p>
+      
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-sync"></i></div>
+          <div class="feature-text">Sincronização automática em tempo real</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="feature-text">Visibilidade total de todas as operações</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="feature-text">Redução drástica de erros operacionais</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="right-content">
+      <div class="success-card">
+        <div class="success-value">85%</div>
+        <div class="success-label">Redução em Erros</div>
+        <div class="success-description">Eliminação de trabalho manual reduz erros operacionais significativamente</div>
+      </div>
+      
+      <div class="success-card">
+        <div class="success-value">100%</div>
+        <div class="success-label">Sincronização Automática</div>
+        <div class="success-description">Dados atualizados em tempo real entre todas as plataformas</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

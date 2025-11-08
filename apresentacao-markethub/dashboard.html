@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Unificado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+      padding: 60px 80px;
+      display: flex;
+      flex-direction: column;
+    }
+    .title {
+      font-size: 48px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-size: 20px;
+      font-weight: 400;
+      color: #E0E7FF;
+      margin-bottom: 50px;
+      max-width: 900px;
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 50px;
+      align-items: center;
+      flex: 1;
+    }
+    .hub-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 40px;
+      min-height: 400px;
+    }
+    .hub-image {
+      width: 280px;
+      height: 280px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+    .hub-label {
+      font-size: 18px;
+      font-weight: 600;
+      color: #FFFFFF;
+      text-align: center;
+    }
+    .metrics-dashboard {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .metric-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 28px;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .metric-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .metric-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(16, 185, 129, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #10B981;
+      min-width: 40px;
+      min-height: 40px;
+    }
+    .metric-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #E0E7FF;
+    }
+    .metric-value {
+      font-size: 44px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .metric-status {
+      font-size: 14px;
+      font-weight: 600;
+      color: #10B981;
+    }
+    .metric-status i {
+      margin-right: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <h1 class="title">Dashboard Unificado</h1>
+    <p class="subtitle">Visão consolidada de pedidos, produtos e métricas de todos os marketplaces simultaneamente com atualizações em tempo real</p>
+    
+    <div class="content-grid">
+      <div class="hub-visual">
+        <img src="/home/ubuntu/lexos-hub-web/client/public/logo-markethub-v2.png" alt="Hub Central" class="hub-image">
+        <p class="hub-label">Hub Central Conectado</p>
+      </div>
+      
+      <div class="metrics-dashboard">
+        <div class="metric-card">
+          <div>
+            <div class="metric-header">
+              <div class="metric-icon"><i class="fas fa-shopping-cart"></i></div>
+              <div class="metric-name">Pedidos Hoje</div>
+            </div>
+            <div class="metric-value">247</div>
+          </div>
+          <div class="metric-status"><i class="fas fa-arrow-up"></i>Tempo Real</div>
+        </div>
+        
+        <div class="metric-card">
+          <div>
+            <div class="metric-header">
+              <div class="metric-icon"><i class="fas fa-box"></i></div>
+              <div class="metric-name">Produtos Ativos</div>
+            </div>
+            <div class="metric-value">1.834</div>
+          </div>
+          <div class="metric-status"><i class="fas fa-sync"></i>Sincronizado</div>
+        </div>
+        
+        <div class="metric-card">
+          <div>
+            <div class="metric-header">
+              <div class="metric-icon"><i class="fas fa-dollar-sign"></i></div>
+              <div class="metric-name">Faturamento Mês</div>
+            </div>
+            <div class="metric-value">R$ 89k</div>
+          </div>
+          <div class="metric-status"><i class="fas fa-arrow-up"></i>+23% vs mês anterior</div>
+        </div>
+        
+        <div class="metric-card">
+          <div>
+            <div class="metric-header">
+              <div class="metric-icon"><i class="fas fa-store"></i></div>
+              <div class="metric-name">Marketplaces</div>
+            </div>
+            <div class="metric-value">3</div>
+          </div>
+          <div class="metric-status"><i class="fas fa-check-circle"></i>Todos conectados</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

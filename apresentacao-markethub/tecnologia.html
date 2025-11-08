@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segurança e Tecnologia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+      padding: 60px 80px;
+      display: flex;
+      flex-direction: column;
+    }
+    .title {
+      font-size: 48px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+    }
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: #10B981;
+      margin-bottom: 50px;
+    }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      flex: 1;
+      margin-bottom: 40px;
+    }
+    .tech-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 0;
+    }
+    .tech-icon {
+      width: 96px;
+      height: 96px;
+      background: rgba(16, 185, 129, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: #10B981;
+      margin-bottom: 28px;
+      min-width: 96px;
+      min-height: 96px;
+    }
+    .tech-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+    }
+    .tech-subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: #E0E7FF;
+      margin-bottom: 20px;
+    }
+    .tech-description {
+      font-size: 16px;
+      font-weight: 400;
+      color: #E0E7FF;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .tech-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 6px;
+    }
+    .feature-icon {
+      font-size: 18px;
+      color: #10B981;
+      min-width: 18px;
+    }
+    .feature-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: #FFFFFF;
+      text-align: left;
+    }
+    .tech-badges {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .tech-badge {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <h1 class="title">Segurança e Tecnologia</h1>
+    <div class="divider"></div>
+    
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="tech-title">2FA</div>
+        <div class="tech-subtitle">Autenticação de Dois Fatores</div>
+        <div class="tech-description">Autenticação de dois fatores com Google Authenticator protege acesso ao sistema contra invasões e acessos não autorizados</div>
+        <div class="tech-features">
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Google Authenticator integrado</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Códigos de backup seguros</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Proteção máxima de dados</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tech-card">
+        <div class="tech-icon"><i class="fas fa-database"></i></div>
+        <div class="tech-title">PostgreSQL</div>
+        <div class="tech-subtitle">Banco de Dados Profissional</div>
+        <div class="tech-description">Banco de dados PostgreSQL profissional garante escalabilidade e confiabilidade para operações de alto volume com integridade total</div>
+        <div class="tech-features">
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Escalável para milhões de registros</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Backup automático e seguro</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Performance otimizada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tech-badges">
+      <div class="tech-badge">React 19</div>
+      <div class="tech-badge">Node.js</div>
+      <div class="tech-badge">TypeScript</div>
+      <div class="tech-badge">Tailwind CSS</div>
+      <div class="tech-badge">API REST</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planos e Investimento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+    .slide-container {
+      width: 1280px;
+      min-height: 720px;
+      background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+      padding: 60px 80px;
+      display: flex;
+      flex-direction: column;
+    }
+    .title {
+      font-size: 48px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: #10B981;
+      margin: 0 auto 40px;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      flex: 1;
+      margin-bottom: 30px;
+    }
+    .plan-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+    .plan-card.popular {
+      background: rgba(16, 185, 129, 0.15);
+      border: 2px solid #10B981;
+      transform: scale(1.02);
+    }
+    .plan-badge {
+      background: #10B981;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 12px;
+      text-align: center;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .plan-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .plan-price {
+      font-size: 48px;
+      font-weight: 800;
+      color: #FFFFFF;
+      text-align: center;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+    .plan-period {
+      font-size: 16px;
+      font-weight: 600;
+      color: #E0E7FF;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .plan-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .feature-icon {
+      font-size: 16px;
+      color: #10B981;
+      margin-top: 2px;
+      min-width: 16px;
+    }
+    .feature-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: #E0E7FF;
+      line-height: 1.5;
+    }
+    .plan-cta {
+      background: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 24px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .plan-card.popular .plan-cta {
+      background: #10B981;
+      border: none;
+    }
+    .roi-banner {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid #F59E0B;
+      padding: 20px 32px;
+      text-align: center;
+    }
+    .roi-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .roi-subtext {
+      font-size: 15px;
+      font-weight: 400;
+      color: #E0E7FF;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <h1 class="title">Planos e Investimento</h1>
+    <div class="divider"></div>
+    
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-name">Licença Perpétua</div>
+        <div class="plan-price">R$ 1.997</div>
+        <div class="plan-period">Pagamento único</div>
+        <div class="plan-features">
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Licença vitalícia sem mensalidades</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Instalação em servidor próprio</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Código-fonte completo</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Customizações ilimitadas</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Suporte técnico 3 meses</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Atualizações 1 ano</span>
+          </div>
+        </div>
+        <div class="plan-cta">Solicitar Proposta</div>
+      </div>
+      
+      <div class="plan-card popular">
+        <div class="plan-badge">Mais Popular</div>
+        <div class="plan-name">SaaS Mensal</div>
+        <div class="plan-price">R$ 397</div>
+        <div class="plan-period">Por mês</div>
+        <div class="plan-features">
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Sem investimento inicial</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Hospedagem em nuvem inclusa</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Backups automáticos diários</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Atualizações automáticas</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Suporte prioritário 24/7</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Cancele quando quiser</span>
+          </div>
+        </div>
+        <div class="plan-cta">Começar Agora</div>
+      </div>
+      
+      <div class="plan-card">
+        <div class="plan-name">Híbrido</div>
+        <div class="plan-price">R$ 997</div>
+        <div class="plan-period">Inicial + R$ 197/mês</div>
+        <div class="plan-features">
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Licença perpétua com desconto</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Hospedagem gerenciada</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Servidor dedicado otimizado</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Customizações incluídas</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Suporte premium vitalício</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle feature-icon"></i>
+            <span class="feature-text">Consultoria estratégica mensal</span>
+          </div>
+        </div>
+        <div class="plan-cta">Solicitar Proposta</div>
+      </div>
+    </div>
+    
+    <div class="roi-banner">
+      <div class="roi-text"><i class="fas fa-chart-line"></i> ROI Típico: 2-3 Meses</div>
+      <div class="roi-subtext">Economia de tempo e aumento de vendas compensam investimento rapidamente</div>
+    </div>
+  </div>
+</body>
+</html>

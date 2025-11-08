@@ -272,12 +272,7 @@ export default function Login() {
             </button>
           </p>
 
-          {/* Demo Credentials */}
-          <div className="mt-8 p-4 bg-slate-800/50 rounded-xl border border-slate-700/50">
-            <p className="text-xs text-slate-400 mb-2">Credenciais de demonstração:</p>
-            <p className="text-sm text-slate-300">Usuário: <span className="font-mono text-purple-400">admin</span></p>
-            <p className="text-sm text-slate-300">Senha: <span className="font-mono text-purple-400">admin123</span></p>
-          </div>
+
         </div>
       </div>
     </div>
