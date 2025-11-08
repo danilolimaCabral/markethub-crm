@@ -15,6 +15,7 @@ import {
   type MLFeesCalculation 
 } from '@/data/mercado-livre-fees';
 import { TrendingUp, TrendingDown, Calculator, DollarSign } from 'lucide-react';
+import { ESTADOS_ICMS, REGIMES_TRIBUTARIOS, ORIGEM_PRODUTO, getAliquotaICMS, getAliquotaRegime } from '@/data/icms-aliquotas';
 
 export default function MLFeesCalculator() {
   const [salePrice, setSalePrice] = useState<string>('89.90');
@@ -27,6 +28,12 @@ export default function MLFeesCalculator() {
   const [isMercadoLider, setIsMercadoLider] = useState<boolean>(false);
   const [offerFreeShipping, setOfferFreeShipping] = useState<boolean>(true);
   const [desiredMargin, setDesiredMargin] = useState<string>('40');
+  
+  // Novos campos fiscais
+  const [regimeTributario, setRegimeTributario] = useState<string>('simples_nacional');
+  const [origemProduto, setOrigemProduto] = useState<string>('nacional');
+  const [estadoVenda, setEstadoVenda] = useState<string>('GO');
+  const [quantidade, setQuantidade] = useState<string>('1');
   
   const [result, setResult] = useState<MLFeesCalculation | null>(null);
   const [suggestedPrice, setSuggestedPrice] = useState<number | null>(null);
@@ -77,8 +84,38 @@ export default function MLFeesCalculator() {
     return `${value.toFixed(2)}%`;
   };
 
-  const grossProfit = result ? result.netRevenue - parseFloat(costPrice) : 0;
-  const grossMargin = result && result.netRevenue > 0 ? (grossProfit / result.netRevenue) * 100 : 0;
+  // Cálculos Fiscais
+  const qtd = parseFloat(quantidade) || 1;
+  const precoVendaTotal = result ? result.salePrice * qtd : 0;
+  
+  // 1. Imposto de Importação (se aplicável)
+  const impostoImportacao = origemProduto === 'importado' 
+    ? (result?.salePrice || 0) * (ORIGEM_PRODUTO.IMPORTADO.aliquotaImpostoImportacao / 100) * qtd
+    : 0;
+  
+  // 2. ICMS (varia por estado)
+  const aliquotaICMS = getAliquotaICMS(estadoVenda);
+  const valorICMS = (result?.salePrice || 0) * (aliquotaICMS / 100) * qtd;
+  
+  // 3. Impostos do Regime Tributário
+  const aliquotaRegime = getAliquotaRegime(regimeTributario);
+  const valorImpostosRegime = (result?.salePrice || 0) * (aliquotaRegime / 100) * qtd;
+  
+  // Total de Impostos
+  const totalImpostos = impostoImportacao + valorICMS + valorImpostosRegime;
+  
+  // Lucro Bruto (antes dos impostos)
+  const grossProfit = result ? (result.netRevenue * qtd) - (parseFloat(costPrice) * qtd) : 0;
+  const grossMargin = result && result.netRevenue > 0 ? (grossProfit / (result.netRevenue * qtd)) * 100 : 0;
+  
+  // Lucro Líquido (após todos os impostos)
+  const lucroLiquido = grossProfit - totalImpostos;
+  const margemLiquida = precoVendaTotal > 0 ? (lucroLiquido / precoVendaTotal) * 100 : 0;
+  
+  // Margem de Contribuição (Receita - Custos Variáveis)
+  const custosVariaveis = (parseFloat(costPrice) * qtd) + (result?.totalFees || 0) * qtd + totalImpostos;
+  const margemContribuicao = precoVendaTotal - custosVariaveis;
+  const percentualMargemContribuicao = precoVendaTotal > 0 ? (margemContribuicao / precoVendaTotal) * 100 : 0;
 
   return (
     <div className="space-y-6">
@@ -219,6 +256,67 @@ export default function MLFeesCalculator() {
                 </SelectContent>
               </Select>
             </div>
+            
+            {/* Novos Campos Fiscais */}
+            <div className="space-y-2">
+              <Label htmlFor="regimeTributario">5. Regime Tributário</Label>
+              <Select value={regimeTributario} onValueChange={setRegimeTributario}>
+                <SelectTrigger id="regimeTributario">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {REGIMES_TRIBUTARIOS.map((regime) => (
+                    <SelectItem key={regime.id} value={regime.id}>
+                      {regime.nome} (~{regime.aliquotaAproximada}%)
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <p className="text-xs text-muted-foreground">Impacta nos impostos sobre faturamento</p>
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="origemProduto">6. Origem do Produto</Label>
+              <Select value={origemProduto} onValueChange={setOrigemProduto}>
+                <SelectTrigger id="origemProduto">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="nacional">Nacional (0% imposto importação)</SelectItem>
+                  <SelectItem value="importado">Importado (4% imposto importação)</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="estadoVenda">Estado de Venda (ICMS)</Label>
+              <Select value={estadoVenda} onValueChange={setEstadoVenda}>
+                <SelectTrigger id="estadoVenda">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {ESTADOS_ICMS.map((estado) => (
+                    <SelectItem key={estado.uf} value={estado.uf}>
+                      {estado.nome} - {estado.uf} ({estado.aliquotaInterna}%)
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <p className="text-xs text-muted-foreground">Alíquota de ICMS varia por estado</p>
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="quantidade">Quantidade de Produtos</Label>
+              <Input
+                id="quantidade"
+                type="number"
+                min="1"
+                value={quantidade}
+                onChange={(e) => setQuantidade(e.target.value)}
+                placeholder="1"
+              />
+              <p className="text-xs text-muted-foreground">Sistema multiplica automaticamente todos os valores</p>
+            </div>
           </div>
 
           <div className="flex gap-4">
@@ -303,6 +401,7 @@ export default function MLFeesCalculator() {
                 <div>
                   <p className="text-sm text-muted-foreground">Lucro Bruto</p>
                   <p className="text-xl font-semibold">{formatCurrency(grossProfit)}</p>
+                  <p className="text-xs text-muted-foreground">Antes dos impostos</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Margem Bruta</p>
@@ -311,10 +410,76 @@ export default function MLFeesCalculator() {
                 <div>
                   <p className="text-sm text-muted-foreground">ROI</p>
                   <p className="text-xl font-semibold">
-                    {formatPercentage((grossProfit / parseFloat(costPrice)) * 100)}
+                    {formatPercentage((grossProfit / (parseFloat(costPrice) * qtd)) * 100)}
                   </p>
                 </div>
               </div>
+              
+              {/* Impostos e Tributos */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4 border-t">
+                <div>
+                  <p className="text-sm text-muted-foreground">ICMS ({aliquotaICMS}%)</p>
+                  <p className="text-lg font-semibold text-orange-600">-{formatCurrency(valorICMS)}</p>
+                </div>
+                {impostoImportacao > 0 && (
+                  <div>
+                    <p className="text-sm text-muted-foreground">Imposto Importação (4%)</p>
+                    <p className="text-lg font-semibold text-orange-600">-{formatCurrency(impostoImportacao)}</p>
+                  </div>
+                )}
+                <div>
+                  <p className="text-sm text-muted-foreground">Impostos Regime ({aliquotaRegime}%)</p>
+                  <p className="text-lg font-semibold text-orange-600">-{formatCurrency(valorImpostosRegime)}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Total Impostos</p>
+                  <p className="text-xl font-bold text-orange-600">-{formatCurrency(totalImpostos)}</p>
+                </div>
+              </div>
+              
+              {/* Margem de Contribuição e Lucro Líquido */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-950 dark:to-blue-950 p-4 rounded-lg">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Margem de Contribuição</p>
+                  <p className="text-2xl font-bold text-blue-600">{formatCurrency(margemContribuicao)}</p>
+                  <p className="text-sm text-muted-foreground">{formatPercentage(percentualMargemContribuicao)}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Lucro Líquido</p>
+                  <p className="text-2xl font-bold text-green-600">{formatCurrency(lucroLiquido)}</p>
+                  <p className="text-sm text-muted-foreground">Após todos os impostos</p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Margem Líquida Final</p>
+                  <p className="text-2xl font-bold">{formatPercentage(margemLiquida)}</p>
+                  <p className="text-sm text-muted-foreground">Sobre preço de venda</p>
+                </div>
+              </div>
+              
+              {/* Resumo por Quantidade */}
+              {qtd > 1 && (
+                <div className="pt-4 border-t">
+                  <h4 className="font-semibold mb-2">Resumo para {qtd} unidades:</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Receita Total</p>
+                      <p className="text-lg font-bold">{formatCurrency(precoVendaTotal)}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Custo Total</p>
+                      <p className="text-lg font-semibold">{formatCurrency(parseFloat(costPrice) * qtd)}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Taxas + Impostos</p>
+                      <p className="text-lg font-semibold text-red-600">-{formatCurrency((result.totalFees * qtd) + totalImpostos)}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Lucro Líquido Total</p>
+                      <p className="text-lg font-bold text-green-600">{formatCurrency(lucroLiquido)}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Alertas */}
               {result.netMarginPercentage < 20 && (
