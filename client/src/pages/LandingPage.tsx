@@ -123,6 +123,13 @@ export default function LandingPage() {
                 size="lg" 
                 variant="outline" 
                 className="text-lg hover:bg-purple-50 hover:border-purple-300 transition-all duration-200"
+                onClick={() => {
+                  // Abrir chatbot
+                  const chatButton = document.querySelector('[data-chatbot-button]') as HTMLButtonElement;
+                  if (chatButton) {
+                    chatButton.click();
+                  }
+                }}
               >
                 Ver Demonstração
               </Button>

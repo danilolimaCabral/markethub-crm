@@ -218,6 +218,7 @@ export default function ChatbotIA() {
       {/* Botão flutuante */}
       {!isOpen && (
         <Button
+          data-chatbot-button
           onClick={() => setIsOpen(true)}
           className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-2xl bg-gradient-to-r from-purple-600 to-blue-600 hover:scale-110 transition-transform z-50"
           size="icon"
