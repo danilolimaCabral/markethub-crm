@@ -5,7 +5,7 @@ import { getValidAccessToken, getIntegrationKey, isAPIConfigured } from './api-c
  */
 const MARKETHUB_API_BASE_URL = 'https://api.example.com';
 
-export interface LexosAPIError {
+export interface MarketHubAPIError {
   message: string;
   status: number;
   details?: any;
@@ -14,7 +14,7 @@ export interface LexosAPIError {
 /**
  * Make authenticated request to MarketHub CRM API
  */
-export async function callLexosAPI<T = any>(
+export async function callMarketHubAPI<T = any>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
@@ -50,7 +50,7 @@ export async function callLexosAPI<T = any>(
 
     if (!response.ok) {
       const errorText = await response.text();
-      const error: LexosAPIError = {
+      const error: MarketHubAPIError = {
         message: `API request failed: ${response.statusText}`,
         status: response.status,
         details: errorText,
@@ -102,11 +102,11 @@ export async function getPedidos(params?: {
   const query = queryParams.toString();
   const endpoint = `/Pedido/ObterLista${query ? `?${query}` : ''}`;
   
-  return callLexosAPI<Pedido[]>(endpoint);
+  return callMarketHubAPI<Pedido[]>(endpoint);
 }
 
 export async function getPedidoById(id: string): Promise<Pedido> {
-  return callLexosAPI<Pedido>(`/Pedido/Obter/${id}`);
+  return callMarketHubAPI<Pedido>(`/Pedido/Obter/${id}`);
 }
 
 // ========== PRODUTOS (Products) ==========
@@ -134,11 +134,11 @@ export async function getProdutos(params?: {
   const query = queryParams.toString();
   const endpoint = `/Catalogo/ObterLista${query ? `?${query}` : ''}`;
   
-  return callLexosAPI<Produto[]>(endpoint);
+  return callMarketHubAPI<Produto[]>(endpoint);
 }
 
 export async function getProdutoById(id: string): Promise<Produto> {
-  return callLexosAPI<Produto>(`/Catalogo/Obter/${id}`);
+  return callMarketHubAPI<Produto>(`/Catalogo/Obter/${id}`);
 }
 
 // ========== ANÚNCIOS (Listings) ==========
@@ -166,7 +166,7 @@ export async function getAnuncios(params?: {
   const query = queryParams.toString();
   const endpoint = `/Anuncio/ObterLista${query ? `?${query}` : ''}`;
   
-  return callLexosAPI<Anuncio[]>(endpoint);
+  return callMarketHubAPI<Anuncio[]>(endpoint);
 }
 
 // ========== ENTREGAS (Deliveries) ==========
@@ -191,7 +191,7 @@ export async function getEntregas(params?: {
   const query = queryParams.toString();
   const endpoint = `/Entrega/ObterLista${query ? `?${query}` : ''}`;
   
-  return callLexosAPI<Entrega[]>(endpoint);
+  return callMarketHubAPI<Entrega[]>(endpoint);
 }
 
 // ========== LOJAS (Stores) ==========
@@ -204,7 +204,7 @@ export interface Loja {
 }
 
 export async function getLojas(): Promise<Loja[]> {
-  return callLexosAPI<Loja[]>('/Loja/ObterLista');
+  return callMarketHubAPI<Loja[]>('/Loja/ObterLista');
 }
 
 // ========== DASHBOARD / METRICS ==========

@@ -32,6 +32,7 @@ import FluxoCaixa from './pages/FluxoCaixa';
 import Users from './pages/Users';
 import MercadoLivre from './pages/MercadoLivre';
 import ImportacaoFinanceira from './pages/ImportacaoFinanceira';
+import CalculadoraTaxasML from './pages/CalculadoraTaxasML';
 import Forbidden from './pages/Forbidden';
 import { isAuthenticated } from "./lib/auth";
 import { useTokenRefresh } from "./hooks/useTokenRefresh";
@@ -100,6 +101,7 @@ function Router() {
         <Route path="/usuarios" component={Users} />
         <Route path="/mercado-livre" component={MercadoLivre} />
         <Route path="/importacao-financeira" component={ImportacaoFinanceira} />
+        <Route path="/calculadora-taxas-ml" component={CalculadoraTaxasML} />
         <Route path={"/docs"} component={Docs} />
         <Route path={"/403"} component={Forbidden} />
         <Route path={"/404"} component={NotFound} />

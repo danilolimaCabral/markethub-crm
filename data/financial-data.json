@@ -1,9 +1,9 @@
 {
-  "lastUpdate": "2025-11-06T15:25:03.568Z",
+  "lastUpdate": "2025-11-08T11:00:01.974Z",
   "contasPagar": [],
   "contasReceber": [
     {
-      "id": "FIN-1762442703567-1",
+      "id": "FIN-1762599601974-1",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -12,7 +12,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703567-2",
+      "id": "FIN-1762599601974-2",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -21,7 +21,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703567-3",
+      "id": "FIN-1762599601974-3",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -30,7 +30,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703567-4",
+      "id": "FIN-1762599601974-4",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -39,7 +39,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703567-5",
+      "id": "FIN-1762599601974-5",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -48,7 +48,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-6",
+      "id": "FIN-1762599601974-6",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -57,7 +57,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-7",
+      "id": "FIN-1762599601974-7",
       "descricao": "",
       "valor": 0,
       "vencimento": "receber + Fluxo de Caixa Realizado\"",
@@ -66,7 +66,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-8",
+      "id": "FIN-1762599601974-8",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -75,7 +75,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-9",
+      "id": "FIN-1762599601974-9",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -84,7 +84,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-10",
+      "id": "FIN-1762599601974-10",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -93,7 +93,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-11",
+      "id": "FIN-1762599601974-11",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -102,7 +102,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-12",
+      "id": "FIN-1762599601974-12",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -111,7 +111,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-13",
+      "id": "FIN-1762599601974-13",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -120,7 +120,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-14",
+      "id": "FIN-1762599601974-14",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -129,7 +129,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-15",
+      "id": "FIN-1762599601974-15",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -138,7 +138,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-16",
+      "id": "FIN-1762599601974-16",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -147,7 +147,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-17",
+      "id": "FIN-1762599601974-17",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -156,7 +156,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-18",
+      "id": "FIN-1762599601974-18",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -165,7 +165,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-19",
+      "id": "FIN-1762599601974-19",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -174,7 +174,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-20",
+      "id": "FIN-1762599601974-20",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -183,7 +183,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-21",
+      "id": "FIN-1762599601974-21",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -192,7 +192,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-22",
+      "id": "FIN-1762599601974-22",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -201,7 +201,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-23",
+      "id": "FIN-1762599601974-23",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -210,7 +210,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-24",
+      "id": "FIN-1762599601974-24",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -219,7 +219,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-25",
+      "id": "FIN-1762599601974-25",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -228,7 +228,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-26",
+      "id": "FIN-1762599601974-26",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -237,7 +237,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-27",
+      "id": "FIN-1762599601974-27",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -246,7 +246,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-28",
+      "id": "FIN-1762599601974-28",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -255,7 +255,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-29",
+      "id": "FIN-1762599601974-29",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -264,7 +264,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-30",
+      "id": "FIN-1762599601974-30",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -273,7 +273,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-31",
+      "id": "FIN-1762599601974-31",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -282,7 +282,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-32",
+      "id": "FIN-1762599601974-32",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -291,7 +291,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-33",
+      "id": "FIN-1762599601974-33",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -300,7 +300,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-34",
+      "id": "FIN-1762599601974-34",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -309,7 +309,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-35",
+      "id": "FIN-1762599601974-35",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -318,7 +318,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-36",
+      "id": "FIN-1762599601974-36",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -327,7 +327,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-37",
+      "id": "FIN-1762599601974-37",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -336,7 +336,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-38",
+      "id": "FIN-1762599601974-38",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -345,7 +345,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-39",
+      "id": "FIN-1762599601974-39",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -354,7 +354,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-40",
+      "id": "FIN-1762599601974-40",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -363,7 +363,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-41",
+      "id": "FIN-1762599601974-41",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -372,7 +372,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-42",
+      "id": "FIN-1762599601974-42",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -381,7 +381,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-43",
+      "id": "FIN-1762599601974-43",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -390,7 +390,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-44",
+      "id": "FIN-1762599601974-44",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -399,7 +399,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-45",
+      "id": "FIN-1762599601974-45",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -408,7 +408,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-46",
+      "id": "FIN-1762599601974-46",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -417,7 +417,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-47",
+      "id": "FIN-1762599601974-47",
       "descricao": "",
       "valor": 0,
       "vencimento": "",
@@ -426,7 +426,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-48",
+      "id": "FIN-1762599601974-48",
       "descricao": "",
       "valor": null,
       "vencimento": "",
@@ -435,7 +435,7 @@
       "categoria": "Outros"
     },
     {
-      "id": "FIN-1762442703568-49",
+      "id": "FIN-1762599601974-49",
       "descricao": "Para mais informações ou modelos personalizados entre em contato por e-mail: contato@excelsolucao.com.br\"",
       "valor": 0,
       "vencimento": "",
