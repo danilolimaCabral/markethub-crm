@@ -183,7 +183,7 @@ export default function Cadastro() {
       localStorage.setItem('markethub_tenant', JSON.stringify(novoTenant));
 
       toast.success('Conta criada com sucesso! 🎉', {
-        description: '14 dias de trial grátis ativados',
+        description: '48 horas de trial grátis ativados',
       });
       
       // Redirecionar para onboarding
@@ -246,7 +246,7 @@ export default function Cadastro() {
                 Escolha seu plano
               </h1>
               <p className="text-xl text-muted-foreground">
-                14 dias grátis • Sem cartão de crédito • Cancele quando quiser
+                48 horas grátis • Sem cartão de crédito • Cancele quando quiser
               </p>
             </div>
 
@@ -411,7 +411,7 @@ export default function Cadastro() {
                     className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-lg py-6"
                     disabled={loading}
                   >
-                    {loading ? 'Criando sua conta...' : 'Começar Trial de 14 Dias'}
+                    {loading ? 'Criando sua conta...' : 'Começar Trial de 48 Horas'}
                   </Button>
 
                   <p className="text-center text-sm text-muted-foreground">

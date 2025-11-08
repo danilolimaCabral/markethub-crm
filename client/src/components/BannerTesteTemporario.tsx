@@ -109,7 +109,7 @@ export default function BannerTesteTemporario() {
             </Button>
 
             <p className="text-xs text-gray-500 text-center">
-              14 dias grátis + acesso completo permanente
+              48 horas grátis + acesso completo permanente
             </p>
           </div>
         </div>

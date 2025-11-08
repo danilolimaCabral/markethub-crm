@@ -29,7 +29,7 @@ const knowledge = {
     'Sistema multi-tenant SaaS'
   ],
   marketplaces: ['Mercado Livre', 'Amazon', 'Shopee'],
-  trial: '14 dias grátis sem cartão de crédito',
+  trial: '48 horas grátis sem cartão de crédito',
   suporte: 'Email, chat e telefone (planos Business e Enterprise)'
 };
 
@@ -118,14 +118,14 @@ function getAIResponse(question: string): string {
       `📱 Me passa seu WhatsApp que eu te mando:\n` +
       `• Vídeo de demonstração\n` +
       `• Link para agendar demo ao vivo\n` +
-      `• Acesso trial de 14 dias\n\n` +
+      `• Acesso trial de 48 horas\n\n` +
       `Digite seu número: (XX) XXXXX-XXXX`;
   }
   
   // Interesse/Quero testar
   if (q.includes('quero') || q.includes('interesse') || q.includes('contratar') || q.includes('começar')) {
     return `🚀 **Vamos começar!**\n\n` +
-      `Ótima escolha! Para liberar seu acesso trial de 14 dias, preciso do seu WhatsApp.\n\n` +
+      `Ótima escolha! Para liberar seu acesso trial de 48 horas, preciso do seu WhatsApp.\n\n` +
       `📱 Digite seu número: (XX) XXXXX-XXXX\n\n` +
       `Vou te enviar:\n` +
       `• Link de acesso\n` +
@@ -192,7 +192,7 @@ export default function ChatbotIA() {
           `Recebi seu contato: ${phone}\n\n` +
           `📲 Vou te enviar agora no WhatsApp:\n` +
           `• Link para demonstração ao vivo\n` +
-          `• Acesso trial de 14 dias\n` +
+          `• Acesso trial de 48 horas\n` +
           `• Vídeo tutorial completo\n\n` +
           `🔗 **Link curto:** markethubcrm.com.br/demo\n\n` +
           `Enquanto isso, quer saber mais alguma coisa?`;

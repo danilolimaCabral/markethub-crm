@@ -63,14 +63,14 @@ export default function TermosUso() {
             <ul>
               <li>Os pagamentos são processados mensalmente via cartão de crédito</li>
               <li>As cobranças são automáticas até o cancelamento da assinatura</li>
-              <li>Oferecemos 14 dias de trial gratuito para novos usuários</li>
+              <li>Oferecemos 48 horas de trial gratuito para novos usuários</li>
               <li>Não há reembolso proporcional em caso de cancelamento</li>
               <li>Os preços podem ser alterados mediante aviso prévio de 30 dias</li>
             </ul>
 
             <h2>5. Trial Gratuito</h2>
             <p>
-              O período de trial gratuito de 14 dias permite que você teste o Serviço sem compromisso.
+              O período de trial gratuito de 48 horas permite que você teste o Serviço sem compromisso.
               Após o término do trial, sua assinatura será cobrada automaticamente, a menos que você
               cancele antes do fim do período.
             </p>

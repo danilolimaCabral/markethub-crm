@@ -120,7 +120,7 @@ Calcular o lucro real no Mercado Livre não é simples, mas é **essencial** par
 - 🎯 Precificar corretamente
 - 📈 Aumentar sua margem de lucro
 
-**Experimente grátis por 14 dias** e veja a diferença que faz ter controle total sobre suas finanças!
+**Experimente grátis por 48 horas** e veja a diferença que faz ter controle total sobre suas finanças!
 `
   },
   {
@@ -274,7 +274,7 @@ Entender impostos é fundamental para ter um e-commerce lucrativo. Com planejame
 - 🎯 Aumentar margem de lucro
 - ⚖️ Manter-se em conformidade fiscal
 
-**Teste grátis por 14 dias** e tenha controle total sobre sua tributação!
+**Teste grátis por 48 horas** e tenha controle total sobre sua tributação!
 `
   },
   {
@@ -453,7 +453,7 @@ Precificação correta é a diferença entre lucro e prejuízo. Com as estratég
 - 📊 Tomar decisões baseadas em dados
 - 🚀 Escalar seu negócio com sustentabilidade
 
-**Teste grátis por 14 dias** e descubra o preço ideal para cada produto!
+**Teste grátis por 48 horas** e descubra o preço ideal para cada produto!
 `
   },
   {
@@ -688,7 +688,7 @@ Gerenciar estoque em múltiplos marketplaces não precisa ser complicado. Com as
 - ⚡ Atualizar tudo automaticamente
 - 💰 Evitar perdas por ruptura ou venda duplicada
 
-**Teste grátis por 14 dias** e simplifique sua gestão de estoque!
+**Teste grátis por 48 horas** e simplifique sua gestão de estoque!
 `
   },
   {
@@ -927,7 +927,7 @@ Controlar o CMV é essencial para ter um negócio lucrativo. Com o cálculo corr
 - 🎯 Precificar corretamente
 - 📈 Aumentar margem de lucro
 
-**Teste grátis por 14 dias** e tenha controle total sobre seus custos!
+**Teste grátis por 48 horas** e tenha controle total sobre seus custos!
 `
   }
 ];

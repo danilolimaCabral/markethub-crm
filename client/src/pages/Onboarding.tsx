@@ -307,7 +307,7 @@ export default function Onboarding() {
 
               <div className="text-center p-6">
                 <p className="text-lg mb-2">
-                  Seu trial de <strong>14 dias</strong> começa agora!
+                  Seu trial de <strong>48 horas</strong> começa agora!
                 </p>
                 <p className="text-sm text-muted-foreground">
                   Explore todas as funcionalidades sem compromisso

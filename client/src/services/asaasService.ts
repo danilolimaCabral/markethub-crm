@@ -209,7 +209,7 @@ class AsaasService {
   }
 
   /**
-   * Criar assinatura com trial de 14 dias
+   * Criar assinatura com trial de 48 horas
    */
   async createSubscriptionWithTrial(
     customer: AsaasCustomer,
@@ -218,7 +218,7 @@ class AsaasService {
     // 1. Criar cliente no Asaas
     const asaasCustomer = await this.createCustomer(customer);
 
-    // 2. Calcular data de vencimento (14 dias de trial)
+    // 2. Calcular data de vencimento (48 horas de trial)
     const trialDays = 14;
     const nextDueDate = new Date();
     nextDueDate.setDate(nextDueDate.getDate() + trialDays);

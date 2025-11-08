@@ -416,7 +416,7 @@ export default function LandingPage() {
               className="text-lg px-8 hover:scale-105 transition-transform duration-200"
               onClick={() => setLocation('/cadastro')}
             >
-              Começar Trial Gratuito de 14 Dias
+              Começar Trial Gratuito de 48 Horas
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <p className="text-sm mt-4 text-white/80">

@@ -173,7 +173,7 @@ export default function BlogPost() {
                 Gostou do conteúdo?
               </h3>
               <p className="text-white/90 mb-6">
-                Teste o MarketHub CRM grátis por 14 dias e aplique essas estratégias no seu negócio
+                Teste o MarketHub CRM grátis por 48 horas e aplique essas estratégias no seu negócio
               </p>
               <Button 
                 size="lg" 

@@ -214,7 +214,7 @@ export default function Blog() {
               Pronto para aplicar essas estratégias?
             </h2>
             <p className="text-xl mb-8 text-white/90">
-              Teste o MarketHub CRM grátis por 14 dias e veja seus lucros aumentarem
+              Teste o MarketHub CRM grátis por 48 horas e veja seus lucros aumentarem
             </p>
             <Button 
               size="lg" 
