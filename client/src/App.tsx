@@ -85,7 +85,7 @@ function Router() {
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/termos" component={TermosUso} />
         <Route path="/privacidade" component={PoliticaPrivacidade} />
-        <Route path="/teste-24h" component={TesteInstantaneo} />
+        <Route path="/teste-48h" component={TesteInstantaneo} />
         <Route path="/verify-2fa" component={Verify2FA} />
         <Route path="/callback" component={Callback} />
         <Route component={LandingPage} />

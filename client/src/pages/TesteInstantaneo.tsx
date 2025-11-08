@@ -33,7 +33,7 @@ export default function TesteInstantaneo() {
       // Criar conta temporária
       const userId = `temp_${Date.now()}`;
       const expiresAt = new Date();
-      expiresAt.setHours(expiresAt.getHours() + 24); // 24 horas
+      expiresAt.setHours(expiresAt.getHours() + 48); // 48 horas
 
       const contaTemporaria = {
         id: userId,
@@ -73,7 +73,7 @@ export default function TesteInstantaneo() {
       criarDadosExemplo();
 
       toast.success('Ambiente de teste criado! 🎉', {
-        description: 'Você tem 24 horas para explorar todas as funcionalidades',
+        description: 'Você tem 48 horas para explorar todas as funcionalidades',
       });
 
       // Redirecionar para dashboard

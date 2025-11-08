@@ -114,9 +114,9 @@ export default function LandingPage() {
               <Button 
                 size="lg"
                 className="bg-gradient-to-r from-purple-600 to-blue-600 text-lg px-8 hover:from-purple-700 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                onClick={() => setLocation('/teste-24h')}
+                onClick={() => setLocation('/teste-48h')}
               >
-                Testar 24h Grátis - Sem Cartão
+                Testar 48h Grátis - Sem Cartão
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
