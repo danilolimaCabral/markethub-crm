@@ -678,3 +678,12 @@
 - [x] Salvar custos no localStorage
 - [x] Adicionar ícones e cores por categoria
 - [x] Implementar remoção de custos
+
+## Rebranding para MarketHub CRM
+
+- [x] Criar logo profissional com tema de marketplaces conectados
+- [x] Gerar logo com hexagonos interconectados (Mercado Livre, Amazon, Shopee)
+- [x] Atualizar nome para MarketHub CRM em client/src/const.ts
+- [x] Aplicar cores da identidade visual (verde emerald + azul)
+- [x] Salvar logo em client/public/logo-markethub.png
+- [x] Aplicar cores emerald-600 como primary no index.css
