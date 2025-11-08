@@ -7,6 +7,9 @@ import { Badge } from '@/components/ui/badge';
 import { Check, TrendingUp, ArrowLeft } from 'lucide-react';
 import { useLocation } from 'wouter';
 import { toast } from 'sonner';
+import { asaasService } from '@/services/asaasService';
+import { subscriptionService } from '@/services/subscriptionService';
+import { PLANS } from '@/types/asaas';
 
 const PLANOS = [
   {
@@ -104,10 +107,61 @@ export default function Cadastro() {
     setLoading(true);
 
     try {
-      // Simular criação de conta (será integrado com backend real)
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Buscar configuração do plano
+      const planConfig = PLANS[planoSelecionado];
+      if (!planConfig) {
+        throw new Error('Plano inválido');
+      }
 
-      // Salvar dados temporários no localStorage
+      toast.info('Criando sua conta...', { duration: 2000 });
+
+      // 1. Criar cliente e assinatura no Asaas
+      const { customer, subscription } = await asaasService.createSubscriptionWithTrial(
+        {
+          name: formData.nomeCompleto,
+          email: formData.email,
+          cpfCnpj: '00000000000', // Será preenchido depois
+          phone: formData.telefone,
+        },
+        {
+          name: planConfig.name,
+          value: planConfig.value,
+        }
+      );
+
+      toast.success('Assinatura criada no Asaas!', { duration: 2000 });
+
+      // 2. Criar usuário local
+      const userId = `user_${Date.now()}`;
+      const novoUsuario = {
+        id: userId,
+        nome: formData.nomeCompleto,
+        email: formData.email,
+        senha: formData.senha, // Em produção, usar hash
+        role: 'admin',
+        criadoEm: new Date().toISOString(),
+      };
+
+      localStorage.setItem('markethub_user', JSON.stringify(novoUsuario));
+
+      // 3. Salvar assinatura local
+      const trialEndsAt = new Date();
+      trialEndsAt.setDate(trialEndsAt.getDate() + 14);
+
+      subscriptionService.saveSubscription({
+        id: subscription.id!,
+        userId,
+        email: formData.email,
+        plan: planoSelecionado as any,
+        status: 'trial',
+        asaasCustomerId: customer.id!,
+        asaasSubscriptionId: subscription.id!,
+        trialEndsAt,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+
+      // 4. Salvar tenant
       const novoTenant = {
         id: `tenant_${Date.now()}`,
         nomeEmpresa: formData.nomeEmpresa,
@@ -116,17 +170,14 @@ export default function Cadastro() {
         telefone: formData.telefone,
         status: 'trial',
         criadoEm: new Date().toISOString(),
-        trialAte: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString() // 14 dias
+        trialAte: trialEndsAt.toISOString(),
       };
 
       localStorage.setItem('markethub_tenant', JSON.stringify(novoTenant));
-      localStorage.setItem('markethub_user', JSON.stringify({
-        nome: formData.nomeCompleto,
-        email: formData.email,
-        role: 'admin'
-      }));
 
-      toast.success('Conta criada com sucesso! Redirecionando...');
+      toast.success('Conta criada com sucesso! 🎉', {
+        description: '14 dias de trial grátis ativados',
+      });
       
       // Redirecionar para onboarding
       setTimeout(() => {

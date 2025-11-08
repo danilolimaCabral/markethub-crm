@@ -37,6 +37,7 @@ import CalculadoraTaxasML from './pages/CalculadoraTaxasML';
 import Forbidden from './pages/Forbidden';
 import Cadastro from './pages/Cadastro';
 import Onboarding from './pages/Onboarding';
+import WebhookSimulator from './pages/WebhookSimulator';
 import { isAuthenticated } from "./lib/auth";
 import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
@@ -109,6 +110,7 @@ function Router() {
         <Route path="/mercado-livre" component={MercadoLivre} />
         <Route path="/importacao-financeira" component={ImportacaoFinanceira} />
         <Route path="/calculadora-taxas-ml" component={CalculadoraTaxasML} />
+        <Route path="/webhook-simulator" component={WebhookSimulator} />
         <Route path={"/docs"} component={Docs} />
         <Route path={"/403"} component={Forbidden} />
         <Route path={"/404"} component={NotFound} />
