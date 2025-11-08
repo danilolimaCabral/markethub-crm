@@ -4,52 +4,101 @@ import { Badge } from '@/components/ui/badge';
 import { Check, Calculator, TrendingUp, Bell, Shield, Zap, Users, BarChart3, ArrowRight, Star } from 'lucide-react';
 import { useLocation } from 'wouter';
 import ChatbotIA from '@/components/ChatbotIA';
+import { useEffect, useRef } from 'react';
 
 export default function LandingPage() {
   const [, setLocation] = useLocation();
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    // Intersection Observer para animações de scroll
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    // Observar todos os elementos com classe 'scroll-animate'
+    const elements = document.querySelectorAll('.scroll-animate');
+    elements.forEach((el) => observerRef.current?.observe(el));
+
+    return () => observerRef.current?.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Chatbot IA */}
       <ChatbotIA />
+      
       {/* Header/Navbar */}
-      <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl flex items-center justify-center">
-              <TrendingUp className="h-6 w-6 text-white" />
+      <header className="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b shadow-sm">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            {/* Logo - Melhor alinhamento */}
+            <div className="flex items-center gap-3 group cursor-pointer" onClick={() => setLocation('/')}>
+              <div className="w-11 h-11 bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <TrendingUp className="h-6 w-6 text-white" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent leading-tight">
+                  MarketHub CRM
+                </span>
+                <span className="text-[10px] text-muted-foreground -mt-0.5">
+                  Venda mais, lucre mais
+                </span>
+              </div>
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              MarketHub CRM
-            </span>
+            
+            {/* Navigation */}
+            <nav className="hidden md:flex items-center gap-6">
+              <a href="#funcionalidades" className="text-sm font-medium hover:text-purple-600 transition-colors duration-200">
+                Funcionalidades
+              </a>
+              <a href="#precos" className="text-sm font-medium hover:text-purple-600 transition-colors duration-200">
+                Preços
+              </a>
+              <a href="#depoimentos" className="text-sm font-medium hover:text-purple-600 transition-colors duration-200">
+                Depoimentos
+              </a>
+              <a href="#faq" className="text-sm font-medium hover:text-purple-600 transition-colors duration-200">
+                FAQ
+              </a>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => setLocation('/login')}
+                className="hover:bg-purple-50 hover:text-purple-600 hover:border-purple-300 transition-all duration-200"
+              >
+                Área do Cliente
+              </Button>
+              <Button 
+                size="sm" 
+                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105" 
+                onClick={() => setLocation('/cadastro')}
+              >
+                Começar Grátis
+              </Button>
+            </nav>
           </div>
-          
-          <nav className="hidden md:flex items-center gap-6">
-            <a href="#funcionalidades" className="text-sm font-medium hover:text-purple-600 transition">Funcionalidades</a>
-            <a href="#precos" className="text-sm font-medium hover:text-purple-600 transition">Preços</a>
-            <a href="#depoimentos" className="text-sm font-medium hover:text-purple-600 transition">Depoimentos</a>
-            <a href="#faq" className="text-sm font-medium hover:text-purple-600 transition">FAQ</a>
-            <Button variant="outline" size="sm" onClick={() => setLocation('/login')}>
-              Área do Cliente
-            </Button>
-            <Button size="sm" className="bg-gradient-to-r from-purple-600 to-blue-600" onClick={() => setLocation('/cadastro')}>
-              Começar Grátis
-            </Button>
-          </nav>
         </div>
       </header>
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 md:py-32">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300">
+          <div className="space-y-6 scroll-animate">
+            <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300 hover:scale-105 transition-transform duration-200">
               🚀 Especializado em Marketplaces
             </Badge>
             
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               Venda Mais no{' '}
-              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent animate-gradient">
                 Mercado Livre
               </span>{' '}
               com Inteligência
@@ -64,13 +113,17 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-purple-600 to-blue-600 text-lg px-8"
+                className="bg-gradient-to-r from-purple-600 to-blue-600 text-lg px-8 hover:from-purple-700 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 onClick={() => setLocation('/cadastro')}
               >
                 Testar 14 Dias Grátis
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button size="lg" variant="outline" className="text-lg">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="text-lg hover:bg-purple-50 hover:border-purple-300 transition-all duration-200"
+              >
                 Ver Demonstração
               </Button>
             </div>
@@ -86,80 +139,79 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur-3xl opacity-20"></div>
-            <Card className="relative border-2 border-purple-200 dark:border-purple-800 shadow-2xl">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Calculator className="h-5 w-5 text-purple-600" />
-                  Calculadora de Taxas ML
-                </CardTitle>
-                <CardDescription>Veja quanto você realmente lucra</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-sm text-muted-foreground">Preço de Venda</p>
-                    <p className="text-2xl font-bold">R$ 89,90</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">Custo</p>
-                    <p className="text-2xl font-bold">R$ 45,90</p>
-                  </div>
+
+          {/* Calculadora Preview - Com animação */}
+          <Card className="p-6 shadow-2xl scroll-animate hover:shadow-3xl transition-shadow duration-300 border-2">
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 text-purple-600">
+                <Calculator className="h-5 w-5" />
+                <h3 className="font-semibold">Calculadora de Taxas ML</h3>
+              </div>
+              <p className="text-sm text-muted-foreground">Veja quanto vai realmente lucrar</p>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="text-sm text-muted-foreground">Preço de Venda</p>
+                  <p className="text-2xl font-bold">R$ 89,90</p>
                 </div>
-                
-                <div className="space-y-2 pt-4 border-t">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Comissão ML (13%)</span>
-                    <span className="text-red-600 font-semibold">-R$ 11,69</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">ICMS Goiás (19%)</span>
-                    <span className="text-red-600 font-semibold">-R$ 17,08</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Simples Nacional (6,5%)</span>
-                    <span className="text-red-600 font-semibold">-R$ 5,84</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Taxa Pix (0,99%)</span>
-                    <span className="text-red-600 font-semibold">-R$ 0,89</span>
-                  </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Custo</p>
+                  <p className="text-2xl font-bold">R$ 45,90</p>
                 </div>
-                
-                <div className="pt-4 border-t bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-950 dark:to-blue-950 p-4 rounded-lg">
-                  <div className="flex justify-between items-center">
-                    <span className="font-semibold">Lucro Líquido Real</span>
-                    <span className="text-3xl font-bold text-green-600">R$ 8,50</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground mt-1">Margem: 9,45%</p>
+              </div>
+              
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Comissão ML (13%)</span>
+                  <span className="text-red-600">-R$ 11,69</span>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">ICMS Goiás (19%)</span>
+                  <span className="text-red-600">-R$ 17,08</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Simples Nacional (6.5%)</span>
+                  <span className="text-red-600">-R$ 5,84</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Taxa Pix (0.99%)</span>
+                  <span className="text-red-600">-R$ 0,89</span>
+                </div>
+              </div>
+              
+              <div className="pt-4 border-t">
+                <div className="flex justify-between items-center">
+                  <span className="font-semibold">Lucro Líquido Real</span>
+                  <span className="text-3xl font-bold text-green-600">R$ 8,50</span>
+                </div>
+                <p className="text-sm text-muted-foreground mt-1">Margem: 9.46%</p>
+              </div>
+            </div>
+          </Card>
         </div>
       </section>
 
-      {/* Social Proof */}
-      <section className="bg-white dark:bg-gray-800 py-12 border-y">
+      {/* Social Proof - Com animação */}
+      <section className="bg-white dark:bg-gray-800 py-12 scroll-animate">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <p className="text-4xl font-bold text-purple-600">500+</p>
-              <p className="text-sm text-muted-foreground mt-1">Vendedores Ativos</p>
+            <div className="hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl font-bold text-purple-600">500+</div>
+              <div className="text-sm text-muted-foreground">Vendedores Ativos</div>
             </div>
-            <div>
-              <p className="text-4xl font-bold text-purple-600">R$ 2M+</p>
-              <p className="text-sm text-muted-foreground mt-1">Economizados em Taxas</p>
+            <div className="hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl font-bold text-purple-600">R$ 2M+</div>
+              <div className="text-sm text-muted-foreground">Economizados em Taxas</div>
             </div>
-            <div>
-              <p className="text-4xl font-bold text-purple-600">98%</p>
-              <p className="text-sm text-muted-foreground mt-1">Satisfação</p>
+            <div className="hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl font-bold text-purple-600">98%</div>
+              <div className="text-sm text-muted-foreground">Satisfação</div>
             </div>
-            <div>
-              <p className="text-4xl font-bold text-purple-600">4.9⭐</p>
-              <p className="text-sm text-muted-foreground mt-1">Avaliação Média</p>
+            <div className="hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl font-bold text-purple-600 flex items-center justify-center gap-1">
+                4.9 <Star className="h-6 w-6 fill-yellow-400 text-yellow-400" />
+              </div>
+              <div className="text-sm text-muted-foreground">Avaliação Média</div>
             </div>
           </div>
         </div>
@@ -167,9 +219,9 @@ export default function LandingPage() {
 
       {/* Problema vs Solução */}
       <section className="container mx-auto px-4 py-20">
-        <div className="text-center mb-16">
-          <Badge className="bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300 mb-4">
-            ⚠️ Você está perdendo dinheiro
+        <div className="text-center mb-12 scroll-animate">
+          <Badge className="mb-4 bg-red-100 text-red-700">
+            ⚠️ Você está perdendo dinheiro!
           </Badge>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             Sabe quanto <span className="text-red-600">realmente</span> está lucrando?
@@ -181,102 +233,113 @@ export default function LandingPage() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <Card className="border-red-200 dark:border-red-800">
+          {/* Sem MarketHub */}
+          <Card className="border-2 border-red-200 scroll-animate hover:shadow-xl transition-shadow duration-300">
             <CardHeader>
-              <CardTitle className="text-red-600">❌ Sem o MarketHub</CardTitle>
+              <div className="flex items-center gap-2 text-red-600">
+                <span className="text-2xl">❌</span>
+                <CardTitle>Sem o MarketHub</CardTitle>
+              </div>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="flex items-start gap-2">
-                <span className="text-red-600 mt-1">✗</span>
-                <span>Calcula taxas manualmente em planilhas</span>
-              </p>
-              <p className="flex items-start gap-2">
-                <span className="text-red-600 mt-1">✗</span>
-                <span>Esquece de considerar ICMS do estado</span>
-              </p>
-              <p className="flex items-start gap-2">
-                <span className="text-red-600 mt-1">✗</span>
-                <span>Não sabe margem de contribuição real</span>
-              </p>
-              <p className="flex items-start gap-2">
-                <span className="text-red-600 mt-1">✗</span>
-                <span>Vende produto sem estoque</span>
-              </p>
-              <p className="flex items-start gap-2">
-                <span className="text-red-600 mt-1">✗</span>
-                <span>Perde tempo com tarefas manuais</span>
-              </p>
+              <div className="flex items-start gap-2">
+                <span className="text-red-600 mt-1">•</span>
+                <p className="text-sm">Calcula taxas manualmente em planilhas</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-red-600 mt-1">•</span>
+                <p className="text-sm">Esquece de considerar ICMS do estado</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-red-600 mt-1">•</span>
+                <p className="text-sm">Não sabe margem de contribuição real</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-red-600 mt-1">•</span>
+                <p className="text-sm">Vende produto sem estoque</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-red-600 mt-1">•</span>
+                <p className="text-sm">Perde tempo com tarefas manuais</p>
+              </div>
             </CardContent>
           </Card>
 
-          <Card className="border-green-200 dark:border-green-800 shadow-lg">
+          {/* Com MarketHub */}
+          <Card className="border-2 border-green-200 scroll-animate hover:shadow-xl transition-shadow duration-300">
             <CardHeader>
-              <CardTitle className="text-green-600">✅ Com o MarketHub</CardTitle>
+              <div className="flex items-center gap-2 text-green-600">
+                <span className="text-2xl">✅</span>
+                <CardTitle>Com o MarketHub</CardTitle>
+              </div>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-green-600 mt-0.5" />
-                <span>Calcula todas as taxas automaticamente</span>
-              </p>
-              <p className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-green-600 mt-0.5" />
-                <span>Considera ICMS do seu estado (17-21%)</span>
-              </p>
-              <p className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-green-600 mt-0.5" />
-                <span>Mostra lucro líquido após impostos</span>
-              </p>
-              <p className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-green-600 mt-0.5" />
-                <span>Pausa anúncios quando zera estoque</span>
-              </p>
-              <p className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-green-600 mt-0.5" />
-                <span>Economiza 10h/semana em gestão</span>
-              </p>
+              <div className="flex items-start gap-2">
+                <Check className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <p className="text-sm">Calcula todas as taxas automaticamente</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <Check className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <p className="text-sm">Considera ICMS do seu estado (17-21%)</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <Check className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <p className="text-sm">Mostra lucro líquido após impostos</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <Check className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <p className="text-sm">Pausa anúncios quando zera estoque</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <Check className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <p className="text-sm">Economiza 10h/semana em gestão</p>
+              </div>
             </CardContent>
           </Card>
         </div>
       </section>
 
       {/* Funcionalidades */}
-      <section id="funcionalidades" className="bg-gradient-to-b from-purple-50 to-white dark:from-gray-900 dark:to-gray-800 py-20">
+      <section id="funcionalidades" className="bg-white dark:bg-gray-800 py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 scroll-animate">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Tudo que você precisa em um só lugar
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground">
               Funcionalidades que nenhum outro CRM ou ERP oferece para vendedores de marketplace
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-2 hover:border-purple-300 transition hover:shadow-xl">
+            {/* Feature 1 */}
+            <Card className="scroll-animate hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2">
               <CardHeader>
                 <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-4">
                   <Calculator className="h-6 w-6 text-purple-600" />
                 </div>
                 <CardTitle>Calculadora Inteligente</CardTitle>
                 <CardDescription>
-                  Calcula automaticamente comissões ML, ICMS por estado, impostos do regime tributário e mostra lucro líquido real
+                  Calcula automaticamente comissão ML, ICMS por estado, impostos do regime tributário e mostra lucro real
                 </CardDescription>
               </CardHeader>
             </Card>
 
-            <Card className="border-2 hover:border-blue-300 transition hover:shadow-xl">
+            {/* Feature 2 */}
+            <Card className="scroll-animate hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2">
               <CardHeader>
                 <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
                   <Bell className="h-6 w-6 text-blue-600" />
                 </div>
                 <CardTitle>Alertas Automáticos</CardTitle>
                 <CardDescription>
-                  Receba notificações quando estoque baixar, pausa anúncios automaticamente quando zerar e reativa ao repor
+                  Receba notificações quando estoque baixar, pausa anúncios quando zerar e reativa ao repor
                 </CardDescription>
               </CardHeader>
             </Card>
 
-            <Card className="border-2 hover:border-green-300 transition hover:shadow-xl">
+            {/* Feature 3 */}
+            <Card className="scroll-animate hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2">
               <CardHeader>
                 <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-4">
                   <BarChart3 className="h-6 w-6 text-green-600" />
@@ -288,7 +351,8 @@ export default function LandingPage() {
               </CardHeader>
             </Card>
 
-            <Card className="border-2 hover:border-orange-300 transition hover:shadow-xl">
+            {/* Feature 4 */}
+            <Card className="scroll-animate hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2">
               <CardHeader>
                 <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center mb-4">
                   <TrendingUp className="h-6 w-6 text-orange-600" />
@@ -300,26 +364,28 @@ export default function LandingPage() {
               </CardHeader>
             </Card>
 
-            <Card className="border-2 hover:border-pink-300 transition hover:shadow-xl">
+            {/* Feature 5 */}
+            <Card className="scroll-animate hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2">
               <CardHeader>
                 <div className="w-12 h-12 bg-pink-100 dark:bg-pink-900 rounded-lg flex items-center justify-center mb-4">
                   <Shield className="h-6 w-6 text-pink-600" />
                 </div>
                 <CardTitle>Segurança 2FA</CardTitle>
                 <CardDescription>
-                  Autenticação de dois fatores nativa, backup codes e logs de auditoria completos para proteger seus dados
+                  Autenticação de dois fatores nativa, backup automático e conformidade LGPD. Seus dados protegidos
                 </CardDescription>
               </CardHeader>
             </Card>
 
-            <Card className="border-2 hover:border-indigo-300 transition hover:shadow-xl">
+            {/* Feature 6 */}
+            <Card className="scroll-animate hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-2">
               <CardHeader>
                 <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center mb-4">
                   <Zap className="h-6 w-6 text-indigo-600" />
                 </div>
                 <CardTitle>Integrações</CardTitle>
                 <CardDescription>
-                  Conecte Mercado Livre, Amazon, Shopee e ERPs. Sincronização automática de produtos e pedidos
+                  Conecte Mercado Livre, Amazon, Shopee. Sincronização automática de produtos e pedidos
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -327,25 +393,28 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Final */}
       <section className="container mx-auto px-4 py-20">
-        <Card className="bg-gradient-to-r from-purple-600 to-blue-600 border-0 text-white">
+        <Card className="bg-gradient-to-r from-purple-600 to-blue-600 text-white border-0 scroll-animate hover:shadow-2xl transition-shadow duration-300">
           <CardContent className="p-12 text-center">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Pronto para aumentar seus lucros?
             </h2>
-            <p className="text-xl mb-8 opacity-90">
+            <p className="text-xl mb-8 text-white/90">
               Junte-se a centenas de vendedores que já estão economizando milhares em taxas
             </p>
             <Button 
               size="lg" 
-              className="bg-white text-purple-600 hover:bg-gray-100 text-lg px-8"
+              variant="secondary" 
+              className="text-lg px-8 hover:scale-105 transition-transform duration-200"
               onClick={() => setLocation('/cadastro')}
             >
               Começar Trial Gratuito de 14 Dias
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <p className="text-sm mt-4 opacity-75">Sem cartão de crédito • Cancele quando quiser</p>
+            <p className="text-sm mt-4 text-white/80">
+              Sem cartão de crédito • Cancele quando quiser
+            </p>
           </CardContent>
         </Card>
       </section>
@@ -359,7 +428,7 @@ export default function LandingPage() {
                 <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
                   <TrendingUp className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-xl font-bold">MarketHub CRM</span>
+                <span className="font-bold text-lg">MarketHub CRM</span>
               </div>
               <p className="text-sm text-gray-400">
                 O CRM especializado em vendedores de marketplace
@@ -397,11 +466,47 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-400">
-            <p>© 2025 MarketHub CRM. Todos os direitos reservados.</p>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+            © 2025 MarketHub CRM. Todos os direitos reservados.
           </div>
         </div>
       </footer>
+
+      {/* CSS para animações */}
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .scroll-animate {
+          opacity: 0;
+        }
+
+        @keyframes gradient {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+      `}</style>
     </div>
   );
 }
