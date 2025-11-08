@@ -4,6 +4,8 @@ import { Input } from '@/components/ui/input';
 import { useLocation } from 'wouter';
 import { Brain, Lock, User, Mail } from 'lucide-react';
 import { toast } from 'sonner';
+import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 import {
   Dialog,
   DialogContent,
@@ -89,6 +91,40 @@ export default function Login() {
       setRecoveryEmail('');
       setIsRecoveryLoading(false);
     }, 1500);
+  };
+
+  const handleGoogleSuccess = (credentialResponse: CredentialResponse) => {
+    try {
+      if (!credentialResponse.credential) {
+        toast.error('Erro ao fazer login com Google');
+        return;
+      }
+
+      // Decodificar JWT do Google
+      const decoded: any = jwtDecode(credentialResponse.credential);
+      
+      const user = {
+        username: decoded.email,
+        name: decoded.name,
+        email: decoded.email,
+        picture: decoded.picture,
+        role: 'user',
+        loginMethod: 'google'
+      };
+
+      // Salvar usuário no localStorage
+      localStorage.setItem('ia_bruno_user', JSON.stringify(user));
+      
+      toast.success(`Bem-vindo, ${decoded.name}!`);
+      setLocation('/');
+    } catch (error) {
+      console.error('Erro ao processar login do Google:', error);
+      toast.error('Erro ao fazer login com Google');
+    }
+  };
+
+  const handleGoogleError = () => {
+    toast.error('Falha no login com Google');
   };
 
   return (

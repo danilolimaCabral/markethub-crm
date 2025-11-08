@@ -3,6 +3,7 @@ import { Link, useLocation } from 'wouter';
 import { useState, useEffect } from 'react';
 import GlobalSearch from './GlobalSearch';
 import AssistenteIAFloat from './AssistenteIAFloat';
+import { usePermissions } from '@/hooks/usePermissions';
 import { 
   LayoutDashboard, 
   ShoppingCart, 
@@ -38,10 +39,40 @@ interface NavSection {
   title: string;
   items: NavItem[];
 }
+
+// Mapeamento de rotas para módulos de permissão
+const ROUTE_TO_MODULE: Record<string, string> = {
+  '/': 'dashboard',
+  '/chat': 'dashboard',
+  '/pedidos': 'sales',
+  '/produtos': 'products',
+  '/anuncios': 'mercadolivre',
+  '/clientes': 'customers',
+  '/entregas': 'sales',
+  '/notas-fiscais': 'sales',
+  '/pos-vendas': 'customers',
+  '/importacao': 'products',
+  '/inteligencia-mercado': 'reports',
+  '/tabela-preco': 'products',
+  '/contas-pagar': 'reports',
+  '/contas-receber': 'reports',
+  '/fluxo-caixa': 'reports',
+  '/notas': 'reports',
+  '/precos': 'products',
+  '/relatorios': 'reports',
+  '/vendas': 'reports',
+  '/metricas': 'reports',
+  '/usuarios': 'users',
+  '/configuracoes': 'settings',
+  '/mercado-livre': 'mercadolivre',
+  '/importacao-financeira': 'reports',
+};
+
 export default function CRMLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [searchOpen, setSearchOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { hasPermission, isAdmin } = usePermissions();
 
   // Atalho Ctrl+K para abrir pesquisa
   useEffect(() => {
@@ -101,6 +132,20 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
         { path: "/vendas", icon: <TrendingUp size={20} />, label: "Análise de Vendas", color: "text-emerald-500" },
         { path: "/metricas", icon: <PieChart size={20} />, label: "Métricas", color: "text-pink-500" },
       ]
+    },
+    {
+      title: "Integrações",
+      items: [
+        { path: "/mercado-livre", icon: <ShoppingCart size={20} />, label: "Mercado Livre", color: "text-yellow-500" },
+        { path: "/importacao-financeira", icon: <FileText size={20} />, label: "Importação Financeira", color: "text-green-500" },
+      ]
+    },
+    {
+      title: "Administração",
+      items: [
+        { path: "/usuarios", icon: <Users size={20} />, label: "Usuários", color: "text-purple-500" },
+        { path: "/configuracoes", icon: <Settings size={20} />, label: "Configurações", color: "text-slate-500" },
+      ]
     }
   ];
 
@@ -157,34 +202,42 @@ export default function CRMLayout({ children }: { children: React.ReactNode }) {
               
               {/* Section Items */}
               <div className="space-y-1">
-                {section.items.map((item) => {
-                  const isActive = location === item.path;
-                  return (
-                    <Link key={item.path} href={item.path}>
-                      <div
-                        onClick={() => setSidebarOpen(false)}
-                        className={`
-                          flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer
-                          transition-all duration-200
-                          ${isActive 
-                            ? 'bg-primary text-primary-foreground shadow-sm' 
-                            : 'text-foreground hover:bg-accent hover:text-accent-foreground'
-                          }
-                        `}
-                      >
-                        <span className={isActive ? 'text-primary-foreground' : item.color}>
-                          {item.icon}
-                        </span>
-                        <span className="flex-1 font-medium text-sm">{item.label}</span>
-                        {item.badge && (
-                          <span className="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                            {item.badge}
+                {section.items
+                  .filter(item => {
+                    // Admin tem acesso a tudo
+                    if (isAdmin) return true;
+                    // Verificar permissão para a rota
+                    const module = ROUTE_TO_MODULE[item.path];
+                    return module ? hasPermission(module) : true;
+                  })
+                  .map((item) => {
+                    const isActive = location === item.path;
+                    return (
+                      <Link key={item.path} href={item.path}>
+                        <div
+                          onClick={() => setSidebarOpen(false)}
+                          className={`
+                            flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer
+                            transition-all duration-200
+                            ${isActive 
+                              ? 'bg-primary text-primary-foreground shadow-sm' 
+                              : 'text-foreground hover:bg-accent hover:text-accent-foreground'
+                            }
+                          `}
+                        >
+                          <span className={isActive ? 'text-primary-foreground' : item.color}>
+                            {item.icon}
                           </span>
-                        )}
-                      </div>
-                    </Link>
-                  );
-                })}
+                          <span className="flex-1 font-medium text-sm">{item.label}</span>
+                          {item.badge && (
+                            <span className="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                              {item.badge}
+                            </span>
+                          )}
+                        </div>
+                      </Link>
+                    );
+                  })}
               </div>
             </div>
           ))}

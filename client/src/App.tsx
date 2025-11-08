@@ -29,6 +29,9 @@ import TabelaPreco from './pages/TabelaPreco';
 import ContasPagar from './pages/ContasPagar';
 import ContasReceber from './pages/ContasReceber';
 import FluxoCaixa from './pages/FluxoCaixa';
+import Users from './pages/Users';
+import MercadoLivre from './pages/MercadoLivre';
+import ImportacaoFinanceira from './pages/ImportacaoFinanceira';
 import { isAuthenticated } from "./lib/auth";
 import { useTokenRefresh } from "./hooks/useTokenRefresh";
 
@@ -93,6 +96,9 @@ function Router() {
         <Route path="/inteligencia-mercado" component={InteligenciaMercado} />
         <Route path="/tabela-preco" component={TabelaPreco} />
         <Route path="/metricas" component={Metricas} />
+        <Route path="/usuarios" component={Users} />
+        <Route path="/mercado-livre" component={MercadoLivre} />
+        <Route path="/importacao-financeira" component={ImportacaoFinanceira} />
         <Route path={"/docs"} component={Docs} />
         <Route path={"/404"} component={NotFound} />
         {/* Final fallback route */}

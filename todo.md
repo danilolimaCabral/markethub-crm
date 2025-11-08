@@ -507,3 +507,84 @@
 - [x] Implementar botão de desativar 2FA
 - [x] Adicionar persistência de configuração 2FA no localStorage
 - [x] Testar fluxo completo de configuração e uso
+
+## Login com Google OAuth2
+
+- [x] Pesquisar documentação do Google OAuth2
+- [x] Criar documentação de setup (GOOGLE_OAUTH2_SETUP.md)
+- [ ] CANCELADO - Implementação adiada por decisão do usuário
+
+## Painel de Gerenciamento de Usuários
+
+- [x] Criar página Users.tsx para gerenciar usuários
+- [x] Implementar listagem de usuários em tabela
+- [x] Criar formulário de criação de usuário
+- [x] Implementar edição de usuário
+- [x] Implementar exclusão de usuário
+- [x] Adicionar campo de senha no formulário
+- [x] Criar sistema de permissões por módulo
+- [x] Definir módulos disponíveis (Dashboard, Leads, Vendas, ML, etc.)
+- [x] Implementar checkboxes para selecionar permissões
+- [x] Criar perfis pré-configurados (Admin, Vendedor, Financeiro, Suporte)
+- [x] Salvar usuários e permissões no localStorage
+- [x] Criar hook usePermissions para verificar permissões
+- [x] Integrar permissões com menu lateral (CRMLayout)
+- [x] Ocultar módulos sem permissão no menu lateral
+- [x] Adicionar rota /usuarios no App.tsx
+- [x] Adicionar item "Usuários" no menu lateral (seção Administração)
+- [x] Criar mapeamento de rotas para módulos de permissão
+
+## Pesquisa e Documentação API Mercado Livre
+
+- [x] Pesquisar documentação oficial da API do Mercado Livre
+- [x] Documentar endpoints principais (pedidos, produtos, anúncios)
+- [x] Pesquisar autenticação OAuth2 do Mercado Livre
+- [x] Documentar limites de requisições (rate limits)
+- [x] Criar guia de integração com exemplos (PESQUISA_API_MERCADO_LIVRE.md)
+- [x] Documentar fluxo completo de OAuth2 (Authorization Code)
+- [x] Documentar refresh token e expiração
+- [x] Criar exemplos de código JavaScript
+
+## Módulo Mercado Livre - Integração Completa
+
+- [x] Criar página MercadoLivre.tsx
+- [x] Implementar tela de configuração de credenciais OAuth2
+- [x] Criar formulário para Client ID e Client Secret
+- [x] Implementar botão de autorização OAuth2
+- [x] Salvar configuração no localStorage
+- [x] Criar dashboard de vendas do ML
+- [x] Criar seção de métricas (pedidos, faturamento, produtos, perguntas)
+- [x] Implementar sincronização manual
+- [x] Adicionar indicador de status da conexão
+- [x] Criar aba de documentação com links úteis
+- [x] Adicionar ações rápidas (pedidos, produtos, perguntas)
+- [x] Implementar botão de desconectar
+- [x] Adicionar instruções de configuração
+- [x] Adicionar rota /mercado-livre no App.tsx
+- [x] Adicionar item no menu lateral (seção Integrações)
+- [ ] Implementar callback real para OAuth2
+- [ ] Implementar chamadas reais à API do ML
+- [ ] Implementar refresh automático de token
+
+## Sistema de Importação de Planilhas Financeiras
+
+- [x] Criar página ImportacaoFinanceira.tsx
+- [x] Implementar upload de arquivos Excel/CSV
+- [x] Instalar bibliotecas xlsx e papaparse
+- [x] Criar parser para ler planilhas Excel
+- [x] Criar parser para ler arquivos CSV
+- [x] Validar formato e dados da planilha
+- [x] Mapear colunas automaticamente
+- [x] Criar pré-visualização de dados antes de importar
+- [x] Importar dados para localStorage
+- [x] Criar histórico de importações
+- [x] Adicionar logs de importação com status
+- [x] Criar template de planilha para download
+- [x] Adicionar validações de dados financeiros
+- [x] Implementar limpar histórico
+- [x] Adicionar seção de atualização automática (placeholder)
+- [x] Adicionar rota /importacao-financeira no App.tsx
+- [x] Adicionar item no menu lateral (seção Integrações)
+- [ ] Implementar sincronização periódica automática
+- [ ] Implementar importação por email
+- [ ] Implementar integração com Google Sheets
