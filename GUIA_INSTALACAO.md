@@ -76,7 +76,7 @@ Se você recebeu o projeto em formato ZIP, extraia os arquivos em uma pasta de s
 
 ```bash
 git clone <url-do-repositorio>
-cd lexos-hub-web
+cd markethub-crm
 ```
 
 ### Passo 3: Instalar Dependências
@@ -84,7 +84,7 @@ cd lexos-hub-web
 Navegue até a pasta do projeto e instale todas as dependências necessárias:
 
 ```bash
-cd lexos-hub-web
+cd markethub-crm
 pnpm install
 ```
 

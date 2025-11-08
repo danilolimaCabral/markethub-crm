@@ -740,3 +740,14 @@
 - [ ] Estabelecer relacionamentos e chaves
 - [ ] Gerar scripts SQL (MySQL e PostgreSQL)
 - [ ] Criar documentação técnica do banco
+
+## Nova Logo e Preparação para Produção
+
+- [x] Gerar nova logo hub/conexões moderna (logo-markethub-v2.png)
+- [x] Melhorar paleta de cores (gradiente roxo/azul vibrante)
+- [x] Aplicar nova logo no sistema
+- [x] Criar guia completo de produção (GUIA_PRODUCAO.md)
+- [x] Remover todas as referências a "lexos-hub-web"
+- [x] Atualizar package.json para "markethub-crm"
+- [x] Atualizar ecosystem.config.js
+- [x] Substituir URLs de API externa

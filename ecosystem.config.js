@@ -3,19 +3,19 @@
  * 
  * Uso:
  *   pm2 start ecosystem.config.js
- *   pm2 logs lexos-sync
- *   pm2 restart lexos-sync
- *   pm2 stop lexos-sync
- *   pm2 delete lexos-sync
+ *   pm2 logs markethub-sync
+ *   pm2 restart markethub-sync
+ *   pm2 stop markethub-sync
+ *   pm2 delete markethub-sync
  */
 
 module.exports = {
   apps: [
     {
-      name: 'lexos-sync',
+      name: 'markethub-sync',
       script: 'pnpm',
       args: 'run scheduler',
-      cwd: '/home/ubuntu/lexos-hub-web',
+      cwd: '/home/ubuntu/markethub-crm',
       
       // Configurações de execução
       instances: 1,

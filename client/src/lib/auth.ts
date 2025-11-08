@@ -4,9 +4,9 @@ import { generateCodeVerifier, generateCodeChallenge, generateState, storePKCEPa
  * OAuth2 Configuration for Lexos Hub
  */
 const OAUTH_CONFIG = {
-  authorizationEndpoint: 'https://api.lexos.com.br/Autenticacao/',
-  tokenEndpoint: 'https://api.lexos.com.br/Autenticacao/Token',
-  refreshEndpoint: 'https://api.lexos.com.br/Autenticacao/RefreshToken',
+  authorizationEndpoint: 'https://api.example.com/Autenticacao/',
+  tokenEndpoint: 'https://api.example.com/Autenticacao/Token',
+  refreshEndpoint: 'https://api.example.com/Autenticacao/RefreshToken',
   clientId: '6b6c14ef-a27a-4467-8bb3-e0d7dc4b206f', // Lexos API Client ID
   redirectUri: window.location.origin + '/callback',
   scope: 'openid',

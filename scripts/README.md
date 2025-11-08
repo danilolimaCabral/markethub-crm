@@ -165,7 +165,7 @@ After=network.target
 [Service]
 Type=simple
 User=ubuntu
-WorkingDirectory=/home/ubuntu/lexos-hub-web
+WorkingDirectory=/home/ubuntu/markethub-crm
 ExecStart=/usr/bin/pnpm run scheduler
 Restart=always
 RestartSec=10
@@ -187,7 +187,7 @@ sudo systemctl status lexos-sync
 crontab -e
 
 # Adicionar linha para executar às 8h
-0 8 * * * cd /home/ubuntu/lexos-hub-web && pnpm run sync:all >> /var/log/lexos-sync.log 2>&1
+0 8 * * * cd /home/ubuntu/markethub-crm && pnpm run sync:all >> /var/log/lexos-sync.log 2>&1
 ```
 
 ---

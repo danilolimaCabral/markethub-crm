@@ -15,7 +15,7 @@ module.exports = {
       name: 'lexos-sync',
       script: 'pnpm',
       args: 'run scheduler',
-      cwd: '/home/ubuntu/lexos-hub-web',
+      cwd: '/home/ubuntu/markethub-crm',
       
       // Configurações de execução
       instances: 1,
