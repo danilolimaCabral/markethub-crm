@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
+import { geminiService } from '@/services/geminiService';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -45,8 +46,20 @@ function saveLead(phone: string, interest: string) {
   localStorage.setItem('markethub_leads', JSON.stringify(leads));
 }
 
-// Função simples de IA para responder perguntas
-function getAIResponse(question: string): string {
+// Função de IA usando Google Gemini
+async function getAIResponse(question: string): Promise<string> {
+  try {
+    // Tentar usar Gemini primeiro
+    const response = await geminiService.sendMessage(question);
+    return response;
+  } catch (error) {
+    console.error('Erro ao usar Gemini, usando respostas locais:', error);
+    return getLocalResponse(question);
+  }
+}
+
+// Função de fallback com respostas locais
+function getLocalResponse(question: string): string {
   const q = question.toLowerCase();
   
   // Preços
@@ -178,8 +191,8 @@ export default function ChatbotIA() {
     const phoneRegex = /\(?\d{2}\)?\s?\d{4,5}-?\d{4}/;
     const hasPhone = phoneRegex.test(userInput);
 
-    // Simular delay de digitação da IA
-    setTimeout(() => {
+    // Obter resposta da IA (Gemini)
+    setTimeout(async () => {
       let aiResponse = '';
       
       if (hasPhone) {
@@ -197,7 +210,7 @@ export default function ChatbotIA() {
           `🔗 **Link curto:** markethubcrm.com.br/demo\n\n` +
           `Enquanto isso, quer saber mais alguma coisa?`;
       } else {
-        aiResponse = getAIResponse(userInput);
+        aiResponse = await getAIResponse(userInput);
       }
       
       const assistantMessage: Message = { role: 'assistant', content: aiResponse };
