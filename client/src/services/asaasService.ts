@@ -219,7 +219,7 @@ class AsaasService {
     const asaasCustomer = await this.createCustomer(customer);
 
     // 2. Calcular data de vencimento (48 horas de trial)
-    const trialDays = 14;
+    const trialDays = 2; // 48 horas
     const nextDueDate = new Date();
     nextDueDate.setDate(nextDueDate.getDate() + trialDays);
     const nextDueDateStr = nextDueDate.toISOString().split('T')[0];

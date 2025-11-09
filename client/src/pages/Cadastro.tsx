@@ -215,7 +215,7 @@ export default function Cadastro() {
 
       // 3. Salvar assinatura local
       const trialEndsAt = new Date();
-      trialEndsAt.setDate(trialEndsAt.getDate() + 14);
+      trialEndsAt.setDate(trialEndsAt.getDate() + 2); // 48 horas = 2 dias
 
       subscriptionService.saveSubscription({
         id: subscription.id!,
