@@ -40,6 +40,7 @@ import Forbidden from './pages/Forbidden';
 import Cadastro from './pages/Cadastro';
 import Onboarding from './pages/Onboarding';
 import OnboardingWizard from './pages/OnboardingWizard';
+import ConfiguracaoML from './pages/ConfiguracaoML';
 import WebhookSimulator from './pages/WebhookSimulator';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
@@ -81,6 +82,7 @@ function Router() {
         <Route path="/login" component={Login} />
         <Route path="/cadastro" component={Cadastro} />
         <Route path="/onboarding" component={OnboardingWizard} />
+      <Route path="/configuracao-ml" component={ConfiguracaoML} />
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:slug" component={BlogPost} />
         <Route path="/termos" component={TermosUso} />
