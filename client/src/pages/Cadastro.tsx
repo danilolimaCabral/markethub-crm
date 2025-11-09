@@ -248,9 +248,9 @@ export default function Cadastro() {
         description: '48 horas de trial grátis ativados',
       });
       
-      // Redirecionar para onboarding
+      // Redirecionar para dashboard
       setTimeout(() => {
-        setLocation('/onboarding');
+        setLocation('/dashboard');
       }, 1500);
 
     } catch (error) {
@@ -388,6 +388,53 @@ export default function Cadastro() {
                         onChange={(e) => setFormData({...formData, nomeEmpresa: e.target.value})}
                         placeholder="Minha Loja Online"
                       />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="cnpj">CNPJ *</Label>
+                      <div className="flex gap-2">
+                        <Input
+                          id="cnpj"
+                          required
+                          value={formData.cnpj}
+                          onChange={(e) => setFormData({...formData, cnpj: e.target.value})}
+                          placeholder="00.000.000/0000-00"
+                          className="flex-1"
+                        />
+                        <Button
+                          type="button"
+                          onClick={handleValidarCNPJ}
+                          disabled={validacoes.validando || !formData.cnpj}
+                          variant={validacoes.cnpjValido ? 'default' : 'outline'}
+                        >
+                          {validacoes.validando ? 'Validando...' : validacoes.cnpjValido ? '✓ Válido' : 'Validar'}
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="mercadoLivreUserId">User ID do Mercado Livre *</Label>
+                      <div className="flex gap-2">
+                        <Input
+                          id="mercadoLivreUserId"
+                          required
+                          value={formData.mercadoLivreUserId}
+                          onChange={(e) => setFormData({...formData, mercadoLivreUserId: e.target.value})}
+                          placeholder="123456789"
+                          className="flex-1"
+                        />
+                        <Button
+                          type="button"
+                          onClick={handleValidarMercadoLivre}
+                          disabled={validacoes.validando || !formData.mercadoLivreUserId}
+                          variant={validacoes.mlValido ? 'default' : 'outline'}
+                        >
+                          {validacoes.validando ? 'Validando...' : validacoes.mlValido ? '✓ Válido' : 'Validar'}
+                        </Button>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Encontre seu User ID em: Meu Perfil → Dados Pessoais
+                      </p>
                     </div>
                   </div>
 
